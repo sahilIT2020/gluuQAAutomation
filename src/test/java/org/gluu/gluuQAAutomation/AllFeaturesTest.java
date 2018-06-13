@@ -1,4 +1,4 @@
-package org.gluu.gluuQAAutomation.common;
+package org.gluu.gluuQAAutomation;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;

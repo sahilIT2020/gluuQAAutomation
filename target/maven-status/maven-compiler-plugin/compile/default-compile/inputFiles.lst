@@ -4,4 +4,5 @@
 /home/gasmyr/dev/gluu/repositories/org.gluu.gluuQAAutomation/src/main/java/org/gluu/gluuQAAutomation/common/Settings.java
 /home/gasmyr/dev/gluu/repositories/org.gluu.gluuQAAutomation/src/main/java/org/gluu/gluuQAAutomation/common/ApplicationDriver.java
 /home/gasmyr/dev/gluu/repositories/org.gluu.gluuQAAutomation/src/main/java/org/gluu/gluuQAAutomation/pages/login/SignInPage.java
+/home/gasmyr/dev/gluu/repositories/org.gluu.gluuQAAutomation/src/main/java/org/gluu/gluuQAAutomation/pages/login/HomePage.java
 /home/gasmyr/dev/gluu/repositories/org.gluu.gluuQAAutomation/src/main/java/org/gluu/gluuQAAutomation/common/AllFeaturesTest.java
