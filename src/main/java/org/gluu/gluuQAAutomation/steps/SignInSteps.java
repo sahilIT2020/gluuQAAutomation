@@ -14,7 +14,7 @@ import cucumber.api.java.en.When;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { GluuQaAutomationApplication.class, SignInPage.class })
 @SpringBootTest
-public class SignInSteps {
+public class SignInSteps extends BaseSteps {
 
 	@Autowired
 	private SignInPage signInPage;
@@ -38,4 +38,8 @@ public class SignInSteps {
 		signInPage.checkCurrentPageIsHomePage();
 	}
 
+	@Override
+	public void cleanUp() {
+		signInPage.close();
+	}
 }

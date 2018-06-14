@@ -28,8 +28,8 @@ public class AbstractPage {
 		return webDriver.getCurrentUrl();
 	}
 
-	public void quit() {
-		webDriver.quit();
+	public void close() {
+		webDriver.close();
 	}
 
 	public void wait(int seconds) {
