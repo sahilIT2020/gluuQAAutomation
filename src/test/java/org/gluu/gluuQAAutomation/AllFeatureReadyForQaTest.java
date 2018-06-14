@@ -9,8 +9,8 @@ import cucumber.api.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = { "src/main/java/org/gluu/gluuQAAutomation/features" }, plugin = { "pretty",
-		"json:target/cucumber-reports/cucumber.json" }, monochrome = true)
+		"json:target/cucumber/json/cucumber.json" }, monochrome = true, tags = { "@gluuQA" })
 @ActiveProfiles(value = "test")
-public class AllFeaturesTest {
+public class AllFeatureReadyForQaTest {
 
 }

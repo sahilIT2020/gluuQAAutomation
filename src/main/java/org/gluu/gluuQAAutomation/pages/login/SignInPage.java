@@ -40,5 +40,4 @@ public class SignInPage extends AbstractPage {
 	public void fillFormAsAdmin() {
 		fillForm(settings.getUserName(), settings.getPassword());
 	}
-
 }
