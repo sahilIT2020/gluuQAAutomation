@@ -16,3 +16,7 @@ The goal of this project is to automate the QA process using Selenium webdriver.
  1. Navigate to: `http://localhost:8080`
  
  
+ Sample:
+   
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/Screenshot%20from%202018-06-15%2009-06-23.png" alt="Report">
+ 
