@@ -4,6 +4,7 @@
 .sass-cache/
 *.classpath
 *.iml
+.factorypath
 .classpath
 .pydevproject
 nb-configuration.xml
