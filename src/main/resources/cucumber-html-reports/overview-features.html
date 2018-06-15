@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript" src="../js/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.tablesorter.min.js"></script>
-  <script type="text/javascript" src="../js/Chart.min.js"></script>
-  <script type="text/javascript" src="../js/moment.min.js"></script>
-  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css"/>
-  <link rel="stylesheet" href="../css/cucumber.css" type="text/css"/>
-  <link rel="stylesheet" href="../css/font-awesome.min.css"/>
-  <link rel="shortcut icon" href="images/favicon.png"/>
-  #includeTitle("Features Overview")
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+<title>Cucumber Reports (no 1) - Features Overview</title>
+
 
   <script type="text/javascript">
   $(document).ready(function() {
@@ -19,9 +51,9 @@
     var chartData = {
         datasets: [{
             data: [
+                2,
                 0,
-                1,
-                1,
+                0,
                 0,
                 0
             ],
@@ -75,8 +107,8 @@
     var chartData = {
         datasets: [{
             data: [
-                0,
-                1
+                1,
+                0
             ],
             backgroundColor: [
                 "#00B000",
@@ -125,8 +157,8 @@
     var chartData = {
         datasets: [{
             data: [
-                   0,
-                   1
+                   1,
+                   0
                ],
                backgroundColor: [
                 "#00B000",
@@ -172,11 +204,71 @@
 
 <body>
 
-#includeNavigation("features")
+<nav class="navbar navbar-dark bg-primary navbar-fixed-top" id="navigation">
+   <a class="navbar-brand" style="color:white;" href="#">Gluu QA Automation</a>
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+                <li role="presentation"     class="active" ><a style="color:white;" href="/">Features</a></li>
+        <li role="presentation"  ><a style="color:white;" href="/tags">Tags</a></li>
+        <li role="presentation" ><a style="color:white;" href="/steps">Steps</a></li>
+                <li role="presentation" ><a style="color:white;" href="/failures">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-#includeReportInfo()
 
-#includeLead("Features Statistics", "The following graphs show passing and failing statistics for features")
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+    
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+              <th>Number</th>
+            <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>GluuQAAutomation</td>
+              <td>1</td>
+            <td>15 Jun 2018, 07:47</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+          
+<table class="table table-bordered" id="classifications">
+  <tbody>
+          <tr class="info">
+        <th>Platform</th>
+        <td>Linux</td>
+      </tr>
+          <tr class="info">
+        <th>Browser</th>
+        <td>CHROME</td>
+      </tr>
+          <tr class="info">
+        <th>Branch</th>
+        <td>master</td>
+      </tr>
+      </tbody>
+</table>
+
+      </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Features Statistics</h2>
+          <p>The following graphs show passing and failing statistics for features</p>
+      </div>
+</div>
 
 
   <div class="container-fluid" id="charts">
@@ -224,16 +316,99 @@
 <div class="container-fluid" id="report">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      #includeStatsTable("Feature", $parallel, $all_features, $report_summary)
+      
+<table id="tablesorter" class="stats-table table-hover">
+  
+<thead>
+  <tr class="header dont-sort">
+        <th></th>
+    <th colspan="6">Steps</th>
+    <th colspan="3">Scenarios</th>
+    <th colspan="2">Features</th>
+  </tr>
+  <tr>
+    <th>Feature</th>
+        <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="skipped">Skipped</th>
+    <th class="pending">Pending</th>
+    <th class="undefined">Undefined</th>
+    <th class="total">Total</th>
+
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="total">Total</th>
+
+    <th>Duration</th>
+    <th>Status</th>
+  </tr>
+</thead>
+
+
+  <tbody>
+          <tr>
+        <td class="tagname"><a href="report-feature_SignIn-feature.html">Sign in</a></td>
+        
+        <td      class="passed"    >2</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">2</td>
+
+        <td  class="passed"    >1</td>
+        <td >0</td>
+        <td class="total">1</td>
+
+        <td class="duration" data-value="3777506965">3.777</td>
+        <td class="passed">Passed</td>
+      </tr>
+      </tbody>
+
+  <tfoot class="total">
+    <tr>
+      <td></td>
+            <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+
+      <td class="duration">3.777</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td></td>
+            <td>100.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td>100.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td></td>
+      <td>100.00%</td>
+    </tr>
+  </tfoot>
+</table>
+
     </div>
   </div>
 </div>
 
-<nav class="navbar navbar-default" id="footer">
-  <div class="container-fluid">
-    <p class="navbar-text navbar-right">
-        WORKING REALLY HARD IS WHAT SUCCESSFULL PEOPLE DO
-        &nbsp;&nbsp;
+<nav class="navbar bg-primary fixed-bottom" id="footer" style="margin-top: -150px;  clear:both;
+  padding-top:20px;">
+  <div class="container-fluid" style=" text-align: center;">
+    <p class="navbar-text navbar-right ">
+        <small>Gluu QA report | &nbsp;</small>
+        <a class="navbar-link" href="www.gluu.org">Gluu. Inc</a> 
     </p>
   </div>
 </nav>

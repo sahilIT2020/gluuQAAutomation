@@ -10,13 +10,13 @@ public class ReportController {
 
 	private static final String PATH_HOME = "/";
 	private static final String PATH_FAILURES = "/failures";
-	private static final String PATH_FEATURES = "/features";
 	private static final String PATH_TAGS = "/tags";
 	private static final String PATH_STEPS = "/steps";
-
+	
 	@RequestMapping(value = PATH_HOME, method = RequestMethod.GET)
-	public String home(Model model) {
-		return "HomePage";
+	public String features(Model model) {
+		ReportGenerator.generatedReport();
+		return "FeaturesOverviewPage";
 	}
 
 	@RequestMapping(value = PATH_TAGS, method = RequestMethod.GET)
@@ -31,11 +31,7 @@ public class ReportController {
 		return "FailuresOverviewPage";
 	}
 
-	@RequestMapping(value = PATH_FEATURES, method = RequestMethod.GET)
-	public String features(Model model) {
-		ReportGenerator.generatedReport();
-		return "FeaturesOverviewPage";
-	}
+	
 
 	@RequestMapping(value = PATH_STEPS, method = RequestMethod.GET)
 	public String steps(Model model) {

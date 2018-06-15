@@ -78,14 +78,11 @@ public abstract class QAAbstractPage {
 
 	private Properties buildProperties() {
 		Properties props = new Properties();
-		// props.setProperty("resource.loader", "class");
-		// props.setProperty("class.resource.loader.class",
-		// ClasspathResourceLoader.class.getCanonicalName());
 		props.setProperty("runtime.log", new File(configuration.getReportDirectory(), "velocity.log").getPath());
 		props.setProperty("resource.loader", "file");
 		props.setProperty("file.resource.loader.path", "src/main/resources/cucumber");
 		props.setProperty("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
-		props.setProperty("file.resource.loader.cache", "true");
+		props.setProperty("file.resource.loader.cache", "false");
 		return props;
 	}
 

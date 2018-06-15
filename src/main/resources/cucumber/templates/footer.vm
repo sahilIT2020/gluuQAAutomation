@@ -1,8 +1,9 @@
-<nav class="navbar navbar-default" id="footer">
-  <div class="container-fluid">
-    <p class="navbar-text navbar-right">
-        WORKING REALLY HARD IS WHAT SUCCESSFULL PEOPLE DO
-        &nbsp;&nbsp;
+<nav class="navbar bg-primary fixed-bottom" id="footer" style="margin-top: -150px;  clear:both;
+  padding-top:20px;">
+  <div class="container-fluid" style=" text-align: center;">
+    <p class="navbar-text navbar-right ">
+        <small>Gluu QA report | &nbsp;</small>
+        <a class="navbar-link" href="www.gluu.org">Gluu. Inc</a> 
     </p>
   </div>
 </nav>
