@@ -15,19 +15,19 @@ public class ReportController {
 	
 	@RequestMapping(value = PATH_HOME, method = RequestMethod.GET)
 	public String features(Model model) {
-		ReportGenerator.generatedReport();
+//		ReportGenerator.generatedReport();
 		return "FeaturesOverviewPage";
 	}
 
 	@RequestMapping(value = PATH_TAGS, method = RequestMethod.GET)
 	public String tags(Model model) {
-		ReportGenerator.generatedReport();
+//		ReportGenerator.generatedReport();
 		return "TagsOverviewPage";
 	}
 
 	@RequestMapping(value = PATH_FAILURES, method = RequestMethod.GET)
 	public String failures(Model model) {
-		ReportGenerator.generatedReport();
+//		ReportGenerator.generatedReport();
 		return "FailuresOverviewPage";
 	}
 

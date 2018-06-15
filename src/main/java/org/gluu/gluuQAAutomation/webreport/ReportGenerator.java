@@ -4,8 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.masterthought.cucumber.Configuration;
+import org.springframework.stereotype.Component;
 
+import net.masterthought.cucumber.Configuration;
+@Component
 public class ReportGenerator {
 	public static void generatedReport() {
 		File reportOutputDirectory = new File("src/main/resources/");
