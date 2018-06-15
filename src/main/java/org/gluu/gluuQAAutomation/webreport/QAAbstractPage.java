@@ -17,19 +17,16 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.app.event.EventCartridge;
 import org.apache.velocity.app.event.implement.EscapeHtmlReference;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 import net.masterthought.cucumber.Configuration;
-import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.ReportResult;
 import net.masterthought.cucumber.ValidationException;
-import net.masterthought.cucumber.generators.AbstractPage;
 import net.masterthought.cucumber.util.Counter;
 import net.masterthought.cucumber.util.Util;
 
 public abstract class QAAbstractPage {
 
-	private static final Logger LOG = Logger.getLogger(AbstractPage.class.getName());
+	private static final Logger LOG = Logger.getLogger(QAAbstractPage.class.getName());
 
 	private final VelocityEngine engine = new VelocityEngine();
 	protected final VelocityContext context = new VelocityContext();
@@ -66,15 +63,12 @@ public abstract class QAAbstractPage {
 
 	private void generateReport() {
 		context.put("report_file", getWebPage());
-
 		Template template = engine.getTemplate("templates/generators/" + templateFileName);
 		File reportFile = new File(configuration.getReportDirectory(),
-				ReportBuilder.BASE_DIRECTORY + File.separatorChar + getWebPage());
-		
-		
-		System.out.println("########File Path is:"+reportFile.getPath());
-		
-		
+				QAReportBuilder.BASE_DIRECTORY + File.separatorChar + getWebPage());
+
+		System.out.println("########File Path is:" + reportFile.getPath());
+
 		try (Writer writer = new OutputStreamWriter(new FileOutputStream(reportFile), StandardCharsets.UTF_8)) {
 			template.merge(context, writer);
 		} catch (IOException e) {
@@ -84,10 +78,14 @@ public abstract class QAAbstractPage {
 
 	private Properties buildProperties() {
 		Properties props = new Properties();
-		props.setProperty("resource.loader", "class");
-		props.setProperty("class.resource.loader.class", ClasspathResourceLoader.class.getCanonicalName());
+		// props.setProperty("resource.loader", "class");
+		// props.setProperty("class.resource.loader.class",
+		// ClasspathResourceLoader.class.getCanonicalName());
 		props.setProperty("runtime.log", new File(configuration.getReportDirectory(), "velocity.log").getPath());
-
+		props.setProperty("resource.loader", "file");
+		props.setProperty("file.resource.loader.path", "src/main/resources/cucumber");
+		props.setProperty("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
+		props.setProperty("file.resource.loader.cache", "true");
 		return props;
 	}
 

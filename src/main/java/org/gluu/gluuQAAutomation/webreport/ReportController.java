@@ -16,30 +16,30 @@ public class ReportController {
 
 	@RequestMapping(value = PATH_HOME, method = RequestMethod.GET)
 	public String home(Model model) {
-		ReportGenerator.generatedReport();
 		return "HomePage";
 	}
 
 	@RequestMapping(value = PATH_TAGS, method = RequestMethod.GET)
 	public String tags(Model model) {
-		return "TagsPage";
+		ReportGenerator.generatedReport();
+		return "TagsOverviewPage";
 	}
 
 	@RequestMapping(value = PATH_FAILURES, method = RequestMethod.GET)
 	public String failures(Model model) {
 		ReportGenerator.generatedReport();
-		return "FailuresPage";
+		return "FailuresOverviewPage";
 	}
 
 	@RequestMapping(value = PATH_FEATURES, method = RequestMethod.GET)
 	public String features(Model model) {
 		ReportGenerator.generatedReport();
-		return "FeaturesPage";
+		return "FeaturesOverviewPage";
 	}
 
 	@RequestMapping(value = PATH_STEPS, method = RequestMethod.GET)
-	public String step(Model model) {
-		return "StepsPage";
+	public String steps(Model model) {
+		return "StepsOverviewPage";
 	}
 
 }

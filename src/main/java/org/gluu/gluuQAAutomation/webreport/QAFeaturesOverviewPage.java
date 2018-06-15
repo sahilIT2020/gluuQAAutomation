@@ -1,12 +1,11 @@
 package org.gluu.gluuQAAutomation.webreport;
 
 import net.masterthought.cucumber.Configuration;
-import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.ReportResult;
 
 public class QAFeaturesOverviewPage extends QAAbstractPage {
 
-	public static final String WEB_PAGE = ReportBuilder.HOME_PAGE;
+	public static final String WEB_PAGE = QAReportBuilder.HOME_PAGE;
 
 	public QAFeaturesOverviewPage(ReportResult reportResult, Configuration configuration) {
 		super(reportResult, "overviewFeatures.vm", configuration);

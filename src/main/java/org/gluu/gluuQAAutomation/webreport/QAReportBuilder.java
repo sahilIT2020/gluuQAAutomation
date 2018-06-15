@@ -32,11 +32,8 @@ import net.masterthought.cucumber.Reportable;
 import net.masterthought.cucumber.Trends;
 import net.masterthought.cucumber.ValidationException;
 import net.masterthought.cucumber.generators.ErrorPage;
-import net.masterthought.cucumber.generators.FailuresOverviewPage;
 import net.masterthought.cucumber.generators.FeatureReportPage;
-import net.masterthought.cucumber.generators.StepsOverviewPage;
 import net.masterthought.cucumber.generators.TagReportPage;
-import net.masterthought.cucumber.generators.TagsOverviewPage;
 import net.masterthought.cucumber.generators.TrendsOverviewPage;
 import net.masterthought.cucumber.json.Feature;
 import net.masterthought.cucumber.json.support.TagObject;
@@ -54,6 +51,8 @@ public class QAReportBuilder {
 	 * Subdirectory where the report will be created.
 	 */
 	public static final String BASE_DIRECTORY = "cucumber-html-reports";
+	
+	public static final String HOME_PAGE = "overview-features.html";
 
 	private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -161,21 +160,21 @@ public class QAReportBuilder {
 	}
 
 	private void generatePages(Trends trends) {
-//		new FeaturesOverviewPage(reportResult, configuration).generatePage();
+		// new FeaturesOverviewPage(reportResult, configuration).generatePage();
 		new QAFeaturesOverviewPage(reportResult, configuration).generatePage();
 
 		for (Feature feature : reportResult.getAllFeatures()) {
 			new FeatureReportPage(reportResult, configuration, feature).generatePage();
 		}
 
-		new TagsOverviewPage(reportResult, configuration).generatePage();
+//		new TagsOverviewPage(reportResult, configuration).generatePage();
 
 		for (TagObject tagObject : reportResult.getAllTags()) {
 			new TagReportPage(reportResult, configuration, tagObject).generatePage();
 		}
 
-		new StepsOverviewPage(reportResult, configuration).generatePage();
-		new FailuresOverviewPage(reportResult, configuration).generatePage();
+//		new StepsOverviewPage(reportResult, configuration).generatePage();
+//		new FailuresOverviewPage(reportResult, configuration).generatePage();
 
 		if (configuration.isTrendsStatsFile()) {
 			new TrendsOverviewPage(reportResult, configuration, trends).generatePage();
@@ -240,29 +239,28 @@ public class QAReportBuilder {
 
 	private void moveStaticRessources() {
 		try {
-			Files.copy(Paths.get("src/main/resources/cucumber-html-reports/css"),
-					Paths.get("src/main/resources/static/css"), StandardCopyOption.REPLACE_EXISTING);
-			Files.copy(Paths.get("src/main/resources/cucumber-html-reports/js"),
-					Paths.get("src/main/resources/static/js"), StandardCopyOption.REPLACE_EXISTING);
-			Files.copy(Paths.get("src/main/resources/cucumber-html-reports/fonts"),
-					Paths.get("src/main/resources/static/fonts"), StandardCopyOption.REPLACE_EXISTING);
-			Files.copy(Paths.get("src/main/resources/cucumber-html-reports/images"),
-					Paths.get("src/main/resources/static/images"), StandardCopyOption.REPLACE_EXISTING);
-
+			FileUtils.copyDirectoryToDirectory(Paths.get("src/main/resources/cucumber-html-reports/css").toFile(),
+					Paths.get("src/main/resources/static/").toFile());
+			FileUtils.copyDirectoryToDirectory(Paths.get("src/main/resources/cucumber-html-reports/js").toFile(),
+					Paths.get("src/main/resources/static/").toFile());
+			FileUtils.copyDirectoryToDirectory(Paths.get("src/main/resources/cucumber-html-reports/images").toFile(),
+					Paths.get("src/main/resources/static/").toFile());
+			FileUtils.copyDirectoryToDirectory(Paths.get("src/main/resources/cucumber-html-reports/fonts").toFile(),
+					Paths.get("src/main/resources/static/").toFile());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void moveTemplates() throws IOException {
-		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-failures.html"),
-				Paths.get("src/main/resources/templates/FailuresPage.html"), StandardCopyOption.REPLACE_EXISTING);
+//		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-failures.html"),
+//				Paths.get("src/main/resources/templates/FailuresOverviewPage.html"), StandardCopyOption.REPLACE_EXISTING);
 		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-features.html"),
-				Paths.get("src/main/resources/templates/FeaturesPage.html"), StandardCopyOption.REPLACE_EXISTING);
-		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-steps.html"),
-				Paths.get("src/main/resources/templates/StepsPage.html"), StandardCopyOption.REPLACE_EXISTING);
-		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-tags.html"),
-				Paths.get("src/main/resources/templates/TagsPage.html"), StandardCopyOption.REPLACE_EXISTING);
+				Paths.get("src/main/resources/templates/FeaturesOverviewPage.html"), StandardCopyOption.REPLACE_EXISTING);
+//		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-steps.html"),
+//				Paths.get("src/main/resources/templates/StepsOverviewPage.html"), StandardCopyOption.REPLACE_EXISTING);
+//		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-tags.html"),
+//				Paths.get("src/main/resources/templates/TagsOverviewPage.html"), StandardCopyOption.REPLACE_EXISTING);
 	}
 
 }

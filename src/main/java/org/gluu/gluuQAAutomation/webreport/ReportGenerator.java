@@ -10,7 +10,7 @@ public class ReportGenerator {
 	public static void generatedReport() {
 		File reportOutputDirectory = new File("src/main/resources/");
 		List<String> jsonFiles = new ArrayList<>();
-		jsonFiles.add("target/cucumber/report/cucumber.json");
+		jsonFiles.add("target/cucumber/json/cucumber.json");
 
 		String buildNumber = "1";
 		String projectName = "GluuQAAutomation";
