@@ -249,6 +249,9 @@ public class QAReportBuilder {
 	}
 
 	private void moveTemplates() throws IOException {
+		FileUtils.copyDirectory(Paths.get("src/main/resources/cucumber-html-reports").toFile(),
+				Paths.get("src/main/resources/templates/").toFile());
+		
 		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-failures.html"),
 				Paths.get("src/main/resources/templates/FailuresOverviewPage.html"),
 				StandardCopyOption.REPLACE_EXISTING);

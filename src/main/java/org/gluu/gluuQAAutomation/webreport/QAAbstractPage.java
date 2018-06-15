@@ -66,9 +66,6 @@ public abstract class QAAbstractPage {
 		Template template = engine.getTemplate("templates/generators/" + templateFileName);
 		File reportFile = new File(configuration.getReportDirectory(),
 				QAReportBuilder.BASE_DIRECTORY + File.separatorChar + getWebPage());
-
-		System.out.println("########File Path is:" + reportFile.getPath());
-
 		try (Writer writer = new OutputStreamWriter(new FileOutputStream(reportFile), StandardCharsets.UTF_8)) {
 			template.merge(context, writer);
 		} catch (IOException e) {
@@ -81,7 +78,8 @@ public abstract class QAAbstractPage {
 		props.setProperty("runtime.log", new File(configuration.getReportDirectory(), "velocity.log").getPath());
 		props.setProperty("resource.loader", "file");
 		props.setProperty("file.resource.loader.path", "src/main/resources/cucumber");
-		props.setProperty("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.FileResourceLoader");
+		props.setProperty("file.resource.loader.class",
+				"org.apache.velocity.runtime.resource.loader.FileResourceLoader");
 		props.setProperty("file.resource.loader.cache", "false");
 		return props;
 	}
