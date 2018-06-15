@@ -1,3 +1,18 @@
+.idea/
+.project
+.settings/
+.sass-cache/
+*.classpath
+*.iml
+.classpath
+.pydevproject
+nb-configuration.xml
+
+# Maven
+target
+
+server/.tern-project
+/bin/
 # Compiled class file
 *.class
 
