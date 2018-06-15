@@ -85,6 +85,8 @@ public class QAReportBuilder {
 			// first copy static resources so ErrorPage is displayed properly
 			copyStaticResources();
 			moveStaticRessources();
+			Files.copy(Paths.get("src/main/resources/favicon.png"),
+					Paths.get("src/main/resources/static/images/favicon.png"), StandardCopyOption.REPLACE_EXISTING);
 			// create directory for embeddings before files are generated
 			// createEmbeddingsDirectory();
 
@@ -251,19 +253,21 @@ public class QAReportBuilder {
 	private void moveTemplates() throws IOException {
 		FileUtils.copyDirectory(Paths.get("src/main/resources/cucumber-html-reports").toFile(),
 				Paths.get("src/main/resources/templates/").toFile());
-		
+
 		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-failures.html"),
 				Paths.get("src/main/resources/templates/FailuresOverviewPage.html"),
 				StandardCopyOption.REPLACE_EXISTING);
 		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-features.html"),
 				Paths.get("src/main/resources/templates/FeaturesOverviewPage.html"),
 				StandardCopyOption.REPLACE_EXISTING);
-		 Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-steps.html"),
-		 Paths.get("src/main/resources/templates/StepsOverviewPage.html"),
-		 StandardCopyOption.REPLACE_EXISTING);
-		 Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-tags.html"),
-		 Paths.get("src/main/resources/templates/TagsOverviewPage.html"),
-		 StandardCopyOption.REPLACE_EXISTING);
+		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-steps.html"),
+				Paths.get("src/main/resources/templates/StepsOverviewPage.html"), StandardCopyOption.REPLACE_EXISTING);
+		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-tags.html"),
+				Paths.get("src/main/resources/templates/TagsOverviewPage.html"), StandardCopyOption.REPLACE_EXISTING);
+		FileUtils.deleteDirectory(Paths.get("src/main/resources/templates/js").toFile());
+		FileUtils.deleteDirectory(Paths.get("src/main/resources/templates/images").toFile());
+		FileUtils.deleteDirectory(Paths.get("src/main/resources/templates/fonts").toFile());
+		FileUtils.deleteDirectory(Paths.get("src/main/resources/templates/css").toFile());
 	}
 
 }
