@@ -1,0 +1,36 @@
+#macro(includeSteps, $steps)
+
+<div class="steps inner-level">
+  #set($stepsId = $counter.next())
+  <div data-toggle="collapse" class="#if ($element.getStatus().isPassed()) collapsed #end collapsable-control" data-target="#steps-$stepsId">
+    #includeBrief("Steps", $element.getStepsStatus(), "", true)
+  </div>
+
+  <div id="steps-$stepsId" class="inner-level collapse collapsable-details #if (!$element.getStatus().isPassed()) in #end">
+    #foreach($step in $element.getSteps())
+      <div class="step">
+        #includeBrief($step.getKeyword(), $step.getResult().getStatus(), $step.getName(), false, $step.getResult())
+        #set($isPassed = $step.getResult().getStatus().isPassed())
+        #includeMessage($step.getResult().getErrorMessageTitle(), $step.getResult().getErrorMessage(), $isPassed)
+
+        #if (!$step.getRows().isEmpty())
+          <table class="step-arguments">
+            #foreach($row in $step.getRows())
+              <tr>
+                #foreach($cell in $row.getCells())
+                  <td>$cell</td>
+                #end
+              </tr>
+            #end
+          </table>
+        #end
+
+        #includeDocString($step.getDocString())
+        #includeOutput($step.getOutputs(), $isPassed)
+        #includeEmbeddings($step.getEmbeddings())
+      </div>
+    #end
+  </div>
+</div>
+
+#end

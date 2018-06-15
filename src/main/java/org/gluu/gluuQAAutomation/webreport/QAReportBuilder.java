@@ -34,7 +34,6 @@ import net.masterthought.cucumber.ValidationException;
 import net.masterthought.cucumber.generators.ErrorPage;
 import net.masterthought.cucumber.generators.FailuresOverviewPage;
 import net.masterthought.cucumber.generators.FeatureReportPage;
-import net.masterthought.cucumber.generators.FeaturesOverviewPage;
 import net.masterthought.cucumber.generators.StepsOverviewPage;
 import net.masterthought.cucumber.generators.TagReportPage;
 import net.masterthought.cucumber.generators.TagsOverviewPage;
@@ -162,7 +161,8 @@ public class QAReportBuilder {
 	}
 
 	private void generatePages(Trends trends) {
-		new FeaturesOverviewPage(reportResult, configuration).generatePage();
+//		new FeaturesOverviewPage(reportResult, configuration).generatePage();
+		new QAFeaturesOverviewPage(reportResult, configuration).generatePage();
 
 		for (Feature feature : reportResult.getAllFeatures()) {
 			new FeatureReportPage(reportResult, configuration, feature).generatePage();
