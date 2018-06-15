@@ -254,6 +254,9 @@ public class QAReportBuilder {
 		FileUtils.copyDirectory(Paths.get("src/main/resources/cucumber-html-reports").toFile(),
 				Paths.get("src/main/resources/templates/").toFile());
 
+		Files.copy(Paths.get("src/main/resources/favicon.png"),
+				Paths.get("src/main/resources/templates/images/favicon.png"), StandardCopyOption.REPLACE_EXISTING);
+
 		Files.copy(Paths.get("src/main/resources/cucumber-html-reports/overview-failures.html"),
 				Paths.get("src/main/resources/templates/FailuresOverviewPage.html"),
 				StandardCopyOption.REPLACE_EXISTING);
