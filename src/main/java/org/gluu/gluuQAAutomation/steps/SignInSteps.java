@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -37,7 +38,18 @@ public class SignInSteps extends BaseSteps {
 	public void assertCurrentPageIsAdminPage() {
 		signInPage.checkCurrentPageIsHomePage();
 	}
+	
+	@When("^I sign out$")
+	public void signOut() {
+		signInPage.signOut();
+	}
+	
+	@Then("^I should see the gluu login page$")
+	public void checkLoginPage() {
+		signInPage.checkCurrentPageIsLoginPage();
+	}
 
+//	@After
 	@Override
 	public void cleanUp() {
 		signInPage.close();
