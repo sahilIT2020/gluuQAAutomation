@@ -13,7 +13,9 @@ The goal of this project is to automate the QA process using Selenium webdriver.
  # How to view the test result
  1. Open a new terminal
  1. Navigate to the project `cd gluuQAAutomation`
- 1. Run this command twice: `mvn spring-boot:run`
+ 1. Run this command: `mvn spring-boot:run`
+ 1. Run: **Ctrl+C**
+ 1. Run this command: `mvn spring-boot:run`
  1. Navigate to: `http://localhost:8080`
  
  
