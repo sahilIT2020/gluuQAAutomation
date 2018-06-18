@@ -13,18 +13,25 @@ public class HomePage extends AbstractPage {
 		userMenu.click();
 	}
 
+	public void goToGroupsManagePage() {
+		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
+		userMenu.click();
+		WebElement userAddMenu = waitElement("//*[@id='subMenuLinkUsers1']");
+		userAddMenu.click();
+	}
+
+	public void goToUsersManagePage() {
+		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
+		userMenu.click();
+		WebElement userAddMenu = waitElement("//*[@id='subMenuLinkUsers2']");
+		userAddMenu.click();
+	}
+
 	public void goToUsersAddPage() {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
 		userMenu.click();
 		WebElement element = waitElement("//*[@id='subMenuLinkUsers3']");
 		element.click();
-	}
-
-	public void goToUsersSearchPage() {
-		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
-		userMenu.click();
-		WebElement userAddMenu = waitElement("//*[@id='subMenuLinkUsers2']");
-		userAddMenu.click();
 	}
 
 	public void goToUsersImportPage() {

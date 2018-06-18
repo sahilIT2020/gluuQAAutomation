@@ -34,7 +34,6 @@ public class SignInPage extends AbstractPage {
 	public void checkCurrentPageIsHomePage() {
 		String currentPageUrl = getCurrentPageUrl();
 		Assert.assertTrue(currentPageUrl.contains("home"));
-
 	}
 
 	public void fillFormAsAdmin() {
@@ -43,20 +42,7 @@ public class SignInPage extends AbstractPage {
 
 	public void checkCurrentPageIsLoginPage() {
 		String currentPageUrl = getCurrentPageUrl();
-		Assert.assertTrue(currentPageUrl.endsWith("oxauth/login"));
-	}
-
-	public void signOut() {
-		WebElement element = webDriver.findElement(By.xpath("//*[@id='j_idt12\']/header/nav/div/ul/li/a/div"));
-		element.click();
-		WebElement logoutButton = element
-				.findElement(By.xpath("//*[@id=\"j_idt12\"]/header/nav/div/ul/li/ul/li[2]/div[2]/a"));
-		logoutButton.click();
-		finishLogout();
-	}
-
-	private void finishLogout() {
-		WebElement finishButton = webDriver.findElement(By.xpath("/html/body/div[1]/div/a"));
-		finishButton.click();
+		Assert.assertTrue(currentPageUrl.endsWith("oxauth/login")
+				|| currentPageUrl.endsWith("oxauth/auth/passport/passportlogin"));
 	}
 }
