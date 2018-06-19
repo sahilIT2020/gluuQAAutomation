@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.gluu.gluuQAAutomation.common.ApplicationDriver;
 import org.gluu.gluuQAAutomation.common.Settings;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -30,12 +31,21 @@ public class AbstractPage {
 		return webDriver.getTitle();
 	}
 
+	public void scrollDown() {
+		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+		jse.executeScript("window.scrollBy(0,250)");
+	}
+
+	public void scrollUp() {
+		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+		jse.executeScript("window.scrollBy(0,-250)");
+	}
+
 	public void signOut() {
 		WebElement element = webDriver.findElement(By.className("user-menu"));
-//		element.click();
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(element).click().perform();
-		
+
 		WebElement footer = waitElementByClass("user-footer");
 		List<WebElement> elements = footer.findElements(By.className("pull-left"));
 		elements.get(1).click();

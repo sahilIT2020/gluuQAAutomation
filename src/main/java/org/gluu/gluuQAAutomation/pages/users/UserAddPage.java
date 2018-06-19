@@ -122,7 +122,6 @@ public class UserAddPage extends AbstractPage {
 		footer = footer.findElement(By.tagName("div"));
 		List<WebElement> buttons = footer.findElements(By.tagName("input"));
 		buttons.get(0).click();
-		wait(60);
 	}
 
 }
