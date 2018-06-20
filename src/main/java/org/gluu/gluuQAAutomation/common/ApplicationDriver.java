@@ -74,6 +74,8 @@ public class ApplicationDriver {
 		options.setCapability("browserConnectionEnabled", true);
 		options.setCapability("networkConnectionEnabled", true);
 		options.setExperimentalOption("useAutomationExtension", false);
+		options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("start-maximized");
 	}
 
