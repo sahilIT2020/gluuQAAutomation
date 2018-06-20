@@ -30,7 +30,6 @@ public class ApplicationDriver {
 			readConfiguration();
 			initDriverOptions();
 			if (settings.getOs().equalsIgnoreCase(WIN) && settings.getBrowser().startsWith(CHROME)) {
-				System.setProperty("webdriver.chrome.driver", "/home/gasmyr/chromedriver");
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-win.exe");
 				driver = new ChromeDriver(options);
@@ -74,6 +73,7 @@ public class ApplicationDriver {
 		options.setCapability("applicationCacheEnabled", true);
 		options.setCapability("browserConnectionEnabled", true);
 		options.setCapability("networkConnectionEnabled", true);
+		options.setExperimentalOption("useAutomationExtension", false);
 		options.addArguments("start-maximized");
 	}
 
