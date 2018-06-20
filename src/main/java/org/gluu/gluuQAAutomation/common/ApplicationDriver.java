@@ -68,12 +68,12 @@ public class ApplicationDriver {
 
 	public static void initDriverOptions() {
 		options = new ChromeOptions();
-		options.addArguments("test-type");
-		options.setCapability("acceptInsecureCerts", true);
-		options.setCapability("applicationCacheEnabled", true);
-		options.setCapability("browserConnectionEnabled", true);
-		options.setCapability("networkConnectionEnabled", true);
-		options.setExperimentalOption("useAutomationExtension", false);
+//		options.addArguments("test-type");
+//		options.setCapability("acceptInsecureCerts", true);
+//		options.setCapability("applicationCacheEnabled", true);
+//		options.setCapability("browserConnectionEnabled", true);
+//		options.setCapability("networkConnectionEnabled", true);
+//		options.setExperimentalOption("useAutomationExtension", false);
 		options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("start-maximized");
