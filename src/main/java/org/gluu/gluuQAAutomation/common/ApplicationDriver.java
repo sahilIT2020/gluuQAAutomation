@@ -1,5 +1,6 @@
 package org.gluu.gluuQAAutomation.common;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +9,9 @@ import java.util.Properties;
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ApplicationDriver {
 
@@ -22,6 +25,7 @@ public class ApplicationDriver {
 	private static final String QA_BROWSER = "QA_BROWSER";
 	private static final String QA_OS = "QA_OS";
 	private static WebDriver driver;
+	private static ChromeDriverService service;
 	private static Settings settings;
 	private static ChromeOptions options;
 
@@ -42,7 +46,9 @@ public class ApplicationDriver {
 			} else if (settings.getOs().equalsIgnoreCase(LINUX) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-linux");
-				driver = new ChromeDriver(options);
+//				driver = new ChromeDriver(options);
+				startService();
+				driver = new RemoteWebDriver(service.getUrl(), options);
 				return driver;
 
 			} else {
@@ -72,6 +78,21 @@ public class ApplicationDriver {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("start-maximized");
+		options.addArguments("disable-infobars");
+		options.addArguments("--disable-extensions");
+	}
+
+	public static void startService() {
+		if (service == null) {
+			service = new ChromeDriverService.Builder()
+					.usingDriverExecutable(new File("src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-linux"))
+					.usingAnyFreePort().build();
+		}
+		try {
+			service.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void readConfiguration() {

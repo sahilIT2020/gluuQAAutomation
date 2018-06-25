@@ -6,4 +6,4 @@ Scenario: Z_Import users to gluu server
 	When 	I go to users import page
 	And 	I import the sample excel file
 	When 	I sign out 
-	Then 	I should see the gluu login page
+	#Then 	I should see the gluu login page

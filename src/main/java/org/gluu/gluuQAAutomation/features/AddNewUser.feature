@@ -13,4 +13,4 @@ Scenario: Sign in as admin
 	And 	With status 'Inactive' 
 	And 	I save the user 
 	When 	I sign out 
-	Then 	I should see the gluu login page
+	#Then 	I should see the gluu login page
