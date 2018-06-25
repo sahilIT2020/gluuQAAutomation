@@ -9,6 +9,8 @@ import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ApplicationDriver {
 
@@ -32,7 +34,8 @@ public class ApplicationDriver {
 			if (settings.getOs().equalsIgnoreCase(WIN) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-win.exe");
-				driver = new ChromeDriver(options);
+				//driver = new ChromeDriver(options);
+				driver=new RemoteWebDriver(DesiredCapabilities.chrome());
 				return driver;
 			} else if (settings.getOs().equalsIgnoreCase(MAC) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
@@ -42,7 +45,8 @@ public class ApplicationDriver {
 			} else if (settings.getOs().equalsIgnoreCase(LINUX) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-linux");
-				driver = new ChromeDriver(options);
+//				driver = new ChromeDriver(options);
+				driver=new ChromeDriver(DesiredCapabilities.chrome());
 				return driver;
 
 			} else {

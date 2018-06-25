@@ -1,6 +1,6 @@
-Feature: Zmport users
-@gluuQA
-Scenario: Zmport users to gluu server
+Feature: Z_Import users
+@gluuQAPending
+Scenario: Z_Import users to gluu server
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to users import page

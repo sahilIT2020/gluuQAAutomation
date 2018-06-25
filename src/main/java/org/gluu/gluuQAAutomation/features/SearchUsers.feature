@@ -6,6 +6,6 @@ Scenario: Search user
 	When 	I go to users manage page 
 	And 	I search for user with pattern 'QA' 
 	Then 	I should see a user named 'QaUser' 
-	And 	I set the display name to 'QaUserDN' 
+	And 	I should see a user with display name 'QaUserDN' 
 	When 	I sign out 
 	Then 	I should see the gluu login page

@@ -3,6 +3,7 @@ package org.gluu.gluuQAAutomation.pages.users;
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,7 +24,8 @@ public class UserImportPage extends AbstractPage {
 	}
 
 	private void validate() {
-		footer.findElements(By.tagName("input")).get(0).click();
+		Actions actions = new Actions(webDriver);
+		actions.moveToElement(footer.findElements(By.tagName("input")).get(0)).click().perform();
 	}
 
 	private void performImport() {
