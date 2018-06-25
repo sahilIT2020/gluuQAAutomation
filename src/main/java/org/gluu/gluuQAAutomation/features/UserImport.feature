@@ -1,5 +1,5 @@
 Feature: Z_Import users
-@gluuQAPending
+@gluuQA
 Scenario: Z_Import users to gluu server
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

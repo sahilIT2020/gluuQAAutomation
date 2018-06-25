@@ -9,15 +9,13 @@ import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ApplicationDriver {
 
 	private static final String WIN = "WIN";
 	private static final String MAC = "MAC";
 	private static final String LINUX = "LINUX";
-	private static final String CHROME = "CHROME";
+	private static final String CHROME = "CHROM";
 	private static final String GLUU_SERVER_URL = "GLUU_SERVER_URL";
 	private static final String GLUU_USERNAME = "GLUU_USERNAME";
 	private static final String GLUU_USERPWD = "GLUU_USERPWD";
@@ -34,16 +32,16 @@ public class ApplicationDriver {
 			if (settings.getOs().equalsIgnoreCase(WIN) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-win.exe");
-				//driver = new ChromeDriver(options);
+				driver = new ChromeDriver();
 				return driver;
 			} else if (settings.getOs().equalsIgnoreCase(MAC) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-mac");
-				driver = new ChromeDriver(options);
+				driver = new ChromeDriver();
 				return driver;
 			} else if (settings.getOs().equalsIgnoreCase(LINUX) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
-						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver");
+						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-linux");
 				driver = new ChromeDriver(options);
 				return driver;
 
@@ -64,20 +62,15 @@ public class ApplicationDriver {
 	private ApplicationDriver() {
 	}
 
-	public static void release() {
-		driver.quit();
-	}
-
 	public static void initDriverOptions() {
 		options = new ChromeOptions();
-//		options.addArguments("test-type");
-//		options.setCapability("acceptInsecureCerts", true);
-//		options.setCapability("applicationCacheEnabled", true);
-//		options.setCapability("browserConnectionEnabled", true);
-//		options.setCapability("networkConnectionEnabled", true);
-//		options.setExperimentalOption("useAutomationExtension", false);
+		options.setCapability("acceptInsecureCerts", true);
+		options.setCapability("applicationCacheEnabled", true);
+		options.setCapability("browserConnectionEnabled", true);
+		options.setCapability("networkConnectionEnabled", true);
+		options.setExperimentalOption("useAutomationExtension", false);
 		options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("start-maximized");
 	}
 
