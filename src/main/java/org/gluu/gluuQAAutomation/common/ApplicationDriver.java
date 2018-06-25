@@ -35,7 +35,6 @@ public class ApplicationDriver {
 				System.setProperty("webdriver.chrome.driver",
 						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-win.exe");
 				//driver = new ChromeDriver(options);
-				driver=new RemoteWebDriver(DesiredCapabilities.chrome());
 				return driver;
 			} else if (settings.getOs().equalsIgnoreCase(MAC) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
@@ -44,9 +43,8 @@ public class ApplicationDriver {
 				return driver;
 			} else if (settings.getOs().equalsIgnoreCase(LINUX) && settings.getBrowser().startsWith(CHROME)) {
 				System.setProperty("webdriver.chrome.driver",
-						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver-linux");
-//				driver = new ChromeDriver(options);
-				driver=new ChromeDriver(DesiredCapabilities.chrome());
+						"src/main/java/org/gluu/gluuQAAutomation/util/chromedriver");
+				driver = new ChromeDriver(options);
 				return driver;
 
 			} else {
