@@ -15,8 +15,9 @@ public class UserManagePage extends AbstractPage {
 	private WebElement foundUser;
 
 	public void searchUser(String pattern) {
-		WebElement searchBox = webDriver.findElement(By.xpath("//*[@id='j_idt142:searchPattern:outputInputPanel']"));
-		inputs = searchBox.findElements(By.tagName("input"));
+		WebElement searchBox = webDriver.findElement(By.className("searchArea"));
+		WebElement searchSpanBox = searchBox.findElement(By.tagName("span"));
+		inputs = searchSpanBox.findElements(By.tagName("input"));
 		Assert.assertTrue(inputs.size() == 2);
 		inputs.get(0).sendKeys(pattern);
 		inputs.get(1).click();

@@ -16,7 +16,7 @@ public class UserAddPage extends AbstractPage {
 	private List<WebElement> sections;
 
 	public void fillUserName(String userName) {
-		form = webDriver.findElement(By.xpath("//*[@id='j_idt162:selectedCustomAttributesId']"));
+		form = webDriver.findElement(By.className("selectedCustomAttributesId"));
 		sections = form.findElements(By.tagName("div"));
 		WebElement userNameSection = sections.get(0);
 		sections = userNameSection.findElements(By.xpath("following-sibling::div"));
