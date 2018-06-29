@@ -12,6 +12,12 @@ public class HomePage extends AbstractPage {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
 		userMenu.click();
 	}
+	
+	public void goToGroupAddPage() {
+		goToGroupsManagePage();
+		WebElement addButton=webDriver.findElement(By.className("addGroup"));
+		addButton.click();
+	}
 
 	public void goToGroupsManagePage() {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));

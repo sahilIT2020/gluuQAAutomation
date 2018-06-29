@@ -15,4 +15,3 @@ Scenario: Update an existing user
 	Then 	I should see a user named 'QaUser' 
 	And 	I should see a user with display name 'QaUser Display Name' 
 	When 	I sign out 
-	#Then 	I should see the gluu login page

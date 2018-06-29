@@ -84,6 +84,11 @@ public class AbstractPage {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tagName)));
 	}
 	
+	public WebElement waitElementByID(String tagName) {
+		WebDriverWait wait = new WebDriverWait(webDriver, 10);
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(tagName)));
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<WebElement> waitElementsByTag(String tagName) {
 		WebDriverWait wait = new WebDriverWait(webDriver, 10);

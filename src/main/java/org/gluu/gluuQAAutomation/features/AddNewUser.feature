@@ -1,6 +1,6 @@
 Feature: Add new user 
 @gluuQA 
-Scenario: Sign in as admin 
+Scenario: Add new user
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to user add page 
@@ -11,6 +11,9 @@ Scenario: Sign in as admin
 	And 	With email 'QaUser@gmail.com' 
 	And 	With password 'QaUser' 
 	And 	With status 'Inactive' 
-	And 	I save the user 
+	And 	I save the user
+	When 	I go to users manage page 
+	And 	I search for user with pattern 'QA' 
+	Then 	I should see a user named 'QaUser'
+	And 	I should see a user with display name 'QaUserDN'
 	When 	I sign out 
-	#Then 	I should see the gluu login page
