@@ -31,5 +31,5 @@ The goal of this project is to automate the QA process using Selenium webdriver.
  
  Sample:
    
-   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/Screenshot%20from%202018-06-15%2009-06-23.png" alt="Report">
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/gluu_qa_report.png" alt="Report">
  
