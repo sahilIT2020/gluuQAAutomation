@@ -5,4 +5,4 @@ Scenario: Z_Import users to gluu server
 	Then 	I should see gluu home page 
 	When 	I go to users import page
 	And 	I import the sample excel file locate at '/home/gasmyr/gluuQAAutomation/src/main/resources/ImportUsers.xls'
-	When 	I sign out 
+	Then 	I sign out 

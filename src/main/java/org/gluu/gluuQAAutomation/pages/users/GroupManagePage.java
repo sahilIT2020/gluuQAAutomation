@@ -21,11 +21,16 @@ public class GroupManagePage extends AbstractPage {
 		Assert.assertTrue(inputs.size() == 2);
 		inputs.get(0).sendKeys(pattern);
 		inputs.get(1).click();
-		tableBody = webDriver.findElement(By.id("groupsFormId:groupsListId")).findElements(By.tagName("tbody"))
-				.get(0);
 	}
 
 	public boolean groupExistList(String username) {
+		try {
+			tableBody = webDriver.findElement(By.id("groupsFormId:groupsListId")).findElements(By.tagName("tbody"))
+					.get(0);
+		} catch (Exception e) {
+			return false;
+		}
+
 		List<WebElement> trs = tableBody.findElements(By.tagName("tr"));
 		boolean found = false;
 		for (WebElement element : trs) {
@@ -44,6 +49,10 @@ public class GroupManagePage extends AbstractPage {
 
 	public void startGroupUpdate() {
 		foundGroup.findElements(By.tagName("td")).get(0).click();
+	}
+
+	public void assertGroupNotWithExist(String value) {
+		Assert.assertFalse(groupExistList(value));
 	}
 
 }

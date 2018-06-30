@@ -1,5 +1,5 @@
 Feature: Add new group 
-@gluuQA 
+@gluuQA
 Scenario: Add new group 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

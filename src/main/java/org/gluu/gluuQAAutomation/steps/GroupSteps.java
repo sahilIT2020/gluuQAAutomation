@@ -3,6 +3,7 @@ package org.gluu.gluuQAAutomation.steps;
 import org.gluu.gluuQAAutomation.pages.login.HomePage;
 import org.gluu.gluuQAAutomation.pages.users.GroupAddPage;
 import org.gluu.gluuQAAutomation.pages.users.GroupManagePage;
+import org.gluu.gluuQAAutomation.pages.users.GroupUpdatePage;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,6 +21,8 @@ public class GroupSteps extends BaseSteps {
 	private HomePage homePage;
 	@Autowired
 	private GroupAddPage groupAddPage;
+	@Autowired
+	private GroupUpdatePage groupUpdatePage;
 
 	@Override
 	public void cleanUp() {
@@ -55,6 +58,11 @@ public class GroupSteps extends BaseSteps {
 	public void checkGroupExistenceByDisplayName(String displayName) {
 		groupManagePage.assertGroupWithExist(displayName);
 	}
+	
+	@And("^I should not see a group with display name '(.+)'$")
+	public void checkGroupNonExistenceByDisplayName(String displayName) {
+		groupManagePage.assertGroupNotWithExist(displayName);
+	}
 
 	@And("^I add a group with display name '(.+)'$")
 	public void fillGroupDN(String value) {
@@ -68,17 +76,47 @@ public class GroupSteps extends BaseSteps {
 
 	@And("^I add a group with visibility '(.+)'$")
 	public void fillStatus(String value) {
-		groupAddPage.fillStatus(value);
+		groupAddPage.fillVisiblility(value);
 	}
-	
+
 	@And("^I add the user named '(.+)' as member$")
 	public void pickAUser(String user) {
 		groupAddPage.pickUser(user);
 	}
 
+	@When("^I start to update that group")
+	public void startGroupUpdate() {
+		groupManagePage.startGroupUpdate();
+	}
+
+	@And("^I set the new display name to '(.+)'$")
+	public void setDisplayName(String displayName) {
+		groupUpdatePage.fillDisplayName(displayName);
+	}
+
+	@And("^I set the new description to '(.+)'$")
+	public void setDescription(String des) {
+		groupUpdatePage.fillDescription(des);
+	}
+
+	@And("^I set the new visibility to '(.+)'$")
+	public void setVisibility(String vi) {
+		groupUpdatePage.fillVisibility(vi);
+	}
+
 	@And("^I save the group$")
 	public void saveGroup() {
 		groupAddPage.save();
+	}
+
+	@And("^I save the group edition$")
+	public void editGroup() {
+		groupUpdatePage.save();
+	}
+
+	@And("^I delete the current group$")
+	public void dleteGroup() {
+		groupUpdatePage.delete();
 	}
 
 }

@@ -7,4 +7,4 @@ Scenario: Search user
 	And 	I search for user with pattern 'QA' 
 	Then 	I should see a user named 'QaUser' 
 	And 	I should see a user with display name 'QaUserDN' 
-	When 	I sign out 
+	Then 	I sign out 

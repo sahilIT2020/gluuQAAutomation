@@ -90,6 +90,10 @@ public class UserSteps extends BaseSteps {
 	public void checkUserExistence(String userName) {
 		userManagePage.assertUserWithExist(userName);
 	}
+	@Then("^I should not see a user named '(.+)'$")
+	public void checkUserNonExistence(String userName) {
+		userManagePage.assertUserNotWithExist(userName);
+	}
 
 	@And("^I should see a user with display name '(.+)'$")
 	public void checkUserExistenceByDisplayName(String displayName) {
@@ -119,7 +123,11 @@ public class UserSteps extends BaseSteps {
 	@And("^I save the update$")
 	public void save() {
 		userUpdatePage.save();
-		userUpdatePage.cancel();
+	}
+	
+	@And("^I delete the current user$")
+	public void delete() {
+		userUpdatePage.delete();
 	}
 
 	@When("^I go to users import page$")
@@ -131,7 +139,11 @@ public class UserSteps extends BaseSteps {
 	public void importFile(String filePath) {
 		userImportPage.importUsers(filePath);
 	}
-
+	@And("^I set his password to '(.+)'$")
+	public void changePassword(String pwd) {
+		userUpdatePage.changePassword(pwd);
+		homePage.goToUsersManagePage();
+	}
 	@Override
 	public void cleanUp() {
 		userAddPage.close();

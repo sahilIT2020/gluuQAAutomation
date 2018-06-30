@@ -29,7 +29,7 @@ public class GroupAddPage extends AbstractPage {
 		element.sendKeys(value);
 	}
 
-	public void fillStatus(String value) {
+	public void fillVisiblility(String value) {
 		WebElement dropDown = webDriver.findElement(By.className("visibilityField"));
 		Select select = new Select(dropDown);
 		select.selectByVisibleText(value);
