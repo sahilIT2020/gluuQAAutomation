@@ -1,5 +1,5 @@
 Feature: Change user password 
-@gluuQAPending 
+@gluuQA 
 Scenario: Change user password 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

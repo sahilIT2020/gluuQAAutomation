@@ -19,4 +19,4 @@ Scenario: Delete a user
 	And 	I delete the current user
 	When 	I search for user with pattern 'QaUserDelete' 
 	Then 	I should not see a user named 'QaUserDelete'
-	Then 	I sign out
+	And 	I sign out

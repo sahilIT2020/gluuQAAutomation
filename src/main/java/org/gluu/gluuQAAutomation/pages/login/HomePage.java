@@ -12,39 +12,88 @@ public class HomePage extends AbstractPage {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
 		userMenu.click();
 	}
-	
+
+	public void goToConfigurationMenu() {
+		WebElement configurationMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		configurationMenu.click();
+	}
+
+	public void goSamlMenu() {
+		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
+		samlMenu.click();
+	}
+
+	public void goToProfileMenu() {
+		WebElement profileMenu = webDriver.findElement(By.xpath("//*[@id='menuPersonal']"));
+		profileMenu.click();
+	}
+
+	public void goToProfileViewMenu() {
+		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuPersonal']"));
+		userMenu.click();
+		WebElement subMenu = waitElementByID("subMenuLinkPersonal1");
+		subMenu.click();
+	}
+
+	public void goToUmaMenu() {
+		WebElement umaMenu = webDriver.findElement(By.xpath("//*[@id='menuUMA']"));
+		umaMenu.click();
+		WebElement subMenu = waitElementByID("subMenuLinkUMA1");
+		subMenu.click();
+	}
+
+	public void goToUmaScopeManagePage() {
+//		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUMA']"));
+		WebElement userMenu = waitElement("//*[@id='menuUMA']");
+		userMenu.click();
+		WebElement subMenu = waitElementByID("subMenuLinkUMA1");
+		subMenu.click();
+	}
+
+	public void goToUmaResourceManagePage() {
+		WebElement umaMenu = webDriver.findElement(By.xpath("//*[@id='menuUMA']"));
+		umaMenu.click();
+		WebElement subMenu = waitElementByID("subMenuLinkUMA2");
+		subMenu.click();
+	}
+
+	public void goToOpenIDMenu() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuOpenID']"));
+		openIdMenu.click();
+	}
+
 	public void goToGroupAddPage() {
 		goToGroupsManagePage();
-		WebElement addButton=webDriver.findElement(By.className("addGroup"));
+		WebElement addButton = webDriver.findElement(By.className("addGroup"));
 		addButton.click();
 	}
 
 	public void goToGroupsManagePage() {
-		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
-		userMenu.click();
-		WebElement userAddMenu = waitElement("//*[@id='subMenuLinkUsers1']");
-		userAddMenu.click();
+		WebElement groupMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
+		groupMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkUsers1']");
+		subMenu.click();
 	}
 
 	public void goToUsersManagePage() {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
 		userMenu.click();
-		WebElement userAddMenu = waitElement("//*[@id='subMenuLinkUsers2']");
-		userAddMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkUsers2']");
+		subMenu.click();
 	}
 
 	public void goToUsersAddPage() {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
 		userMenu.click();
-		WebElement element = waitElement("//*[@id='subMenuLinkUsers3']");
-		element.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkUsers3']");
+		subMenu.click();
 	}
 
 	public void goToUsersImportPage() {
 		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUsers']"));
 		userMenu.click();
-		WebElement userAddMenu = waitElement("//*[@id='subMenuLinkUsers4']");
-		userAddMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkUsers4']");
+		subMenu.click();
 	}
 
 }
