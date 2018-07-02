@@ -1,9 +1,9 @@
-Feature: List uma resources 
+Feature: Search uma resources 
 @gluuQA
-Scenario: List uma resources 
+Scenario: Search uma resources 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to uma resources list page
+	And 	I search for resources with pattern 'SCIM'
 	Then 	I should see a uma resource named 'SCIM Resource' with scopes 'SCIM Access'
-	And 	I should see a uma resource named 'Passport Resource' with scopes 'Passport Access'
-	Then 	I sign out
+	And 	I sign out

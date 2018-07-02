@@ -63,6 +63,11 @@ public class UmaSteps extends BaseSteps {
 		umaManagePage.searchUmaScope(pattern);
 	}
 
+	@And("^I search for resources with pattern '(.+)'$")
+	public void searchUmaResources(String pattern) {
+		umaResourceManagePage.searchUmaResource(pattern);
+	}
+
 	@And("^I set uma scope id to a random value$")
 	public void setRadomUmaScopeId() {
 		umaScopeAddPage.setRandomScopeId();
