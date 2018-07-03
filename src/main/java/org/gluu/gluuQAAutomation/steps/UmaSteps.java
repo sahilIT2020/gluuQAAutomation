@@ -9,17 +9,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 @RunWith(SpringRunner.class)
 public class UmaSteps extends BaseSteps {
-
-	@Override
-	public void cleanUp() {
-		homePage.open();
-	}
 
 	@Autowired
 	private HomePage homePage;
@@ -103,9 +99,10 @@ public class UmaSteps extends BaseSteps {
 		umaScopeAddPage.save();
 	}
 
-	@Override
-	public void setup() {
-		homePage.close();
+	@After
+	public void clear() {
+		System.out.println("#########clear browser cookies##########");
+		homePage.clear();
 	}
 
 }

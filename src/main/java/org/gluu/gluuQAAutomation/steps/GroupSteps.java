@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -23,16 +24,6 @@ public class GroupSteps extends BaseSteps {
 	private GroupAddPage groupAddPage;
 	@Autowired
 	private GroupUpdatePage groupUpdatePage;
-
-	@Override
-	public void cleanUp() {
-		groupManagePage.close();
-	}
-
-	@Override
-	public void setup() {
-		groupManagePage.open();
-	}
 
 	@When("^I go to groups manage page$")
 	public void gotoGroupManagePage() {
@@ -58,7 +49,7 @@ public class GroupSteps extends BaseSteps {
 	public void checkGroupExistenceByDisplayName(String displayName) {
 		groupManagePage.assertGroupWithExist(displayName);
 	}
-	
+
 	@And("^I should not see a group with display name '(.+)'$")
 	public void checkGroupNonExistenceByDisplayName(String displayName) {
 		groupManagePage.assertGroupNotWithExist(displayName);
@@ -118,5 +109,9 @@ public class GroupSteps extends BaseSteps {
 	public void dleteGroup() {
 		groupUpdatePage.delete();
 	}
-
+	@After
+	public void clear() {
+		System.out.println("#########clear browser cookies##########");
+		homePage.clear();
+	}
 }

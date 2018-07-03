@@ -9,17 +9,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 @RunWith(SpringRunner.class)
 public class UserSteps extends BaseSteps {
-	@Override
-	public void setup() {
-		userAddPage.open();
-	}
-
 	@Autowired
 	private HomePage homePage;
 	@Autowired
@@ -90,6 +86,7 @@ public class UserSteps extends BaseSteps {
 	public void checkUserExistence(String userName) {
 		userManagePage.assertUserWithExist(userName);
 	}
+
 	@Then("^I should not see a user named '(.+)'$")
 	public void checkUserNonExistence(String userName) {
 		userManagePage.assertUserNotWithExist(userName);
@@ -124,7 +121,7 @@ public class UserSteps extends BaseSteps {
 	public void save() {
 		userUpdatePage.save();
 	}
-	
+
 	@And("^I delete the current user$")
 	public void delete() {
 		userUpdatePage.delete();
@@ -139,14 +136,17 @@ public class UserSteps extends BaseSteps {
 	public void importFile(String filePath) {
 		userImportPage.importUsers(filePath);
 	}
+
 	@And("^I set his password to '(.+)'$")
 	public void changePassword(String pwd) {
 		userUpdatePage.changePassword(pwd);
 		homePage.goToUsersManagePage();
 	}
-	@Override
-	public void cleanUp() {
-		userAddPage.close();
+
+	@After
+	public void clear() {
+		System.out.println("#########clear browser cookies##########");
+		homePage.clear();
 	}
 
 }

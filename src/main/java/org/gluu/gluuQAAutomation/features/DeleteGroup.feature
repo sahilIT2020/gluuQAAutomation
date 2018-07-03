@@ -6,7 +6,6 @@ Scenario: Z_Delete an existing group
 	And 	I add a group with display name 'QAGroupDeleteDN' 
 	And 	I add a group with description 'QAGroupDeleteDes' 
 	And 	I add a group with visibility 'Public'
-	And 	I add the user named 'admin' as member
 	And 	I save the group 
 	When 	I go to groups manage page 
 	And 	I search for group with pattern 'QAGroupDeleteDN' 

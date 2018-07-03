@@ -16,5 +16,5 @@ Scenario: Change user password
 	And 	I search for user with pattern 'QaUserPasswordChanged' 
 	Then 	I should see a user named 'QaUserPasswordChanged' 
 	When 	I start to update that user 
-	And 	I set his password to 'QaUserPasswordChanged' 
+	And 	I set his password to 'QaUserPasswordChanged'
 	Then 	I sign out

@@ -14,10 +14,13 @@ public class UmaScopeAddPage extends AbstractPage {
 	private List<WebElement> items;
 
 	public void save() {
+		waitFewSeconds(3000);
 		WebElement buttonBar = webDriver.findElement(By.className("box-footer"));
+		buttonBar.click();
 		buttonBar.findElements(By.tagName("input")).get(0).click();
 	}
 
+	
 	private void initTableItems() {
 		WebElement tableBody = webDriver.findElement(By.tagName("tbody"));
 		items = tableBody.findElements(By.tagName("tr"));
@@ -32,7 +35,6 @@ public class UmaScopeAddPage extends AbstractPage {
 			if (input.getAttribute("type").equals("text")) {
 				input.clear();
 				input.sendKeys(id);
-				input.sendKeys(Keys.TAB);
 				break;
 			}
 		}

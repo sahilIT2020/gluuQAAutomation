@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -15,12 +16,6 @@ import cucumber.api.java.en.When;
 @ContextConfiguration(classes = { GluuQaAutomationApplication.class, SignInPage.class })
 @SpringBootTest
 public class SignInSteps extends BaseSteps {
-
-	@Override
-	public void setup() {
-		signInPage.open();
-	}
-
 	@Autowired
 	private SignInPage signInPage;
 
@@ -53,9 +48,10 @@ public class SignInSteps extends BaseSteps {
 		signInPage.checkCurrentPageIsLoginPage();
 	}
 
-	@Override
-	public void cleanUp() {
-		signInPage.close();
+	@After
+	public void clear() {
+		System.out.println("#########clear browser cookies##########");
+		signInPage.clear();
 	}
 
 }

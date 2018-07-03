@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SignInPage extends AbstractPage {
+
 	private boolean passportSocialIsEnable = false;
 
 	public void fillForm(String userName, String password) {

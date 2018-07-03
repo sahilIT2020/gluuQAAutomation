@@ -2,6 +2,7 @@ package org.gluu.gluuQAAutomation.pages;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.gluu.gluuQAAutomation.common.ApplicationDriver;
 import org.gluu.gluuQAAutomation.common.Settings;
@@ -15,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPage {
 
-	protected WebDriver webDriver = ApplicationDriver.getInstance();
+	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
 
 	public void navigate(final String value) {
@@ -23,8 +24,13 @@ public class AbstractPage {
 	}
 
 	public void goToLoginPage() {
-		webDriver.get(settings.getUrl());
-		navigate(settings.getUrl());
+		if (webDriver != null) {
+			webDriver.get(settings.getUrl());
+		} else {
+			webDriver = ApplicationDriver.getInstance();
+			webDriver.get(settings.getUrl());
+		}
+
 	}
 
 	public String getCurrentPageTitle() {
@@ -61,8 +67,8 @@ public class AbstractPage {
 		finishButton.click();
 	}
 
-	public void close() {
-		webDriver.close();
+	public void clear() {
+		webDriver.manage().deleteAllCookies();
 	}
 
 	public void open() {
@@ -83,18 +89,45 @@ public class AbstractPage {
 		WebDriverWait wait = new WebDriverWait(webDriver, 10);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tagName)));
 	}
-	
+
 	public WebElement waitElementByID(String tagName) {
 		WebDriverWait wait = new WebDriverWait(webDriver, 10);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(tagName)));
 	}
-	
+
+	public double computeHeavy(int number) {
+		if (number == 1) {
+			return 1L;
+		} else {
+			return number * computeHeavy(number - 1);
+		}
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<WebElement> waitElementsByTag(String tagName) {
 		WebDriverWait wait = new WebDriverWait(webDriver, 10);
 		return (List<WebElement>) wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tagName)));
 	}
 
+	public void waitFewSeconds(int count) {
+		WebDriverWait wait = new WebDriverWait(webDriver, 10);
+		wait.until(new Function<WebDriver, Boolean>() {
+			@Override
+			public Boolean apply(WebDriver t) {
+				for (int i = 0; i < count; i++) {
+					for (int j = 0; j < count; j++) {
+						for (int k = 0; k < count; k++) {
+							for (int l = 0; l < 10; l++) {
+
+							}
+						}
+					}
+				}
+				return true;
+			}
+
+		});
+	}
 
 	public void wait(int seconds) {
 		webDriver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
