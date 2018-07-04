@@ -5,9 +5,10 @@ The goal of this project is to automate the QA process using Selenium webdriver.
 # Prepare a gluu instance for QA
 
 1. Install a Gluu server 3.1.3 or use an existing one
+1. Clone oxtrust project [here](https://github.com/GluuFederation/oxTrust)
 1. Clone branch **gluu_qa** of the oxTrust project
-1. Generate a new war
-1. Replace the identity.war file in your gluu instance with the generated one.
+1. Generate a new war: **mvn package -Dmaven.test.skip=true**
+1. Replace the **opt/gluu/jetty/identity/identity.war** file in your gluu instance with the generated one(**server/target/oxtrust_server.war**).
 1. Restart identity service.
 
 
