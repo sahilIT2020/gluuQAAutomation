@@ -1,6 +1,6 @@
-Feature: Search uma resources 
+Feature: Search Uma resources
 @gluuQA
-Scenario: Search uma resources 
+Scenario: Search uma resources
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to uma resources list page

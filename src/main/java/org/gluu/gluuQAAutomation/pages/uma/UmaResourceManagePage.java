@@ -10,16 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UmaResourceManagePage extends AbstractPage {
-	WebElement listBody;
-	List<WebElement> listItems;
-	WebElement foundResource;
 
-	public void assertUmaResourceExist(String scopeName) {
-		Assert.assertTrue(assertUmaResourceExistInList(scopeName));
+	public void assertUmaResourceExist(String resName, String scopeName) {
+		Assert.assertTrue(assertUmaResourceExistInList(resName, scopeName));
 	}
 
 	public void goToResourceAddPage() {
-		foundResource.click();
 	}
 
 	public void searchUmaResource(String scope) {
@@ -31,21 +27,19 @@ public class UmaResourceManagePage extends AbstractPage {
 
 	private void performSearch() {
 		webDriver.findElement(By.className("searchButtonClass")).click();
+		waitFewSeconds(3000);
 	}
 
-	private void getListItems() {
-		WebElement pane = webDriver.findElement(By.className("resourceScopeListClass"));
-		listBody = pane.findElement(By.tagName("tbody"));
-		listItems = listBody.findElements(By.tagName("tr"));
-	}
+	private boolean assertUmaResourceExistInList(String resName, String umaScope) {
+		WebElement resourcesList = webDriver.findElement(By.className("resourceScopeListClass"));
+		Assert.assertNotNull(resourcesList);
+		WebElement body = webDriver.findElement(By.className("resourceScopeListClass")).findElements(By.tagName("tbody")).get(0);
+		List<WebElement> listItems = body.findElements(By.tagName("tr"));
 
-	private boolean assertUmaResourceExistInList(String umaScope) {
-		getListItems();
 		boolean found = false;
 		for (WebElement element : listItems) {
-			if (element.getText().contains(umaScope)) {
+			if (element.getText().contains(resName) && element.getText().contains(umaScope)) {
 				found = true;
-				foundResource = element;
 				break;
 			}
 		}

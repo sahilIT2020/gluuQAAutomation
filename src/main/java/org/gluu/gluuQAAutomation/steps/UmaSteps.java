@@ -51,7 +51,7 @@ public class UmaSteps extends BaseSteps {
 
 	@Then("^I should see a uma resource named '(.+)' with scopes '(.+)'$")
 	public void assertUmaResourceExist(String resName, String scopeName) {
-		umaResourceManagePage.assertUmaResourceExist(scopeName);
+		umaResourceManagePage.assertUmaResourceExist(resName, scopeName);
 	}
 
 	@And("^I search for scopes with pattern '(.+)'$")
@@ -97,11 +97,11 @@ public class UmaSteps extends BaseSteps {
 	@And("^I save the scope$")
 	public void saveScope() {
 		umaScopeAddPage.save();
+		homePage.goToUsersMenu();
 	}
 
 	@After
 	public void clear() {
-		System.out.println("#########clear browser cookies##########");
 		homePage.clear();
 	}
 

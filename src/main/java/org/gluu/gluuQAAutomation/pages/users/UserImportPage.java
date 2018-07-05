@@ -12,13 +12,13 @@ public class UserImportPage extends AbstractPage {
 
 	public void importUsers(String filePath) {
 		WebElement form = webDriver.findElement(By.name("personImportForm"));
-		form = form.findElement(By.className("box-primary"));
-		footer = form.findElement(By.className("box-footer"));
-		form = form.findElements(By.tagName("div")).get(3);
-		WebElement upLoarder = form.findElement(By.className("uploadFile"));
+		WebElement form1 = form.findElement(By.className("box-primary"));
+		footer = form1.findElement(By.className("box-footer"));
+		WebElement form2 = form1.findElements(By.tagName("div")).get(3);
+		WebElement upLoarder = form2.findElement(By.className("uploadFile"));
 		WebElement addButton = upLoarder.findElement(By.cssSelector("input[type='file']"));
 		addButton.sendKeys(filePath);
-
+		waitFewSeconds(1000);
 		validate();
 		performImport();
 	}
@@ -26,11 +26,13 @@ public class UserImportPage extends AbstractPage {
 	private void validate() {
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(footer.findElements(By.tagName("input")).get(0)).click().perform();
+		waitFewSeconds(1000);
 	}
 
 	private void performImport() {
 		WebElement panel = webDriver.findElement(By.id("updateButtons"));
 		panel.findElements(By.tagName("input")).get(0).click();
+		waitFewSeconds(1000);
 	}
 
 }

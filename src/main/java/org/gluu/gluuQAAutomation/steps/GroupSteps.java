@@ -111,7 +111,6 @@ public class GroupSteps extends BaseSteps {
 	}
 	@After
 	public void clear() {
-		System.out.println("#########clear browser cookies##########");
 		homePage.clear();
 	}
 }

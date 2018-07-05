@@ -11,10 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class UmaScopeManagePage extends AbstractPage {
 
-	WebElement listBody;
-	List<WebElement> listItems;
-	WebElement foundScope;
-
 	public void assertUmaScopeExist(String scopeName) {
 		Assert.assertTrue(assertUmaScopeExistInList(scopeName));
 	}
@@ -35,19 +31,16 @@ public class UmaScopeManagePage extends AbstractPage {
 		waitFewSeconds(3000);
 	}
 
-	private void getListItems() {
-		WebElement pane = webDriver.findElement(By.className("umaScopeListClass"));
-		listBody = pane.findElement(By.tagName("tbody"));
-		listItems = listBody.findElements(By.tagName("tr"));
-	}
-
 	private boolean assertUmaScopeExistInList(String umaScope) {
-		getListItems();
+		webDriver.findElement(By.className("umaScopeListClass"));
+		WebElement body = webDriver.findElement(By.className("umaScopeListClass")).findElements(By.tagName("tbody")).get(0);
+		System.out.println("Source scope2:" + body.getAttribute("outerHTML"));
+		List<WebElement> listItems = body.findElements(By.tagName("tr"));
+		System.out.println("Source scope3: size" + listItems.size());
 		boolean found = false;
 		for (WebElement element : listItems) {
 			if (element.getText().contains(umaScope)) {
 				found = true;
-				foundScope = element;
 				break;
 			}
 		}

@@ -14,13 +14,12 @@ public class UmaScopeAddPage extends AbstractPage {
 	private List<WebElement> items;
 
 	public void save() {
-		waitFewSeconds(3000);
 		WebElement buttonBar = webDriver.findElement(By.className("box-footer"));
 		buttonBar.click();
 		buttonBar.findElements(By.tagName("input")).get(0).click();
+		waitFewSeconds(2000);
 	}
 
-	
 	private void initTableItems() {
 		WebElement tableBody = webDriver.findElement(By.tagName("tbody"));
 		items = tableBody.findElements(By.tagName("tr"));
@@ -65,6 +64,7 @@ public class UmaScopeAddPage extends AbstractPage {
 		WebElement upLoarder = items.get(2).findElement(By.className("uploadFile"));
 		WebElement addButton = upLoarder.findElement(By.cssSelector("input[type='file']"));
 		addButton.sendKeys(logo);
+		waitFewSeconds(2000);
 	}
 
 	public void setPolicy(String policy) {

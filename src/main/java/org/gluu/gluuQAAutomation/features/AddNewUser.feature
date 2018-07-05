@@ -1,5 +1,5 @@
 Feature: Add new user 
-@gluuQA 
+@gluuQA
 Scenario: Add new user
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

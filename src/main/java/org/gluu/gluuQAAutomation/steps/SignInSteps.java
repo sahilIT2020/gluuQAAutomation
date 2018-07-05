@@ -4,7 +4,6 @@ import org.gluu.gluuQAAutomation.GluuQaAutomationApplication;
 import org.gluu.gluuQAAutomation.pages.login.SignInPage;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -13,8 +12,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { GluuQaAutomationApplication.class, SignInPage.class })
-@SpringBootTest
+@ContextConfiguration(classes = { GluuQaAutomationApplication.class})
 public class SignInSteps extends BaseSteps {
 	@Autowired
 	private SignInPage signInPage;
@@ -50,7 +48,6 @@ public class SignInSteps extends BaseSteps {
 
 	@After
 	public void clear() {
-		System.out.println("#########clear browser cookies##########");
 		signInPage.clear();
 	}
 

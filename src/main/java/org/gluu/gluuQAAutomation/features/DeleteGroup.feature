@@ -1,6 +1,6 @@
-Feature: Z_Delete a group 
-@gluuQA 
-Scenario: Z_Delete an existing group 
+Feature: Delete a group 
+@gluuQA
+Scenario:   Delete an existing group 
 	When 	I sign in as administrator
 	When 	I go to group add page 
 	And 	I add a group with display name 'QAGroupDeleteDN' 

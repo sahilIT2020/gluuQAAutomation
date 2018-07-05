@@ -25,9 +25,13 @@ public class AbstractPage {
 
 	public void goToLoginPage() {
 		if (webDriver != null) {
+			System.out.println("**********************1");
+			webDriver.get(settings.getUrl());
 			webDriver.get(settings.getUrl());
 		} else {
+			System.out.println("**********************2");
 			webDriver = ApplicationDriver.getInstance();
+			webDriver.get(settings.getUrl());
 			webDriver.get(settings.getUrl());
 		}
 
