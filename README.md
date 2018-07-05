@@ -33,9 +33,9 @@ The goal of this project is to automate the QA process using Selenium webdriver.
  
  Sample:
    
-   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_1.png" alt="Report">
-   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_2.png" alt="Report">
-   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_3.png" alt="Report">
-   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_4.png" alt="Report">
-   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_5.png" alt="Report">
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_1.png" alt="Report1">
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_2.png" alt="Report2">
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_3.png" alt="Report3">
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_4.png" alt="Report4">
+   <img src="https://github.com/sahiliamsso/gluuQAAutomation/blob/master/src/main/resources/qa_5.png" alt="Report5">
  
