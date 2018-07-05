@@ -32,19 +32,40 @@ public class UmaScopeManagePage extends AbstractPage {
 	}
 
 	private boolean assertUmaScopeExistInList(String umaScope) {
+		try {
+			webDriver.findElement(By.className("umaScopeListClass"));
+			WebElement body = webDriver.findElement(By.className("umaScopeListClass")).findElements(By.tagName("tbody"))
+					.get(0);
+			List<WebElement> listItems = body.findElements(By.tagName("tr"));
+			boolean found = false;
+			for (WebElement element : listItems) {
+				if (element.getText().contains(umaScope)) {
+					found = true;
+					break;
+				}
+			}
+			return found;
+		} catch (Exception e) {
+			return false;
+		}
+
+	}
+
+	public void editScope(String scope) {
 		webDriver.findElement(By.className("umaScopeListClass"));
-		WebElement body = webDriver.findElement(By.className("umaScopeListClass")).findElements(By.tagName("tbody")).get(0);
-		System.out.println("Source scope2:" + body.getAttribute("outerHTML"));
+		WebElement body = webDriver.findElement(By.className("umaScopeListClass")).findElements(By.tagName("tbody"))
+				.get(0);
 		List<WebElement> listItems = body.findElements(By.tagName("tr"));
-		System.out.println("Source scope3: size" + listItems.size());
-		boolean found = false;
 		for (WebElement element : listItems) {
-			if (element.getText().contains(umaScope)) {
-				found = true;
+			if (element.getText().contains(scope)) {
+				element.findElements(By.tagName("td")).get(0).click();
 				break;
 			}
 		}
-		return found;
+	}
+
+	public void assertUmaScopeNotExist(String scopeName) {
+		Assert.assertFalse(assertUmaScopeExistInList(scopeName));
 	}
 
 }

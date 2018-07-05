@@ -48,6 +48,11 @@ public class UmaSteps extends BaseSteps {
 	public void assertUmaScopeExist(String scopeName) {
 		umaManagePage.assertUmaScopeExist(scopeName);
 	}
+	
+	@Then("^I should not see a uma scope named '(.+)'$")
+	public void assertUmaScopeNotExist(String scopeName) {
+		umaManagePage.assertUmaScopeNotExist(scopeName);
+	}
 
 	@Then("^I should see a uma resource named '(.+)' with scopes '(.+)'$")
 	public void assertUmaResourceExist(String resName, String scopeName) {
@@ -69,12 +74,12 @@ public class UmaSteps extends BaseSteps {
 		umaScopeAddPage.setRandomScopeId();
 	}
 
-	@And("^I edit uma scope id to '(.+)' $")
+	@And("^I edit uma scope id to '(.+)'$")
 	public void editUmaScopeId(String id) {
 		umaScopeUpdatePage.editUmaScopeId(id);
 	}
 
-	@And("^I edit uma scope dsplay name to '(.+)' $")
+	@And("^I edit uma scope display name to '(.+)'$")
 	public void editUmaScopeDn(String dn) {
 		umaScopeUpdatePage.editUmaScopeDisplayName(dn);
 	}
@@ -94,10 +99,26 @@ public class UmaSteps extends BaseSteps {
 		umaScopeAddPage.setPolicy(policy);
 	}
 
+	@And("^I save scope edition$")
+	public void editScope() {
+		umaScopeUpdatePage.save();
+		homePage.goToUsersMenu();
+	}
+
 	@And("^I save the scope$")
 	public void saveScope() {
 		umaScopeAddPage.save();
 		homePage.goToUsersMenu();
+	}
+
+	@And("^I delete the current scope$")
+	public void delete() {
+		umaScopeUpdatePage.delete();
+	}
+
+	@And("^I start the edit of the scope named '(.+)'$")
+	public void editUmaScope(String scope) {
+		umaManagePage.editScope(scope);
 	}
 
 	@After
