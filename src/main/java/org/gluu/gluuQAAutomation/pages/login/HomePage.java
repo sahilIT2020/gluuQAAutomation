@@ -43,7 +43,6 @@ public class HomePage extends AbstractPage {
 	}
 
 	public void goToUmaScopeManagePage() {
-//		WebElement userMenu = webDriver.findElement(By.xpath("//*[@id='menuUMA']"));
 		WebElement userMenu = waitElement("//*[@id='menuUMA']");
 		userMenu.click();
 		WebElement subMenu = waitElementByID("subMenuLinkUMA1");
@@ -94,6 +93,21 @@ public class HomePage extends AbstractPage {
 		userMenu.click();
 		WebElement subMenu = waitElement("//*[@id='subMenuLinkUsers4']");
 		subMenu.click();
+	}
+
+	public void goToOpenIDScopePage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuOpenID']"));
+		openIdMenu.click();
+
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkOpenID1']");
+		subMenu.click();
+	}
+
+	public void goToOpenIDClientsListPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuOpenID']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkOpenID2']");
+		subMenu.click();		
 	}
 
 }
