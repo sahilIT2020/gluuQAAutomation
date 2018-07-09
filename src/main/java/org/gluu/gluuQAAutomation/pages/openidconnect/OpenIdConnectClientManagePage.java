@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OpenIdConnectClientManagePage extends AbstractPage {
-	
+
 	public void searchFor(String scope) {
 		WebElement searchBox = webDriver.findElement(By.className("searchBoxClass"));
 		searchBox.clear();
@@ -22,14 +22,16 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 		webDriver.findElement(By.className("searchButtonClass")).click();
 		waitFewSeconds(3000);
 	}
+
 	public void assertClientExist(String clientName) {
 		Assert.assertTrue(assertClientExistInList(clientName));
 	}
+
 	private boolean assertClientExistInList(String clientName) {
 		try {
 			webDriver.findElement(By.className("umaClientListClass"));
-			WebElement body = webDriver.findElement(By.className("umaClientListClass")).findElements(By.tagName("tbody"))
-					.get(0);
+			WebElement body = webDriver.findElement(By.className("umaClientListClass"))
+					.findElements(By.tagName("tbody")).get(0);
 			List<WebElement> listItems = body.findElements(By.tagName("tr"));
 			boolean found = false;
 			for (WebElement element : listItems) {
@@ -44,7 +46,7 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 		}
 
 	}
-	
+
 	public void editScope(String scope) {
 		webDriver.findElement(By.className("umaClientListClass"));
 		WebElement body = webDriver.findElement(By.className("umaClientListClass")).findElements(By.tagName("tbody"))
@@ -57,9 +59,9 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 			}
 		}
 	}
+
 	public void goToClientAddPage() {
 		webDriver.findElement(By.className("addClientButtonClass")).click();
 	}
-
 
 }

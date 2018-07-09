@@ -22,9 +22,11 @@ public class OpenIdConnectScopeManagePage extends AbstractPage {
 		webDriver.findElement(By.className("searchButtonClass")).click();
 		waitFewSeconds(3000);
 	}
+
 	public void assertScopeExist(String scopeName) {
 		Assert.assertTrue(assertScopeExistInList(scopeName));
 	}
+
 	private boolean assertScopeExistInList(String umaScope) {
 		try {
 			webDriver.findElement(By.className("umaScopeListClass"));
@@ -44,7 +46,7 @@ public class OpenIdConnectScopeManagePage extends AbstractPage {
 		}
 
 	}
-	
+
 	public void editScope(String scope) {
 		webDriver.findElement(By.className("umaScopeListClass"));
 		WebElement body = webDriver.findElement(By.className("umaScopeListClass")).findElements(By.tagName("tbody"))
@@ -57,8 +59,13 @@ public class OpenIdConnectScopeManagePage extends AbstractPage {
 			}
 		}
 	}
+
 	public void goToScopeAddPage() {
 		webDriver.findElement(By.className("addScopeButtonClass")).click();
+	}
+
+	public void assertScopeDontExist(String scope) {
+		Assert.assertFalse(assertScopeExistInList(scope));
 	}
 
 }
