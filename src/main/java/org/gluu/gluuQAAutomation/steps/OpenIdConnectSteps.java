@@ -1,6 +1,7 @@
 package org.gluu.gluuQAAutomation.steps;
 
 import org.gluu.gluuQAAutomation.pages.login.HomePage;
+import org.gluu.gluuQAAutomation.pages.openidconnect.ClientAddPage;
 import org.gluu.gluuQAAutomation.pages.openidconnect.OpenIdConnectClientManagePage;
 import org.gluu.gluuQAAutomation.pages.openidconnect.OpenIdConnectScopeAddPage;
 import org.gluu.gluuQAAutomation.pages.openidconnect.OpenIdConnectScopeManagePage;
@@ -26,6 +27,8 @@ public class OpenIdConnectSteps extends BaseSteps {
 	private OpenIdConnectScopeAddPage openIdConnectScopeAddPage;
 	@Autowired
 	private OpenIdConnectScopeUpdatePage openIdConnectScopeUpdatePage;
+	@Autowired
+	private ClientAddPage clientAddPage;
 
 	@When("^I go to openid connect scopes list page$")
 	public void goToOpenIdScopesListPage() {
@@ -120,6 +123,55 @@ public class OpenIdConnectSteps extends BaseSteps {
 	@When("^I delete that scope$")
 	public void deleteScope() {
 		openIdConnectScopeUpdatePage.delete();
+	}
+
+	@And("^I set the client name to '(.+)'$")
+	public void setClientName(String name) {
+		clientAddPage.setClientName(name);
+	}
+
+	@And("^I set the client description to '(.+)'$")
+	public void setClientDes(String des) {
+		clientAddPage.setDescription(des);
+	}
+
+	@And("^I set the client secret to '(.+)'$")
+	public void setClientSecret(String secret) {
+		clientAddPage.setSecret(secret);
+	}
+
+	@And("^I set application type to '(.+)'$")
+	public void setType(String type) {
+		clientAddPage.setType(type);
+	}
+
+	@And("^I set preauthorization to '(.+)'$")
+	public void setPreAuth(String value) {
+		clientAddPage.setPreAutho(value);
+	}
+
+	@And("^I set persist authorization to '(.+)'$")
+	public void setPersistAuth(String value) {
+		clientAddPage.setPersistAutho(value);
+	}
+
+	@And("^I set subject type to '(.+)'$")
+	public void setSubjectType(String value) {
+		clientAddPage.setSubjectType(value);
+	}
+
+	@And("^I set authentication method to '(.+)'$")
+	public void setAuthendMethod(String value) {
+		clientAddPage.setAuthendMethod(value);
+	}
+	@And("^I add the scope named '(.+)'$")
+	public void addScope(String scope) {
+		clientAddPage.addScope(scope);
+	}
+	
+	@And("^I add following scopes '(.+)'$")
+	public void addScopes(String scopes) {
+		clientAddPage.addScopes(scopes);
 	}
 
 	@After
