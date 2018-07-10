@@ -1,6 +1,5 @@
 package org.gluu.gluuQAAutomation.pages.openidconnect;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
@@ -94,42 +93,92 @@ public class ClientAddPage extends AbstractPage {
 	}
 
 	public void addScope(String scope) {
-		WebElement commandSection = webDriver.findElement(By.id("clientForm:command:outputInputPanel"));
-		commandSection.findElement(By.className("addScopeButton")).click();
-		waitFewSeconds(2000);
-		searchFor(scope);
+		waitElementByClass("box-header");
+		waitElementByID("clientForm:displayName:outputInputPanel");
+		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
+		WebElement addScopeButton = commandSection.findElement(By.className("addScopeButton"));
+		addScopeButton.click();
+		searchForScope(scope);
 		confirm();
-		waitFewSeconds(2000);
 	}
 
-	private void searchFor(String value) {
-		WebElement main = webDriver.findElement(By.id("scope:selectScopeModalPanel_content"));
+	private void searchForScope(String value) {
+		WebElement main = waitElementByID("scope:selectScopeModalPanel_content");
 		WebElement searchText = main.findElement(By.className("searchParameters"));
 		searchText.clear();
 		searchText.sendKeys(value);
 		main.findElements(By.className("btn-primary")).get(0).click();
-		waitFewSeconds(1000);
-		WebElement pane = webDriver.findElement(By.id("scope:selectScopeModalPanel_content"));
+		waitFewSeconds(1500);
+		WebElement pane = waitElementByID("scope:selectScopeModalPanel_content");
 		WebElement table = pane.findElements(By.tagName("table")).get(0);
 		WebElement body = table.findElement(By.tagName("tbody"));
 		WebElement row = body.findElements(By.tagName("tr")).get(0);
 		row.findElements(By.tagName("td")).get(0).findElement(By.tagName("input")).click();
 	}
 
+	private void searchForResponseType(String id, String value) {
+		WebElement pane = waitElementByID(id);
+		WebElement firstTable = pane.findElements(By.tagName("table")).get(0);
+		WebElement table = firstTable.findElements(By.tagName("table")).get(0);
+		WebElement body = table.findElement(By.tagName("tbody"));
+		List<WebElement> rows = body.findElements(By.tagName("tr"));
+		for (WebElement row : rows) {
+			if (row.getText().contains(value)) {
+				row.findElements(By.tagName("td")).get(0).findElement(By.tagName("input")).click();
+			}
+		}
+		List<WebElement> items = firstTable.findElements(By.className("btn-primary"));
+		items.get(0).click();
+	}
+
 	private void confirm() {
-		WebElement main = webDriver.findElement(By.id("scope:selectScopeModalPanel_content"));
+		WebElement main = waitElementByID("scope:selectScopeModalPanel_content");
 		WebElement footer = main.findElement(By.className("box-footer"));
 		WebElement addButton = footer.findElements(By.tagName("input")).get(0);
 		addButton.click();
 	}
 
-	public void addScopes(String scopes) {
-		List<String> allScopes = Arrays.asList(scopes.split("\\s+"));
-		for (String scope : allScopes) {
-			System.out.println("##########Scope:" + scope);
-			addScope(scope);
-			waitFewSeconds(1000);
+	public void responseType(String type) {
+		waitElementByClass("box-header");
+		waitElementByID("clientForm:displayName:outputInputPanel");
+		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
+		WebElement addScopeButton = commandSection.findElement(By.className("addResponseTypeButton"));
+		addScopeButton.click();
+		searchForResponseType("responseType:selectEntityModalPanel_content", type);
+	}
+
+	public void grantType(String grantType) {
+		waitElementByClass("box-header");
+		waitElementByID("clientForm:displayName:outputInputPanel");
+		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
+		WebElement addScopeButton = commandSection.findElement(By.className("addGrantTypeButton"));
+		addScopeButton.click();
+		searchForResponseType("grantType:selectEntityModalPanel_content", grantType);
+	}
+
+	public void loginRedirect(String url) {
+		waitElementByClass("box-header");
+		waitElementByID("clientForm:displayName:outputInputPanel");
+		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
+		WebElement addScopeButton = commandSection.findElement(By.className("addLoginRedirectButton"));
+		addScopeButton.click();
+		WebElement pane = waitElementByID("loginRedirect:inputText_container");
+		WebElement main = pane.findElement(By.id("loginRedirect:inputText_content"));
+		List<WebElement> inputs = main.findElements(By.cssSelector("input"));
+		for (WebElement input : inputs) {
+			if (input.getAttribute("type").equals("text")) {
+				input.clear();
+				input.sendKeys(url);
+			}
 		}
+
+		WebElement footer = main.findElement(By.className("box-footer"));
+		footer.findElements(By.tagName("input")).get(0).click();
+	}
+
+	public void save() {
+		WebElement footer = waitElementByID("updateButtons");
+		footer.findElements(By.tagName("input")).get(0).click();
 	}
 
 }

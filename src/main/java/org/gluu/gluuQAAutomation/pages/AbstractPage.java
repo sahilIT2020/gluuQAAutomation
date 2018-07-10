@@ -84,7 +84,7 @@ public class AbstractPage {
 	}
 
 	public WebElement waitElement(String xpath) {
-		WebDriverWait wait = new WebDriverWait(webDriver, 10);
+		WebDriverWait wait = new WebDriverWait(webDriver, 20);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 	}
 
@@ -94,13 +94,13 @@ public class AbstractPage {
 	}
 
 	public WebElement waitElementByTag(String tagName) {
-		WebDriverWait wait = new WebDriverWait(webDriver, 10);
+		WebDriverWait wait = new WebDriverWait(webDriver, 20);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tagName)));
 	}
 
-	public WebElement waitElementByID(String tagName) {
-		WebDriverWait wait = new WebDriverWait(webDriver, 10);
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(tagName)));
+	public WebElement waitElementByID(String id) {
+		WebDriverWait wait = new WebDriverWait(webDriver, 20);
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
 	}
 
 	public double computeHeavy(int number) {
@@ -113,7 +113,7 @@ public class AbstractPage {
 
 	@SuppressWarnings("unchecked")
 	public List<WebElement> waitElementsByTag(String tagName) {
-		WebDriverWait wait = new WebDriverWait(webDriver, 10);
+		WebDriverWait wait = new WebDriverWait(webDriver, 20);
 		return (List<WebElement>) wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tagName)));
 	}
 

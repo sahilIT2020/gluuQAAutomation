@@ -1,5 +1,5 @@
 Feature: Add new client
-@gluuQAPending
+@gluuQA
 Scenario: Add new client
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
@@ -13,5 +13,12 @@ Scenario: Add new client
 	And 	I set persist authorization to 'True'
 	And 	I set subject type to 'public'
 	And 	I set authentication method to 'client_secret_basic'
-	#And 	I add the scope named 'profile'
-	And 	I add following scopes 'email openid user_name profile'
+	And 	I add the scope named 'profile'
+	And 	I add the response type named 'code'
+	And 	I add the grant type named 'authorization_code'
+	And 	I add the login redirect named 'https://qalogin/redirect'
+	And 	I save the client registration
+	When 	I go to openid connect clients list page
+	And 	I search for openid clients with pattern 'QaClientName'
+	Then 	I should see an openid client named 'QaClientName'
+	And 	I sign out	

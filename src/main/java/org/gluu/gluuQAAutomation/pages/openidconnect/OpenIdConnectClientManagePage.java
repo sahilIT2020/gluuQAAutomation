@@ -47,7 +47,7 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 
 	}
 
-	public void editScope(String scope) {
+	public void editClient(String scope) {
 		webDriver.findElement(By.className("umaClientListClass"));
 		WebElement body = webDriver.findElement(By.className("umaClientListClass")).findElements(By.tagName("tbody"))
 				.get(0);
@@ -62,6 +62,25 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 
 	public void goToClientAddPage() {
 		webDriver.findElement(By.className("addClientButtonClass")).click();
+	}
+
+	public void edit() {
+		WebElement footer = webDriver.findElement(By.id("updateButtons"));
+		footer.findElements(By.tagName("input")).get(0).click();
+		waitFewSeconds(COUNT_MEDIUM);
+	}
+
+	public void delete() {
+		WebElement footer = webDriver.findElement(By.id("updateButtons"));
+		footer.findElements(By.tagName("input")).get(2).click();
+		waitFewSeconds(COUNT_MEDIUM);
+		WebElement dialog = webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"));
+		dialog.findElements(By.tagName("input")).get(0).click();
+		waitFewSeconds(COUNT_MEDIUM);
+	}
+
+	public void assertClientDontExist(String client) {
+		Assert.assertFalse(assertClientExistInList(client));
 	}
 
 }

@@ -109,5 +109,11 @@ public class HomePage extends AbstractPage {
 		WebElement subMenu = waitElement("//*[@id='subMenuLinkOpenID2']");
 		subMenu.click();		
 	}
+	public void goToSectorListPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuOpenID']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkOpenID3']");
+		subMenu.click();		
+	}
 
 }
