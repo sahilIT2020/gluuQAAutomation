@@ -18,7 +18,7 @@ public class AbstractPage {
 
 	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
-	public int COUNT_SMAL = 1000;
+	public int COUNT_SMALL = 1000;
 	public int COUNT_MEDIUM = 2000;
 	public int COUNT_HIGH = 3000;
 	public int COUNT_LARGE = 4000;

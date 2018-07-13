@@ -22,7 +22,30 @@ public class HomePage extends AbstractPage {
 		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
 		samlMenu.click();
 	}
+	public void goSamlTrListPage() {
+		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
+		samlMenu.click();
+		
+		WebElement subMenu = waitElementByID("subMenuLinkSAML1");
+		subMenu.click();
+	}
+	
+	public void goSamlTrAddPage() {
+		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
+		samlMenu.click();
+		
+		WebElement subMenu = waitElementByID("subMenuLinkSAML2");
+		subMenu.click();
+	}
 
+	
+	public void goNameIdConfigurePage() {
+		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
+		samlMenu.click();
+		
+		WebElement subMenu = waitElementByID("subMenuLinkSAML3F");
+		subMenu.click();
+	}
 	public void goToProfileMenu() {
 		WebElement profileMenu = webDriver.findElement(By.xpath("//*[@id='menuPersonal']"));
 		profileMenu.click();
