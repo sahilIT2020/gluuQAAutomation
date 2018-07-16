@@ -43,7 +43,7 @@ public class HomePage extends AbstractPage {
 		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
 		samlMenu.click();
 		
-		WebElement subMenu = waitElementByID("subMenuLinkSAML3F");
+		WebElement subMenu = waitElementByID("subMenuLinkSAML3");
 		subMenu.click();
 	}
 	public void goToProfileMenu() {
@@ -138,5 +138,92 @@ public class HomePage extends AbstractPage {
 		WebElement subMenu = waitElement("//*[@id='subMenuLinkOpenID3']");
 		subMenu.click();		
 	}
+	
+	public void goToConfigurationMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();	
+	}
+	
+	public void goToOrganisationConfigurationMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration1']");
+		subMenu.click();		
+	}
+	
+	public void goToJsonConfigurationMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration2']");
+		subMenu.click();		
+	}
+	public void goToManageAutheticationMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration3']");
+		subMenu.click();		
+	}
+	public void goToManageCustomScriptsMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration4']");
+		subMenu.click();		
+	}
+	
+	public void goToManageRegistrationMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration5']");
+		subMenu.click();		
+	}
+	
+	public void goToAttributesMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration6']");
+		subMenu.click();		
+	}
+	
+	public void goToImportExportAttributesMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration7']");
+		subMenu.click();		
+	}
+	
+	public void goToCacheRefreshMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration8']");
+		subMenu.click();		
+	}
+	
+	public void goToLogViewerCongifigurationMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration9']");
+		subMenu.click();		
+	}
+	
+	public void goToLogFileViewMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration10']");
+		subMenu.click();		
+	}
+	public void goToServerStatusMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration11']");
+		subMenu.click();		
+	}
+
+	public void goTocertificatesMenuPage() {
+		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
+		openIdMenu.click();
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkCertificates1']");
+		subMenu.click();		
+	}
+	
 
 }
