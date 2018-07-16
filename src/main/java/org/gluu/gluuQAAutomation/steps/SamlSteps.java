@@ -1,6 +1,8 @@
 package org.gluu.gluuQAAutomation.steps;
 
 import org.gluu.gluuQAAutomation.pages.login.HomePage;
+import org.gluu.gluuQAAutomation.pages.saml.NameIdAddPage;
+import org.gluu.gluuQAAutomation.pages.saml.NameIdConfigurationPage;
 import org.gluu.gluuQAAutomation.pages.saml.TrAddPage;
 import org.gluu.gluuQAAutomation.pages.saml.TrManagePage;
 import org.gluu.gluuQAAutomation.pages.saml.TrUpdatePage;
@@ -8,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -26,6 +29,13 @@ public class SamlSteps extends BaseSteps {
 	@Autowired
 	private TrManagePage trManagePage;
 
+	
+	@Autowired
+	private NameIdConfigurationPage namdIdConfigurationPage;
+	
+	@Autowired
+	private NameIdAddPage nameIdAddPage;
+	
 	@When("^I go to tr add page$")
 	public void goToTrAddPage() {
 		homePage.goSamlTrAddPage();
@@ -116,5 +126,45 @@ public class SamlSteps extends BaseSteps {
 		trManagePage.goToDetailOf(name);
 		trUpdatePage.delete();
 	}
+	
+	@After
+	public void clear() {
+		homePage.clear();
+	}
+	
+	@When("^I go to custom nameId configuration page$")
+	public void goToNameIdConfigPage() {
+		homePage.goNameIdConfigurePage();
+	}
+	
+	@And("^I start the process to add new name id configuration$")
+	public void startAddingNewNamedId() {
+		namdIdConfigurationPage.startAddingNewConfiguration();
+	}
+	
+	@And("^I set '(.+)' as source atrribute$")
+	public void setSourceAttribute(String source) {
+		nameIdAddPage.setSourceAttribute(source);
+	}
+	
+	@And("^I set '(.+)' as name$")
+	public void setName(String source) {
+		nameIdAddPage.setName(source);
+	}
+	
+	@And("^I set '(.+)' as nameid type$")
+	public void setType(String source) {
+		nameIdAddPage.setType(source);
+	}
+	@And("^I enable it$")
+	public void setEnable() {
+		nameIdAddPage.enable();
+	}
+	
+	@And("^I save the name id$")
+	public void saveNameId() {
+		nameIdAddPage.save();
+	}
+	
 
 }
