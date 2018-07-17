@@ -18,6 +18,7 @@ public class HomePage extends AbstractPage {
 		configurationMenu.click();
 	}
 
+
 	public void goSamlMenu() {
 		WebElement samlMenu = webDriver.findElement(By.xpath("//*[@id='menuSAML']"));
 		samlMenu.click();
