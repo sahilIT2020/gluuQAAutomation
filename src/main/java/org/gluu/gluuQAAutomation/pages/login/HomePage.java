@@ -17,11 +17,6 @@ public class HomePage extends AbstractPage {
 		WebElement configurationMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
 		configurationMenu.click();
 	}
-	public void goToOrganizationConfiguration() {
-		goToConfigurationMenu();
-		WebElement organizationConfiguration = webDriver.findElement(By.xpath("//*[@id='subMenuLinkConfiguration1']"));
-		organizationConfiguration.click();
-	}
 
 
 	public void goSamlMenu() {

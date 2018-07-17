@@ -24,7 +24,7 @@ public class ConfigurationSteps extends BaseSteps {
 
     @When("^I go to system organization configuration page$")
     public void gotoSystemOrganizationConfigurationPage() {
-        homePage.goToOrganizationConfiguration();
+        homePage.goToOrganisationConfigurationMenuPage();
 
     }
 
