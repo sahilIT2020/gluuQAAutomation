@@ -40,6 +40,17 @@ public class AbstractPage {
 		}
 
 	}
+	
+	public void selectTab(String tabText) {
+		WebElement section = webDriver.findElement(By.className("nav-tabs"));
+		List<WebElement> tabs = section.findElements(By.tagName("li"));
+		for (WebElement tab : tabs) {
+			if (tab.getText().contains(tabText)) {
+				tab.click();
+				break;
+			}
+		}
+	}
 
 	public String getCurrentPageTitle() {
 		return webDriver.getTitle();

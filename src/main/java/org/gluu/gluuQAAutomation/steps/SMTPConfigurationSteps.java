@@ -23,7 +23,7 @@ public class SMTPConfigurationSteps extends BaseSteps {
 	@When("^I go to smtp configuration page$")
 	public void goToSmtpPage() {
 		homePage.goToOrganisationConfigurationMenuPage();
-		organizationConfigurationPage.selectSMTPTab();
+		organizationConfigurationPage.selectTab("SMTP Server Configuration");
 	}
 
 }
