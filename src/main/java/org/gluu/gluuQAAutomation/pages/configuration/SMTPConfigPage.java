@@ -3,6 +3,7 @@ package org.gluu.gluuQAAutomation.pages.configuration;
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,8 +28,14 @@ public class SMTPConfigPage extends AbstractPage {
 	}
 
 	public void setSmtpRequireAuthentication(boolean value) {
-		WebElement element = webDriver.findElement(By.className("requiresAuthenticationCheckBox"));
+
+		WebElement element = webDriver
+				.findElement(By.id("organizationForm:requiresAuthenticationCheckBox:outputInputPanel"));
+		System.out.println("#####################" + element.getAttribute("innerHTML"));
 		element.click();
+		WebElement input = element.findElement(By.tagName("input"));
+		Actions actions = new Actions(webDriver);
+		actions.moveToElement(input).click().perform();
 	}
 
 	public void setSmtpUserName(String value) {
@@ -60,9 +67,9 @@ public class SMTPConfigPage extends AbstractPage {
 	}
 
 	public void test() {
-		WebElement textButton = webDriver.findElement(By.className("smtpPortTextBox"));
+		WebElement textButton = webDriver.findElement(By.className("verifyButton"));
 		textButton.click();
-		waitFewSeconds(COUNT_MEDIUM);
+		waitFewSeconds(COUNT_SMALL);
 	}
 
 	public void update() {
@@ -70,5 +77,4 @@ public class SMTPConfigPage extends AbstractPage {
 		footer.findElements(By.tagName("input")).get(0).click();
 		waitFewSeconds(COUNT_MEDIUM);
 	}
-
 }

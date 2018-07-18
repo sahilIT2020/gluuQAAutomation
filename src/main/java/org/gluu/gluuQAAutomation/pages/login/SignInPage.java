@@ -46,4 +46,10 @@ public class SignInPage extends AbstractPage {
 		Assert.assertTrue(currentPageUrl.endsWith("oxauth/login")
 				|| currentPageUrl.endsWith("oxauth/auth/passport/passportlogin"));
 	}
+	
+	public void clickForgotPasswordLink() {
+		WebElement link=webDriver.findElement(By.className("forgot_link"));
+		link.click();
+		waitFewSeconds(COUNT_SMALL);
+	}
 }
