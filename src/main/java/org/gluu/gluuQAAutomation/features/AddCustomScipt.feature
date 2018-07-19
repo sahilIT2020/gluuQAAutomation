@@ -11,7 +11,9 @@ Scenario: Add custom script
 	And 	I set the custom script level to '5' 
 	And 	I set the custom script location type to 'Ldap'
 	And 	I set the custom script usage type to 'Web'
+	And 	I add new property named 'QaProperty' with value 'QaPropertyValue'
 	And 	I set the custom script content to 'QACustomScriptContent'
 	And 	I enable the script
 	And 	I save the custom script
+	Then 	I should see a custom script named 'QACustomScriptName' in 'Person Authentication' tab
 	Then 	I sign out

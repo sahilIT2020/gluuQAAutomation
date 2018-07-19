@@ -20,7 +20,7 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 
 	private void performSearch() {
 		webDriver.findElement(By.className("searchButtonClass")).click();
-		waitFewSeconds(3000);
+		fluentWait(SMALL);
 	}
 
 	public void assertClientExist(String clientName) {
@@ -67,16 +67,16 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 	public void edit() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(COUNT_MEDIUM);
+		fluentWait(SMALL);
 	}
 
 	public void delete() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(2).click();
-		waitFewSeconds(COUNT_MEDIUM);
+		fluentWait(SMALL);
 		WebElement dialog = webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"));
 		dialog.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(COUNT_MEDIUM);
+		fluentWait(SMALL);
 	}
 
 	public void assertClientDontExist(String client) {

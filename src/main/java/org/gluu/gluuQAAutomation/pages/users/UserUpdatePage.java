@@ -71,7 +71,7 @@ public class UserUpdatePage extends AbstractPage {
 
 		WebElement dialog = webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"));
 		dialog.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(1000);
+		fluentWait(SMALL);
 	}
 
 	public void cancel() {
@@ -96,7 +96,7 @@ public class UserUpdatePage extends AbstractPage {
 		}
 		List<WebElement> spans = form.findElements(By.xpath("following-sibling::span"));
 		spans.get(0).findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(3000);
+		fluentWait(SMALL);
 	}
 
 }

@@ -1,5 +1,5 @@
 Feature: Delete custom script 
-@gluuQAPending
+@gluuQA
 Scenario: Delete custom script 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

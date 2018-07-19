@@ -69,12 +69,12 @@ public class SMTPConfigPage extends AbstractPage {
 	public void test() {
 		WebElement textButton = webDriver.findElement(By.className("verifyButton"));
 		textButton.click();
-		waitFewSeconds(COUNT_SMALL);
+		fluentWait(SMALL);
 	}
 
 	public void update() {
 		WebElement footer = webDriver.findElement(By.id("organizationForm:updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(COUNT_MEDIUM);
+		fluentWait(SMALL);
 	}
 }

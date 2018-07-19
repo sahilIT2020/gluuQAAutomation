@@ -12,7 +12,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -22,10 +21,13 @@ public class AbstractPage {
 
 	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
-	public int COUNT_SMALL = 1000;
-	public int COUNT_MEDIUM = 2000;
-	public int COUNT_HIGH = 3000;
-	public int COUNT_LARGE = 4000;
+	public int LITTLE = 3;
+	public int SMALL = 5;
+	public int MEDIUM = 10;
+	public int HIGH = 15;
+	public int LARGE = 20;
+	private String QAFakeClassName="QaFakeClassName";
+	private By locator=By.className(QAFakeClassName);
 
 	public void navigate(final String value) {
 		webDriver.get(value);
@@ -57,11 +59,20 @@ public class AbstractPage {
 
 		return foo;
 	}
-	
 
-	public void waitForLoad() {
-		new WebDriverWait(webDriver, 30).until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
-				.executeScript("return document.readyState").equals("complete"));
+	public void fluentWait(int seconds) {
+		try {
+			Wait<WebDriver> wait = new FluentWait<WebDriver>(webDriver).withTimeout(seconds, TimeUnit.SECONDS)
+					.pollingEvery(5, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+			wait.until(new Function<WebDriver, WebElement>() {
+				public WebElement apply(WebDriver driver) {
+					return driver.findElement(locator);
+				}
+			});
+		} catch (Exception e) {
+
+		}
 	}
 
 	public void selectTab(String tabText) {
@@ -149,29 +160,5 @@ public class AbstractPage {
 	public List<WebElement> waitElementsByTag(String tagName) {
 		WebDriverWait wait = new WebDriverWait(webDriver, 20);
 		return (List<WebElement>) wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tagName)));
-	}
-
-	public void waitFewSeconds(int count) {
-		WebDriverWait wait = new WebDriverWait(webDriver, 10);
-		wait.until(new Function<WebDriver, Boolean>() {
-			@Override
-			public Boolean apply(WebDriver t) {
-				for (int i = 0; i < count; i++) {
-					for (int j = 0; j < count; j++) {
-						for (int k = 0; k < count; k++) {
-							for (int l = 0; l < 10; l++) {
-
-							}
-						}
-					}
-				}
-				return true;
-			}
-
-		});
-	}
-
-	public void wait(int seconds) {
-		webDriver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
 	}
 }

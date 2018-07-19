@@ -47,17 +47,27 @@ public class CustomScriptSteps extends BaseSteps {
 	public void setScriptLevel(String level) {
 		customScriptManagePage.setLevel(level);
 	}
-	
+
 	@And("^I set the custom script location type to '(.+)'$")
 	public void setScriptLocationType(String type) {
 		customScriptManagePage.setLocationType(type);
 	}
-	
+
+	@And("^I should see a custom script named '(.+)' in '(.+)' tab$")
+	public void checkScriptExistance(String scriptName, String tabName) {
+		customScriptManagePage.assertScriptExist(scriptName, tabName);
+	}
+
 	@And("^I delete the custom script named '(.+)' on '(.+)' tab$")
 	public void deleteScript(String scriptName, String tabName) {
-		customScriptManagePage.deleteScript(scriptName,tabName);
+		customScriptManagePage.deleteScript(scriptName, tabName);
 	}
 	
+	@And("^I add new property named '(.+)' with value '(.+)'$")
+	public void addProperty(String label, String value) {
+		customScriptManagePage.addNewproperty(label,value);
+	}
+
 	@And("^I set the custom script usage type to '(.+)'$")
 	public void setScriptUsageType(String type) {
 		customScriptManagePage.setUsageType(type);

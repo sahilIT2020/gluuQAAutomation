@@ -28,7 +28,7 @@ public class UmaScopeManagePage extends AbstractPage {
 
 	private void performSearch() {
 		webDriver.findElement(By.className("searchButtonClass")).click();
-		waitFewSeconds(3000);
+		fluentWait(SMALL);
 	}
 
 	private boolean assertUmaScopeExistInList(String umaScope) {

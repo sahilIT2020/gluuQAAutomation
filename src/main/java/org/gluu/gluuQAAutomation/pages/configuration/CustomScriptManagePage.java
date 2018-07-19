@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -24,10 +25,9 @@ public class CustomScriptManagePage extends AbstractPage {
 	public void hitAddButton() {
 		scrollDown();
 		currentSize = computeTheNumberOfScriptForCurrentTab();
+		scrollDown();
 		WebElement addButton = fluentWaitFor(By.className("addConfigButton"));
-		// WebElement addButton = waitElementByClass("addConfigButton");
 		addButton.click();
-		System.out.println("############## Current:" + currentSize);
 		fluentWaitForTableCompute(currentSize);
 	}
 
@@ -39,7 +39,7 @@ public class CustomScriptManagePage extends AbstractPage {
 		for (WebElement tab : tabs) {
 			if (tab.getText().contains(tabText)) {
 				tab.findElement(By.tagName("span")).click();
-				waitFewSeconds(COUNT_MEDIUM);
+				fluentWait(SMALL);
 				break;
 			}
 		}
@@ -129,6 +129,27 @@ public class CustomScriptManagePage extends AbstractPage {
 		select.selectByVisibleText(type);
 	}
 
+	public void addNewproperty(String label, String value) {
+		computeLastScriptScriptForCurrentTab();
+		WebElement element = newCriptElement.findElement(By.className("addNewPropertyButton"));
+		element.click();
+		List<WebElement> tables = newCriptElement.findElements(By.className("propertiesList"));
+		List<WebElement> rows = null;
+		if (tables.size() == 1) {
+			rows = tables.get(0).findElements(By.tagName("tr"));
+		} else {
+			System.out.println("########################SIZE IS:" + tables.size());
+			rows = tables.get(tables.size() - 1).findElements(By.tagName("tr"));
+		}
+		WebElement firstRow = rows.get(0);
+		WebElement labelBox = firstRow.findElement(By.className("propertyLabelTextBox"));
+		labelBox.clear();
+		labelBox.sendKeys(label);
+		WebElement valueBox = firstRow.findElement(By.className("propertyValueTextBox"));
+		valueBox.clear();
+		valueBox.sendKeys(value);
+	}
+
 	public void save() {
 		scrollDown();
 		WebElement element = fluentWaitFor(By.id("updateButtons"));
@@ -160,7 +181,31 @@ public class CustomScriptManagePage extends AbstractPage {
 		header.click();
 		WebElement deleteButton = rightSection.findElement(By.className("deleteScriptButton"));
 		deleteButton.click();
-		
+		fluentWait(MEDIUM);
+		WebElement dialog = fluentWaitFor(By.className("dialogBoxPanelFor".concat(scriptName)));
+		WebElement okButton = dialog.findElement(By.className("confirmDialogButton"));
+		okButton.click();
+		fluentWait(MEDIUM);
+		save();
+	}
+
+	public void assertScriptExist(String scriptName, String tabName) {
+		currentTabText = tabName;
+		String className = "allScriptFor".concat(currentTabText.split("\\s+")[0]);
+		WebElement table = waitElementByClass(className);
+		WebElement firstElement = table.findElements(By.tagName("tr")).get(0);
+		List<WebElement> scripts = new ArrayList<>();
+		scripts.add(firstElement);
+		scripts.addAll(firstElement.findElements(By.xpath("following-sibling::tr")));
+		boolean found = false;
+		for (WebElement scriptSection : scripts) {
+			if (scriptSection.findElement(By.tagName("a")).getText().contains(scriptName)) {
+				found = true;
+				break;
+			}
+		}
+
+		Assert.assertTrue(found);
 	}
 
 }

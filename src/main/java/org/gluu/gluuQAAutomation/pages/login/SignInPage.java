@@ -29,7 +29,7 @@ public class SignInPage extends AbstractPage {
 	public void submit() {
 		WebElement loginButton = webDriver.findElement(By.id("loginForm:loginButton"));
 		loginButton.click();
-		wait(5);
+		fluentWait(SMALL);
 	}
 
 	public void checkCurrentPageIsHomePage() {
@@ -50,6 +50,6 @@ public class SignInPage extends AbstractPage {
 	public void clickForgotPasswordLink() {
 		WebElement link=webDriver.findElement(By.className("forgot_link"));
 		link.click();
-		waitFewSeconds(COUNT_SMALL);
+		fluentWait(SMALL);
 	}
 }

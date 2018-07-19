@@ -108,7 +108,7 @@ public class ClientAddPage extends AbstractPage {
 		searchText.clear();
 		searchText.sendKeys(value);
 		main.findElements(By.className("btn-primary")).get(0).click();
-		waitFewSeconds(1500);
+		fluentWait(SMALL);
 		WebElement pane = waitElementByID("scope:selectScopeModalPanel_content");
 		WebElement table = pane.findElements(By.tagName("table")).get(0);
 		WebElement body = table.findElement(By.tagName("tbody"));

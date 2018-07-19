@@ -18,7 +18,7 @@ public class UserImportPage extends AbstractPage {
 		WebElement upLoarder = form2.findElement(By.className("uploadFile"));
 		WebElement addButton = upLoarder.findElement(By.cssSelector("input[type='file']"));
 		addButton.sendKeys(filePath);
-		waitFewSeconds(1000);
+		fluentWait(SMALL);
 		validate();
 		performImport();
 	}
@@ -26,13 +26,13 @@ public class UserImportPage extends AbstractPage {
 	private void validate() {
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(footer.findElements(By.tagName("input")).get(0)).click().perform();
-		waitFewSeconds(1000);
+		fluentWait(SMALL);
 	}
 
 	private void performImport() {
 		WebElement panel = webDriver.findElement(By.id("updateButtons"));
 		panel.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(1000);
+		fluentWait(SMALL);
 	}
 
 }
