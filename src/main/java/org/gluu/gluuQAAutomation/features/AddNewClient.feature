@@ -21,4 +21,9 @@ Scenario: Add new client
 	When 	I go to openid connect clients list page
 	And 	I search for openid clients with pattern 'QaClientName'
 	Then 	I should see an openid client named 'QaClientName'
+	When 	I start the process to edit the client named 'QaClientName' 
+	And 	I delete that client
+	When 	I go to openid connect clients list page
+	And 	I search for openid clients with pattern 'QaClientName'
+	Then 	I should not see an openid client named 'QaClientName'
 	And 	I sign out	

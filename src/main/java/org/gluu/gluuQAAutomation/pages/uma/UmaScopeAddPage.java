@@ -59,10 +59,11 @@ public class UmaScopeAddPage extends AbstractPage {
 		}
 	}
 
-	public void setLogo(String logo) {
+	public void setLogo() {
 		initTableItems();
 		WebElement upLoarder = items.get(2).findElement(By.className("uploadFile"));
 		WebElement addButton = upLoarder.findElement(By.cssSelector("input[type='file']"));
+		String logo=getUserDir().concat("/src/main/resources/qa_1.png");
 		addButton.sendKeys(logo);
 		fluentWait(SMALL);
 	}

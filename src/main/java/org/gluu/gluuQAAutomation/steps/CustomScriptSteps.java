@@ -57,6 +57,11 @@ public class CustomScriptSteps extends BaseSteps {
 	public void checkScriptExistance(String scriptName, String tabName) {
 		customScriptManagePage.assertScriptExist(scriptName, tabName);
 	}
+	
+	@And("^I should not see a custom script named '(.+)' in '(.+)' tab$")
+	public void checkScriptNonExistance(String scriptName, String tabName) {
+		customScriptManagePage.assertScriptDontExist(scriptName, tabName);
+	}
 
 	@And("^I delete the custom script named '(.+)' on '(.+)' tab$")
 	public void deleteScript(String scriptName, String tabName) {

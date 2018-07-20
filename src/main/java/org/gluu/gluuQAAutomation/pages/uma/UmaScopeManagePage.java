@@ -13,6 +13,7 @@ public class UmaScopeManagePage extends AbstractPage {
 
 	public void assertUmaScopeExist(String scopeName) {
 		Assert.assertTrue(assertUmaScopeExistInList(scopeName));
+		fluentWait(SMALL);
 	}
 
 	public void goToScopeAddPage() {
@@ -58,7 +59,9 @@ public class UmaScopeManagePage extends AbstractPage {
 		List<WebElement> listItems = body.findElements(By.tagName("tr"));
 		for (WebElement element : listItems) {
 			if (element.getText().contains(scope)) {
-				element.findElements(By.tagName("td")).get(0).click();
+				System.out.println("######################True:" + element.getText());
+				element.findElements(By.tagName("td")).get(0).findElement(By.tagName("a")).click();
+				System.out.println("######################Click Done");
 				break;
 			}
 		}

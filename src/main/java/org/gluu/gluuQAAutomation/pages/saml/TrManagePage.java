@@ -25,6 +25,7 @@ public class TrManagePage extends AbstractPage {
 	}
 
 	public void goToDetailOf(String name) {
+		fluentWait(SMALL);
 		WebElement form = webDriver.findElement(By.id("trustRelationsshipList:relationshipstable"));
 		WebElement body = form.findElement(By.id("trustRelationsshipList:relationshipstable:tb"));
 		Assert.assertTrue(body.findElement(By.tagName("tr")).getText().contains(name));

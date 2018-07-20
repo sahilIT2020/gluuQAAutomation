@@ -1,5 +1,5 @@
 Feature: Update  a Trust reletionship 
-@gluuQA 
+@gluuQA
 Scenario: Update a Trust reletionship 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
@@ -22,4 +22,8 @@ Scenario: Update a Trust reletionship
 	And 	I go to tr list page
 	And 	I search for tr named 'QaTRUpdateDN'
 	Then 	I should see a tr with display name 'QaTRUpdateDN' in the list
+	When 	I delete the tr named 'QaTRUpdateDN' 
+	And 	I go to tr list page 
+	And 	I search for tr named 'QaTRUpdateDN' 
+	Then 	I should not see a tr with display name 'QaTRUpdateDN' in the list 
 	And 	I sign out

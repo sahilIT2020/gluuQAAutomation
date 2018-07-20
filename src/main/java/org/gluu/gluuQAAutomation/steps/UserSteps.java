@@ -132,9 +132,9 @@ public class UserSteps extends BaseSteps {
 		homePage.goToUsersImportPage();
 	}
 
-	@And("^I import the sample excel file locate at '(.+)'$")
-	public void importFile(String filePath) {
-		userImportPage.importUsers(filePath);
+	@And("^I import the sample excel file$")
+	public void importFile() {
+		userImportPage.importUsers();
 	}
 
 	@And("^I set his password to '(.+)'$")

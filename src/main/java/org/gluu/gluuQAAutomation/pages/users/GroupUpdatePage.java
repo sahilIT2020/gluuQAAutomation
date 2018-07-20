@@ -41,6 +41,7 @@ public class GroupUpdatePage extends AbstractPage {
 
 		WebElement dialog = webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"));
 		dialog.findElements(By.tagName("input")).get(0).click();
+		fluentWait(LITTLE);
 	}
 
 	public void cancel() {

@@ -22,4 +22,8 @@ Scenario: Update a scope
 	When 	I go to openid connect scopes list page
 	And 	I search for openid scopes with pattern 'QaScopeEditedDN'
 	Then 	I should see an openid scope named 'QaScopeEditedDN'
+	When 	I start the process to edit the scope named 'QaScopeEditedDN'
+	When 	I delete that scope
+	And 	I search for openid scopes with pattern 'QaScopeEditedDN'
+	Then 	I should not see an openid scope named 'QaScopeEditedDN'
 	Then 	I sign out

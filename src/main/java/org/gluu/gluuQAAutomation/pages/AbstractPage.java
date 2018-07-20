@@ -26,11 +26,17 @@ public class AbstractPage {
 	public int MEDIUM = 10;
 	public int HIGH = 15;
 	public int LARGE = 20;
-	private String QAFakeClassName="QaFakeClassName";
-	private By locator=By.className(QAFakeClassName);
+	private String QAFakeClassName = "QaFakeClassName";
+	private By locator = By.className(QAFakeClassName);
 
 	public void navigate(final String value) {
 		webDriver.get(value);
+	}
+
+	public String getUserDir() {
+		String result = System.getProperty("user.dir");
+		System.out.println("##################### Current Worlking Directory:" + result);
+		return result;
 	}
 
 	public void goToLoginPage() {

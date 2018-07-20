@@ -4,7 +4,6 @@ Scenario: CheckPersonAuthentication custom script
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to Manage Custom Script
-	Then 	I should see a custom script named 'QACustomScriptName' in 'Person Authentication' tab
 	And 	I should see a custom script named 'u2f' in 'Person Authentication' tab
 	And 	I should see a custom script named 'super_gluu' in 'Person Authentication' tab
 	And 	I should see a custom script named 'duo' in 'Person Authentication' tab

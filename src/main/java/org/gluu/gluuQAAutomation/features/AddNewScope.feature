@@ -13,4 +13,8 @@ Scenario: Add new scope
 	When 	I go to openid connect scopes list page
 	And 	I search for openid scopes with pattern 'QaAddedScopeDN'
 	Then 	I should see an openid scope named 'QaAddedScopeDN'
+	When 	I start the process to edit the scope named 'QaAddedScopeDN'
+	When 	I delete that scope
+	And 	I search for openid scopes with pattern 'QaAddedScopeDN'
+	Then 	I should not see an openid scope named 'QaAddedScopeDN'
 	Then 	I sign out

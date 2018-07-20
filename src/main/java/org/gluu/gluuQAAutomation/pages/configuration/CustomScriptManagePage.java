@@ -133,14 +133,9 @@ public class CustomScriptManagePage extends AbstractPage {
 		computeLastScriptScriptForCurrentTab();
 		WebElement element = newCriptElement.findElement(By.className("addNewPropertyButton"));
 		element.click();
-		List<WebElement> tables = newCriptElement.findElements(By.className("propertiesList"));
-		List<WebElement> rows = null;
-		if (tables.size() == 1) {
-			rows = tables.get(0).findElements(By.tagName("tr"));
-		} else {
-			System.out.println("########################SIZE IS:" + tables.size());
-			rows = tables.get(tables.size() - 1).findElements(By.tagName("tr"));
-		}
+		fluentWait(SMALL);
+		WebElement table = newCriptElement.findElement(By.className("propertiesList"));
+		List<WebElement> rows = table.findElements(By.tagName("tr"));
 		WebElement firstRow = rows.get(0);
 		WebElement labelBox = firstRow.findElement(By.className("propertyLabelTextBox"));
 		labelBox.clear();
@@ -204,8 +199,25 @@ public class CustomScriptManagePage extends AbstractPage {
 				break;
 			}
 		}
-
 		Assert.assertTrue(found);
+	}
+
+	public void assertScriptDontExist(String scriptName, String tabName) {
+		currentTabText = tabName;
+		String className = "allScriptFor".concat(currentTabText.split("\\s+")[0]);
+		WebElement table = waitElementByClass(className);
+		WebElement firstElement = table.findElements(By.tagName("tr")).get(0);
+		List<WebElement> scripts = new ArrayList<>();
+		scripts.add(firstElement);
+		scripts.addAll(firstElement.findElements(By.xpath("following-sibling::tr")));
+		boolean found = false;
+		for (WebElement scriptSection : scripts) {
+			if (scriptSection.findElement(By.tagName("a")).getText().contains(scriptName)) {
+				found = true;
+				break;
+			}
+		}
+		Assert.assertFalse(found);
 	}
 
 }

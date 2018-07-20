@@ -16,4 +16,6 @@ Scenario: Add custom script
 	And 	I enable the script
 	And 	I save the custom script
 	Then 	I should see a custom script named 'QACustomScriptName' in 'Person Authentication' tab
+	When 	I delete the custom script named 'QACustomScriptName' on 'Person Authentication' tab
+	Then 	I should not see a custom script named 'QACustomScriptName' in 'Person Authentication' tab
 	Then 	I sign out

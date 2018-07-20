@@ -10,14 +10,15 @@ import org.springframework.stereotype.Component;
 public class UserImportPage extends AbstractPage {
 	private WebElement footer;
 
-	public void importUsers(String filePath) {
+	public void importUsers() {
 		WebElement form = webDriver.findElement(By.name("personImportForm"));
 		WebElement form1 = form.findElement(By.className("box-primary"));
 		footer = form1.findElement(By.className("box-footer"));
 		WebElement form2 = form1.findElements(By.tagName("div")).get(3);
 		WebElement upLoarder = form2.findElement(By.className("uploadFile"));
 		WebElement addButton = upLoarder.findElement(By.cssSelector("input[type='file']"));
-		addButton.sendKeys(filePath);
+		String finalPath = getUserDir().concat("/src/main/resources/ImportUsers.xls");
+		addButton.sendKeys(finalPath);
 		fluentWait(SMALL);
 		validate();
 		performImport();
