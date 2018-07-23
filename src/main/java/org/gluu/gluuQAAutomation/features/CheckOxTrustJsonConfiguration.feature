@@ -1,5 +1,5 @@
 Feature: Oxtrust json configuration 
-@gluuQAPending 
+@gluuQAPending1 
 Scenario: Oxtrust json configuration 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

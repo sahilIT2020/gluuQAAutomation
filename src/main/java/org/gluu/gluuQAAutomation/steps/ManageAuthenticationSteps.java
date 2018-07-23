@@ -48,6 +48,21 @@ public class ManageAuthenticationSteps extends BaseSteps {
 		authenticationPage.addStrategy(name, id, secret);
 	}
 
+	@And("^I delete the strategy named '(.+)'$")
+	public void deleteStrategy(String name) {
+		authenticationPage.deleteStrategy(name);
+	}
+
+	@Then("^I should not see a strategy named '(.+)' in the list")
+	public void strategyIsNotPresent(String name) {
+		authenticationPage.assertStrategyIsNotPresent(name);
+	}
+
+	@Then("^I should see a strategy named '(.+)' in the list")
+	public void strategyIsPresent(String name) {
+		authenticationPage.assertStrategyIsPresent(name);
+	}
+
 	@And("^I enable passport status to '(.+)'$")
 	public void setPassportStatus(String status) {
 		authenticationPage.setPassportStatus(status);
@@ -84,8 +99,13 @@ public class ManageAuthenticationSteps extends BaseSteps {
 	}
 
 	@Then("^I should see that the cas protocol is enable$")
-	public void checkStatus() {
+	public void checkStatusIsOn() {
 		casProtocolPage.assertStatusIsEnabled();
+	}
+
+	@Then("^I should see that the cas protocol is disable$")
+	public void checkStatusIsActive() {
+		casProtocolPage.assertStatusIsDisabled();
 	}
 
 	@And("^I should see that service type is '(.+)'$")
@@ -93,9 +113,19 @@ public class ManageAuthenticationSteps extends BaseSteps {
 		casProtocolPage.assertServiceTypeIs(type);
 	}
 
-	@And("^I should see that base url end with '/idp/profile/cas'$")
+	@And("^I should see that base url end with '(.+)'$")
 	public void checkBaseurl(String url) {
 		casProtocolPage.assertBaseUrlEndWith(url);
+	}
+
+	@And("^I save the cas config$")
+	public void saveCasConfig() {
+		casProtocolPage.saveCasSetting();
+	}
+
+	@And("^I save the cas configuration update$")
+	public void saveWholeConfiguration() {
+		casProtocolPage.save();
 	}
 
 	@After

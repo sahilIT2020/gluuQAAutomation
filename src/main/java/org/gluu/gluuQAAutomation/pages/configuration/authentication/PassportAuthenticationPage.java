@@ -1,6 +1,7 @@
 package org.gluu.gluuQAAutomation.pages.configuration.authentication;
 
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -26,12 +27,12 @@ public class PassportAuthenticationPage extends AbstractPage {
 		fluentWait(LITTLE);
 
 		WebElement strategiesArea = webDriver.findElement(By.id("customAuthenticationForm:strategyId"));
+		WebElement strategyArea = strategiesArea.findElement(By.className("NewEmptyStrategy"));
 
-		WebElement strategyName = strategiesArea.findElement(By.className("strategyNameTextBox"));
+		WebElement strategyName = strategyArea.findElement(By.className("strategyNameTextBox"));
 		strategyName.clear();
 		strategyName.sendKeys(name);
 
-		WebElement strategyArea = strategiesArea.findElement(By.className("NewEmptyStrategy"));
 		WebElement value1 = strategyArea.findElements(By.className("propertyValueTextBox")).get(0);
 		value1.clear();
 		value1.sendKeys(id);
@@ -41,6 +42,44 @@ public class PassportAuthenticationPage extends AbstractPage {
 		value2.sendKeys(secret);
 		fluentWait(LITTLE);
 		save();
+	}
+
+	public void deleteStrategy(String name) {
+		WebElement strategyBox = webDriver.findElement(By.className(name));
+		WebElement delete = strategyBox.findElement(By.className("deleteStrategy"));
+		delete.click();
+		fluentWait(LITTLE);
+		String classname = "dialogBoxPanelFor".concat(name);
+		WebElement button = webDriver.findElement(By.className(classname))
+				.findElement(By.className("confirmStrategyDeletion"));
+		button.click();
+		fluentWait(LITTLE);
+	}
+
+	public void assertStrategyIsNotPresent(String name) {
+		boolean found = false;
+		try {
+			WebElement stragtetyBox = webDriver.findElement(By.className(name));
+			Assert.assertNotNull(stragtetyBox);
+			found = true;
+		} catch (Exception e) {
+			found = false;
+		}
+
+		Assert.assertFalse(found);
+	}
+
+	public void assertStrategyIsPresent(String name) {
+		boolean found = false;
+		try {
+			WebElement stragtetyBox = webDriver.findElement(By.className(name));
+			Assert.assertNotNull(stragtetyBox);
+			found = true;
+		} catch (Exception e) {
+			found = false;
+		}
+
+		Assert.assertTrue(found);
 	}
 
 }
