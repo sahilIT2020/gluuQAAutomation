@@ -1,5 +1,5 @@
-Feature: System Configuration Cancel
-  @gluuQA
+Feature: Cancel System Configuration
+  @gluuQA66
   Scenario: Cancel system configuration as an admin
 
     When 	I sign in as administrator
@@ -18,3 +18,4 @@ Feature: System Configuration Cancel
     And     I should not see the DNS Server set to '333'
     And     I should not see the Maximum Log Size Value set to '1'
     And     I should not see the Contact Email set to 'testytest@example.com'
+    And     I sign out

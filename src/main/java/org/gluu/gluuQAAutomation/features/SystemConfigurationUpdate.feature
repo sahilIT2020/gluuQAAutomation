@@ -1,5 +1,5 @@
-Feature: System Configuration Update
-  @gluuQA
+Feature: Update System Configuration
+  @gluuQA11
   Scenario: Configure system as an admin
 
     When 	I sign in as administrator
@@ -20,5 +20,6 @@ Feature: System Configuration Update
     And     I should see the Maximum Log Size Value set to '1111'
     And     I should see the User to Edit Own Profile set to 'Enabled'
     And     I should see the Contact Email set to 'natt.tester@gmail.com'
+    And     I sign out
 
 
