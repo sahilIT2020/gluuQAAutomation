@@ -16,7 +16,7 @@ public class OpenIdConnectScopeAddPage extends AbstractPage {
 		WebElement buttonBar = webDriver.findElement(By.className("box-footer"));
 		buttonBar.click();
 		buttonBar.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(2000);
+		fluentWait(SMALL);
 	}
 
 		

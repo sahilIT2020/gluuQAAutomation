@@ -29,7 +29,7 @@ public class SignInPage extends AbstractPage {
 	public void submit() {
 		WebElement loginButton = webDriver.findElement(By.id("loginForm:loginButton"));
 		loginButton.click();
-		wait(5);
+		fluentWait(SMALL);
 	}
 
 	public void checkCurrentPageIsHomePage() {
@@ -45,5 +45,11 @@ public class SignInPage extends AbstractPage {
 		String currentPageUrl = getCurrentPageUrl();
 		Assert.assertTrue(currentPageUrl.endsWith("oxauth/login")
 				|| currentPageUrl.endsWith("oxauth/auth/passport/passportlogin"));
+	}
+	
+	public void clickForgotPasswordLink() {
+		WebElement link=webDriver.findElement(By.className("forgot_link"));
+		link.click();
+		fluentWait(SMALL);
 	}
 }

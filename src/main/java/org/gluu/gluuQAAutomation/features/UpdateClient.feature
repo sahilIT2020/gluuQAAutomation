@@ -28,4 +28,9 @@ Scenario: Update OpenID connect clients
 	When 	I go to openid connect clients list page
 	And 	I search for openid clients with pattern 'QaClientUpdatedName'
 	Then 	I should see an openid client named 'QaClientUpdatedName'
+	When 	I start the process to edit the client named 'QaClientUpdatedName' 
+	And 	I delete that client
+	When 	I go to openid connect clients list page
+	And 	I search for openid clients with pattern 'QaClientUpdatedName'
+	Then 	I should not see an openid client named 'QaClientUpdatedName'
 	And 	I sign out

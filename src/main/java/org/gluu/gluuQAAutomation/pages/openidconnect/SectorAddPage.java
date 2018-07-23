@@ -45,7 +45,7 @@ public class SectorAddPage extends AbstractPage {
 
 		WebElement searchButton = searchBox.findElements(By.xpath("following-sibling::input")).get(0);
 		searchButton.click();
-		waitFewSeconds(500);
+		fluentWait(SMALL);
 		waitElementByTag("table");
 		List<WebElement> popups = webDriver.findElements(By.tagName("table"));
 		WebElement popupBody = popups.get(3).findElement(By.tagName("tbody"));
@@ -66,7 +66,7 @@ public class SectorAddPage extends AbstractPage {
 	public void save() {
 		WebElement footer = webDriver.findElement(By.className("box-footer"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		waitFewSeconds(COUNT_MEDIUM);
+		fluentWait(SMALL);
 	}
 
 }

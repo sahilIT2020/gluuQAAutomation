@@ -1,6 +1,7 @@
 package org.gluu.gluuQAAutomation.steps;
 
 import org.gluu.gluuQAAutomation.GluuQaAutomationApplication;
+import org.gluu.gluuQAAutomation.pages.login.PasswordResetPage;
 import org.gluu.gluuQAAutomation.pages.login.SignInPage;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +9,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { GluuQaAutomationApplication.class})
+@ContextConfiguration(classes = { GluuQaAutomationApplication.class })
 public class SignInSteps extends BaseSteps {
 	@Autowired
 	private SignInPage signInPage;
+
+	@Autowired
+	private PasswordResetPage passwordResetPage;
 
 	@When("^I sign in as administrator$")
 	public void signInAsAdmin() {
@@ -46,9 +51,29 @@ public class SignInSteps extends BaseSteps {
 		signInPage.checkCurrentPageIsLoginPage();
 	}
 
+	@And("^I click on password reset link$")
+	public void clickPasswordReset() {
+		signInPage.clickForgotPasswordLink();
+	}
+
+	@And("^I send the mail$")
+	public void sendMail() {
+		passwordResetPage.sendMail();
+	}
+
 	@After
 	public void clear() {
 		signInPage.clear();
+	}
+
+	@Then("^I set '(.+)' as email$")
+	public void setEmail(String email) {
+		passwordResetPage.setEmail(email);
+	}
+	
+	@Then("^I should see that the mail was send$")
+	public void  checkEmailWasSend() {
+		passwordResetPage.verifyMailWasSend();
 	}
 
 }

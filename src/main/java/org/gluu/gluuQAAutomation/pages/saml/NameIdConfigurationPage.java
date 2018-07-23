@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class NameIdConfigurationPage extends AbstractPage {
 
 	public void startAddingNewConfiguration() {
-		waitFewSeconds(COUNT_SMALL);
+		fluentWait(SMALL);
 		WebElement element = webDriver.findElement(By.className("addConfig"));
 		element=element.findElement(By.tagName("a"));
 		element.click();

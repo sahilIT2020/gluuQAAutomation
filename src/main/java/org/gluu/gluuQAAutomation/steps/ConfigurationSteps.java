@@ -1,5 +1,6 @@
 package org.gluu.gluuQAAutomation.steps;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -127,6 +128,11 @@ public class ConfigurationSteps extends BaseSteps {
     public void assertNotContactEmailValue(String notContactEmailValue) {
         systemConfigurationPage.assertNotContactEmailValue(notContactEmailValue);
     }
+    
+    @After
+	public void clear() {
+		homePage.clear();
+	}
 
     @And("^I click on the Ox Trust Settings Page$")
     public void oxTrustSettingsPage()  {

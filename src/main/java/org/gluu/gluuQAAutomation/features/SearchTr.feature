@@ -15,4 +15,8 @@ Scenario: Search a Trust reletionship
 	When 	I go to tr list page
 	And 	I search for tr named 'QaTRSearchDN'
 	Then 	I should see a tr with display name 'QaTRSearchDN' in the list
+	When 	I delete the tr named 'QaTRSearchDN' 
+	And 	I go to tr list page 
+	And 	I search for tr named 'QaTRSearchDN' 
+	Then 	I should not see a tr with display name 'QaTRSearchDN' in the list 
 	And 	I sign out

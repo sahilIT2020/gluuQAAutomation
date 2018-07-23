@@ -17,4 +17,9 @@ Scenario: Update uma scope
 	When 	I go to uma scope list page
 	And 	I search for scopes with pattern 'QAUmaScopeUpdatedDN'
 	Then 	I should see a uma scope named 'QAUmaScopeUpdatedDN'
-	And 	I sign out	
+	And 	I start the edit of the scope named 'QAUmaScopeUpdatedDN'
+	And 	I delete the current scope
+	When 	I go to uma scope list page
+	And 	I search for scopes with pattern 'QAUmaScopeUpdatedDN'
+	Then 	I should not see a uma scope named 'QAUmaScopeUpdatedDN'
+	And 	I sign out		

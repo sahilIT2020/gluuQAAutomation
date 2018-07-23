@@ -13,4 +13,8 @@ Scenario: Add new group
 	And 	I search for group with pattern 'QAGroupAddedDN' 
 	Then 	I should see a group with description 'QAGroupAddedDescription' 
 	And 	I should see a group with display name 'QAGroupAddedDN'
+	When 	I start to update that group 
+	And 	I delete the current group 
+	And 	I search for group with pattern 'QAGroupAddedDN'
+	Then 	I should not see a group with display name 'QAGroupAddedDN'
 	Then 	I sign out

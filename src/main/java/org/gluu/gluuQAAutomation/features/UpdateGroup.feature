@@ -20,4 +20,8 @@ Scenario: Update an existing group
 	And 	I search for group with pattern 'QAGroupNewDisplayName' 
 	Then 	I should see a group with description 'QAGroupNewDescription' 
 	And 	I should see a group with display name 'QAGroupNewDisplayName' 
+	When 	I start to update that group 
+	And 	I delete the current group 
+	And 	I search for group with pattern 'QAGroupNewDisplayName'
+	Then 	I should not see a group with display name 'QAGroupNewDisplayName'
 	Then 	I sign out

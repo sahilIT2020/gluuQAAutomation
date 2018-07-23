@@ -13,7 +13,11 @@ Scenario: Add new user
 	And 	With status 'Inactive' 
 	And 	I save the user
 	When 	I go to users manage page 
-	And 	I search for user with pattern 'QA' 
+	And 	I search for user with pattern 'QaUserDN' 
 	Then 	I should see a user named 'QaUser'
 	And 	I should see a user with display name 'QaUserDN'
-	Then 	I sign out 
+	When 	I start to update that user 
+	And 	I delete the current user
+	When 	I search for user with pattern 'QaUserDN' 
+	Then 	I should not see a user named 'QaUserDN'
+	And 	I sign out
