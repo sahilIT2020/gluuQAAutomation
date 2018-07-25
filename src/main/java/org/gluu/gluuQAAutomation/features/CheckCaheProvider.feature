@@ -1,5 +1,5 @@
 Feature: Check Cache Provider configuration 
-@gluuQAPending 
+@gluuQA
 Scenario: Oxtrust json configuration 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

@@ -188,7 +188,7 @@ public class HomePage extends AbstractPage {
 	public void goToImportExportAttributesMenuPage() {
 		WebElement openIdMenu = webDriver.findElement(By.xpath("//*[@id='menuConfiguration']"));
 		openIdMenu.click();
-		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration7']");
+		WebElement subMenu = waitElement("//*[@id='subMenuLinkConfiguration12']");
 		subMenu.click();		
 	}
 	

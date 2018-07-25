@@ -34,49 +34,49 @@ public class JsonConfigurationSteps extends BaseSteps {
 	}
 	// oxtrust steps
 
-	@Then("^I should see the cert dir set to '(.+)'$")
-	public void checkCertDirIs(String dir) {
-		oxTrustConfigurationPage.assertCertDirIs(dir);
+	@Then("^I should see the cert dir is present$")
+	public void checkCertDirIs() {
+		oxTrustConfigurationPage.assertCertDirIsPresent();
 	}
 
-	@Then("^I should see the base dn set to '(.+)'$")
-	public void checkBaseDn(String dn) {
-		oxTrustConfigurationPage.assertBaseDn(dn);
+	@Then("^I should see the base dn is present$")
+	public void checkBaseDn() {
+		oxTrustConfigurationPage.assertBaseDnIsPresent();
 	}
 
-	@Then("^I should see that the log level is set to '(.+)'$")
-	public void checkLogLevel(String level) {
-		oxTrustConfigurationPage.assertLogLevel(level);
+	@Then("^I should see that the log level is present$")
+	public void checkLogLevel() {
+		oxTrustConfigurationPage.assertLogLevel();
 	}
 
-	@Then("^I should see that the sicm max count is set to '(.+)'$")
-	public void checkScimMaxCount(String count) {
-		oxTrustConfigurationPage.assertScimMaxCount(count);
+	@Then("^I should see that the sicm max count is present$")
+	public void checkScimMaxCount() {
+		oxTrustConfigurationPage.assertScimMaxCount();
 	}
 
-	@And("^I should see the org iname is empty$")
+	@And("^I should see the org iname is present$")
 	public void checkOrgIname() {
-		oxTrustConfigurationPage.assertOrgInameIsEmpty();
+		oxTrustConfigurationPage.assertOrgInameIsPresent();
 	}
 
-	@And("^I should see that the support mail is not empty$")
+	@And("^I should see that the support mail is present$")
 	public void checkSupportEmailNotEmpty() {
-		oxTrustConfigurationPage.assertEmailNotEmpty();
+		oxTrustConfigurationPage.assertEmailIsPresent();
 	}
 
-	@And("^I should see that the appliance inum is not empty$")
+	@And("^I should see that the appliance inum is present$")
 	public void checkApplianceInumNotEmpty() {
-		oxTrustConfigurationPage.assertApplianceInumNotEmpty();
+		oxTrustConfigurationPage.assertApplianceInumIsPresent();
 	}
 
-	@And("^I should see that the application url is not empty$")
+	@And("^I should see that the application url is present$")
 	public void checkApplicationUrlNotEmpty() {
-		oxTrustConfigurationPage.assertApplicationUrlNotEmpty();
+		oxTrustConfigurationPage.assertApplicationUrlIsPresent();
 	}
 
-	@And("^I should see that the base endpoint is correct$")
+	@And("^I should see that the base endpoint is present$")
 	public void checkBaseEndPointIscorrect() {
-		oxTrustConfigurationPage.assertBaseEndpointIsCorrect();
+		oxTrustConfigurationPage.assertBaseEndpointIsPresent();
 	}
 
 	// oxAuth steps
@@ -168,9 +168,9 @@ public class JsonConfigurationSteps extends BaseSteps {
 		homePage.selectTab("oxTrust Import Configuration");
 	}
 
-	@Then("^I should see an item with ldapName '(.+)' and displayName '(.+)' and dataType '(.+)' and required '(.+)'$")
-	public void veryfyMappingEntry(String lName, String dName, String type, String required) {
-		oxTrustImportConfigurationPage.veryMappingEntry(lName,dName,type,required);
+	@Then("^I should see that the there are six items present in the list$")
+	public void veryfyMappingEntries() {
+		oxTrustImportConfigurationPage.veryMappingEntries();
 	}
 
 	@After

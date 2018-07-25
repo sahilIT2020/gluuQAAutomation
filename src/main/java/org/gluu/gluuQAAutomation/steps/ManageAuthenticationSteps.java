@@ -2,6 +2,7 @@ package org.gluu.gluuQAAutomation.steps;
 
 import org.gluu.gluuQAAutomation.pages.configuration.authentication.CasProtocolPage;
 import org.gluu.gluuQAAutomation.pages.configuration.authentication.DefaultAuthenMethodPage;
+import org.gluu.gluuQAAutomation.pages.configuration.authentication.LDAPAuthenticationPage;
 import org.gluu.gluuQAAutomation.pages.configuration.authentication.PassportAuthenticationPage;
 import org.gluu.gluuQAAutomation.pages.login.HomePage;
 import org.junit.runner.RunWith;
@@ -25,6 +26,9 @@ public class ManageAuthenticationSteps extends BaseSteps {
 	@Autowired
 	private CasProtocolPage casProtocolPage;
 
+	@Autowired
+	private LDAPAuthenticationPage ldapAuthenticationPage;
+
 	@When("^I go to strategy page$")
 	public void goToAuthenticationManagePage() {
 		homePage.goToManageAutheticationMenuPage();
@@ -41,6 +45,12 @@ public class ManageAuthenticationSteps extends BaseSteps {
 	public void goToCasProtocolPage() {
 		homePage.goToManageAutheticationMenuPage();
 		authenticationPage.selectTab("CAS Protocol");
+	}
+
+	@When("^I go to LDAP Authenticiation page")
+	public void goToLDAPAuthenticationPage() {
+		homePage.goToManageAutheticationMenuPage();
+		authenticationPage.selectTab("Manage LDAP Authentication");
 	}
 
 	@And("^I add new strategy named '(.+)' with id '(.+)' and secret '(.+)'$")
@@ -126,6 +136,30 @@ public class ManageAuthenticationSteps extends BaseSteps {
 	@And("^I save the cas configuration update$")
 	public void saveWholeConfiguration() {
 		casProtocolPage.save();
+	}
+	// Ldap authentivation steps
+
+	@Then("^I should see an ldap source named '(.+)' with bindDn '(.+)' with maxConn '(.+)' with primary key '(.+)' with local primary key '(.+)' with servers '(.+)' with basedn '(.+)' and ssl '(.+)'$")
+	public void checkSourceLdapServer(String name, String bindDn, String maxCon, String pKey, String lPKey,
+			String servers, String baseDn, String useSSl) {
+		ldapAuthenticationPage.checkLdapSourceServer(name, bindDn, maxCon, pKey, lPKey, servers, baseDn, useSSl);
+	}
+
+	@Then("^I add an ldap source named '(.+)' with bindDn '(.+)' with maxConn '(.+)' with primary key '(.+)' with local primary key '(.+)' with servers '(.+)' with basedn '(.+)' and ssl '(.+)'$")
+	public void addSourceLdapServer(String name, String bindDn, String maxCon, String pKey, String lPKey,
+			String servers, String baseDn, String useSSl) {
+		ldapAuthenticationPage.addLdapSourceServer(name, bindDn, maxCon, pKey, lPKey, servers, baseDn, useSSl);
+		ldapAuthenticationPage.save();
+	}
+
+	@And("^I click the add source server button$")
+	public void clickOnSourceServerAddButton() {
+		ldapAuthenticationPage.clickOnAddSourceServer();
+	}
+
+	@Then("^I delete the ldap source named '(.+)'$")
+	public void deleteSourceServer(String name) {
+		ldapAuthenticationPage.deleteSourceServer(name);
 	}
 
 	@After

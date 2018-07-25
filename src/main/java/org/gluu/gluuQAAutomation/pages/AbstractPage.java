@@ -154,14 +154,6 @@ public class AbstractPage {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
 	}
 
-	public double computeHeavy(int number) {
-		if (number == 1) {
-			return 1L;
-		} else {
-			return number * computeHeavy(number - 1);
-		}
-	}
-
 	@SuppressWarnings("unchecked")
 	public List<WebElement> waitElementsByTag(String tagName) {
 		WebDriverWait wait = new WebDriverWait(webDriver, 20);
