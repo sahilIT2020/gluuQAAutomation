@@ -225,6 +225,4 @@ public class HomePage extends AbstractPage {
 		WebElement subMenu = waitElement("//*[@id='subMenuLinkCertificates1']");
 		subMenu.click();		
 	}
-	
-
 }

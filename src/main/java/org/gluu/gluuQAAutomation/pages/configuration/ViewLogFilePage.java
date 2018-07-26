@@ -5,11 +5,8 @@ import java.util.List;
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.springframework.stereotype.Component;
-
-import com.beust.jcommander.internal.Console;
 
 @Component
 public class ViewLogFilePage  extends AbstractPage {
