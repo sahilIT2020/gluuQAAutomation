@@ -21,11 +21,11 @@ public class AbstractPage {
 
 	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
-	public int LITTLE = 3;
-	public int SMALL = 5;
-	public int MEDIUM = 10;
-	public int HIGH = 15;
-	public int LARGE = 20;
+	public int LITTLE = 2;
+	public int SMALL = 4;
+	public int MEDIUM = 6;
+	public int HIGH = 10;
+	public int LARGE = 12;
 	private String QAFakeClassName = "QaFakeClassName";
 	private By locator = By.className(QAFakeClassName);
 
