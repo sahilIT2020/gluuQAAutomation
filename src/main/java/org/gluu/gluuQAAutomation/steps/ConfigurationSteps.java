@@ -20,6 +20,7 @@ public class ConfigurationSteps extends BaseSteps {
 
     @Autowired
     private HomePage homePage;
+    @Autowired
     private SignInPage signInPage;
 
     @Autowired
