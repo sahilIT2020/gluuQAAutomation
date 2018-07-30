@@ -23,8 +23,9 @@ public class AttributesSteps extends BaseSteps {
     }
 
     @Then("^I want to see all attributes$")
-    public void seeAllAttributes() {
+    public void seeAllAttributes()  {
         attributesPage.showAllAttributes();
+
     }
 
     @When("^I want to check active attributes$")
@@ -43,7 +44,6 @@ public class AttributesSteps extends BaseSteps {
         }
         catch(org.openqa.selenium.WebDriverException ex)
         {
-            System.out.println("-----------tutaj");
             attributesPage.clickFirstListedAttribute();
         }
 

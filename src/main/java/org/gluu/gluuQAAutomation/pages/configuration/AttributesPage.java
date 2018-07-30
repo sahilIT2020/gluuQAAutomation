@@ -19,6 +19,7 @@ public class AttributesPage extends AbstractPage {
         WebElement allButton = webDriver.findElement(
                 By.id("attributesFormId:j_idt138"));
         allButton.click();
+
     }
     public void checkInactiveAttributes() {
 
@@ -32,8 +33,8 @@ public class AttributesPage extends AbstractPage {
         Assert.assertTrue("Text not found!", listActive.size() > 0);
     }
     public void checkAttributeDescriptionExists(String descriptionValue) {
-        WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("attributesFormId:attributesListId")));
+        WebDriverWait wait = new WebDriverWait(webDriver, 15);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'" + descriptionValue +"')]")));
         List<WebElement> listActive = webDriver.findElements(
                 By.xpath("//*[contains(text(),'" + descriptionValue +"')]"));
         Assert.assertTrue("Text not found!", listActive.size() > 0);
