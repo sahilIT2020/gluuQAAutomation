@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Properties;
 
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
@@ -64,12 +65,22 @@ public class ApplicationDriver {
 		}
 		return settings;
 	}
+	
+	public static String getUserDir() {
+		String result = System.getProperty("user.dir");
+		System.out.println("##################### Current Worlking Directory:" + result);
+		return result;
+	}
 
 	private ApplicationDriver() {
 	}
 
 	public static void initDriverOptions() {
 		options = new ChromeOptions();
+		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+		chromePrefs.put("profile.default_content_settings.popups", 0);
+		chromePrefs.put("download.default_directory",getUserDir());
+		options.setExperimentalOption("prefs", chromePrefs);
 		options.setCapability("acceptInsecureCerts", true);
 		options.setCapability("applicationCacheEnabled", true);
 		options.setCapability("browserConnectionEnabled", true);

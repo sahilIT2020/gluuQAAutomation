@@ -1,0 +1,88 @@
+package org.gluu.gluuQAAutomation.pages.configuration;
+
+import java.util.List;
+
+import org.gluu.gluuQAAutomation.pages.AbstractPage;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.springframework.stereotype.Component;
+
+@Component
+public class LogViewerConfigPage extends AbstractPage {
+
+	public void checkOxTrustExternalLog4jLocation() {
+		String value = webDriver.findElement(By.id("logViewerForm:oxTrustLogConfigLocation")).getAttribute("value");
+		Assert.assertTrue(value.isEmpty());
+	}
+
+	public void checkOxAuthExternalLog4jLocation() {
+		String value = webDriver.findElement(By.id("logViewerForm:oxAuthLogConfigLocation")).getAttribute("value");
+		Assert.assertTrue(value.isEmpty());
+	}
+
+	public void addNewLogTemplate(String name, String value) {
+		fluentWait(LITTLE);
+		webDriver.findElement(By.className("addNewPropertyButton")).click();
+		fluentWait(LITTLE);
+		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
+		WebElement table = tables.get(tables.size() - 1).findElement(By.tagName("tbody"));
+		WebElement lastElement = table.findElements(By.tagName("tr")).get(0);
+		lastElement.findElement(By.className("propertyLabelTextBox")).clear();
+		lastElement.findElement(By.className("propertyLabelTextBox")).sendKeys(name);
+		lastElement.findElement(By.className("propertyValueTextBox")).sendKeys(value);
+		fluentWait(LITTLE);
+		save();
+	}
+
+	private void save() {
+		webDriver.findElement(By.id("updateButtons")).findElements(By.tagName("input")).get(0).click();
+		fluentWait(LITTLE);
+	}
+
+	public void checkTemplate(String name, String value) {
+		boolean found = false;
+		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
+		for (WebElement table : tables) {
+			WebElement element = table.findElements(By.tagName("tr")).get(0);
+			if (element.findElement(By.className("propertyLabelTextBox")).getAttribute("value")
+					.equalsIgnoreCase(name)) {
+				Assert.assertTrue(element.findElement(By.className("propertyValueTextBox")).getAttribute("value")
+						.equalsIgnoreCase(value));
+				found = true;
+				break;
+			}
+		}
+		Assert.assertTrue(found);
+	}
+
+	public void checkTemplateNotExist(String name, String value) {
+		boolean found = false;
+		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
+		for (WebElement table : tables) {
+			WebElement element = table.findElements(By.tagName("tr")).get(0);
+			if (element.findElement(By.className("propertyLabelTextBox")).getAttribute("value")
+					.equalsIgnoreCase(name)) {
+				Assert.assertTrue(element.findElement(By.className("propertyValueTextBox")).getAttribute("value")
+						.equalsIgnoreCase(value));
+				found = true;
+				break;
+			}
+		}
+		Assert.assertFalse(found);
+	}
+
+	public void delete(String name) {
+		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
+		for (WebElement table : tables) {
+			WebElement element = table.findElements(By.tagName("tr")).get(0);
+			if (element.findElement(By.className("propertyLabelTextBox")).getAttribute("value")
+					.equalsIgnoreCase(name)) {
+				element.findElement(By.className("removePropertyButton")).click();
+				break;
+			}
+		}
+		save();
+	}
+
+}

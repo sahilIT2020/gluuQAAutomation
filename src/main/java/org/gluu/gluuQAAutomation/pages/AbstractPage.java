@@ -21,11 +21,11 @@ public class AbstractPage {
 
 	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
-	public int LITTLE = 3;
-	public int SMALL = 5;
-	public int MEDIUM = 10;
-	public int HIGH = 15;
-	public int LARGE = 20;
+	public int LITTLE = 2;
+	public int SMALL = 4;
+	public int MEDIUM = 6;
+	public int HIGH = 10;
+	public int LARGE = 12;
 	private String QAFakeClassName = "QaFakeClassName";
 	private By locator = By.className(QAFakeClassName);
 
@@ -152,14 +152,6 @@ public class AbstractPage {
 	public WebElement waitElementByID(String id) {
 		WebDriverWait wait = new WebDriverWait(webDriver, 20);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
-	}
-
-	public double computeHeavy(int number) {
-		if (number == 1) {
-			return 1L;
-		} else {
-			return number * computeHeavy(number - 1);
-		}
 	}
 
 	@SuppressWarnings("unchecked")
