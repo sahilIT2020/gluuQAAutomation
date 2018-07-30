@@ -27,7 +27,7 @@ public class ConfigurationSteps extends BaseSteps {
     private SystemConfigurationPage systemConfigurationPage;
 
     @When("^I go to system organization configuration page$")
-    public void gotoSystemOrganizationConfigurationPage() throws InterruptedException {
+    public void gotoSystemOrganizationConfigurationPage() {
         homePage.goToOrganisationConfigurationMenuPage();
     }
 
