@@ -1,5 +1,5 @@
 Feature: Update an Attribute
-  @gluuQA5
+  @gluuQA
   Scenario: Update an Attribute
 
     When I sign in as administrator

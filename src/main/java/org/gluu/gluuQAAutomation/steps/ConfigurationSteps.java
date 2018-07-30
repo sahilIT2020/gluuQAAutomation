@@ -24,13 +24,10 @@ public class ConfigurationSteps extends BaseSteps {
 
     @Autowired
     private SystemConfigurationPage systemConfigurationPage;
-//    private OxTrustSettingsTab oxTrustSettingsTab;
 
     @When("^I go to system organization configuration page$")
     public void gotoSystemOrganizationConfigurationPage() throws InterruptedException {
         homePage.goToOrganisationConfigurationMenuPage();
-        wait(10000);
-
     }
 
     @And("^I set the Self-Service Password Reset to '(.+)'$")
@@ -132,80 +129,6 @@ public class ConfigurationSteps extends BaseSteps {
 	public void clear() {
 		homePage.clear();
 	}
-
-//    @And("^I click on the Ox Trust Settings Page$")
-//    public void oxTrustSettingsPage()  {
-//        oxTrustSettingsTab.goToOxTrustSettingsTab();
-//
-//    }
-//
-//    @And("^I set the Organization name to '(.+)'$")
-//    public void newOrganizationName(String newOrganizationNameValue) {
-//        oxTrustSettingsTab.setOrganizationName(newOrganizationNameValue);
-//    }
-//
-//    @And("^I click on the Manager Group name$")
-//    public void clickManagerGroupName() {
-//        oxTrustSettingsTab.clickManagerGroup();
-//
-//    }
-//
-//    @And("^I add the Organization Logo$")
-//    public void uploadOrganizationLogo() throws InterruptedException {
-//        oxTrustSettingsTab.addOrganizationLogo();
-//
-//    }
-//
-//    @And("^I add the Organization Favicon$")
-//    public void uploadOrganizationFavicon() throws InterruptedException {
-//        oxTrustSettingsTab.addOrganizationFavicon();
-//
-//    }
-//
-//    @And("^I click the OxTrust Update button$")
-//    public void updateButton() {
-//        oxTrustSettingsTab.clickUpdateButton();
-//    }
-//
-//    @And("^I click the OxTrust Cancel button$")
-//    public void cancelButton() {
-//        oxTrustSettingsTab.clickCancelButton();
-//    }
-//
-//    @And("^I should see the OxTrust Settings page$")
-//    public void assertThisPageIsOxTrustSettingsPage() {
-//        oxTrustSettingsTab.assertCurrentPageIsOxTrustSettingsPage();
-//
-//    }
-//
-//    @And("^I should see the Organization name set to '(.+)'$")
-//    public void assertOrganizationNameValue(String organizationNameSet) {
-//        oxTrustSettingsTab.assertOrganizationName(organizationNameSet);
-//    }
-//
-//    @And("^I see the current page URL contains '(.+)'$")
-//    public void assertPageIsGroupManageUpdatePage() {
-//        oxTrustSettingsTab.assertCurrentPageIsGroupManageUpdatePage();
-//    }
-//
-//    @And("^I should see the uploaded logo has a '(.+)' button$")
-//    public void assertRemoveLogoButtonValue(String removeLogoButtonValue) {
-//        oxTrustSettingsTab.assertOrganizationLogoPresent(removeLogoButtonValue);
-//    }
-//
-//    @And("^I should see the uploaded favicon has a '(.+)' button$")
-//    public void assertRemoveFaviconButton (String removeFaviconButtonValue) {
-//        oxTrustSettingsTab.assertFaviconPresent(removeFaviconButtonValue);
-//}
-//    @Then("^I should see the organization configuration page$")
-//        public void assertOrganizationConfigurationPage() {
-//        oxTrustSettingsTab.assertCurrentPageIsOrganizationSettingsPage();
-//    }
-//
-//    @Then("^I should see the Group Manage Update Page$")
-//        public void assertGroupManageUpdatePage() {
-//        oxTrustSettingsTab.assertCurrentPageIsGroupManageUpdatePage();
-//        }
 
     @And("^I sign out of the Gluu Server$")
     public void signOut() {
