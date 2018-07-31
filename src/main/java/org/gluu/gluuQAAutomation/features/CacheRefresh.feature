@@ -1,6 +1,6 @@
 Feature: Setup Cache Refresh
 
-@gluuQAPending
+@gluuQA
 Scenario: Setup cache refresh
 	When 	I sign in as administrator
 	And 	I go to cache refresh page

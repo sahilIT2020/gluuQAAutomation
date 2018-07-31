@@ -21,6 +21,7 @@ public class AbstractPage {
 
 	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
+	public int ONE_SEC = 1;
 	public int LITTLE = 2;
 	public int SMALL = 4;
 	public int MEDIUM = 6;

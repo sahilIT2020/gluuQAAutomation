@@ -22,6 +22,6 @@ Scenario: Delete Ldap Source Server
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to LDAP Authenticiation page
-	Then 	I delete the ldap source named 'second_server'
+	And 	I delete the ldap source named 'second_server'
 	And 	I sign out		
 	

@@ -108,20 +108,26 @@ public class CacheRefreshPage extends AbstractPage {
 
 	public void addSourceServer(String name, String bindDn, String maxCon, String servers, String baseDns,
 			String useSSl) {
-		fluentWait(LITTLE);
+		webDriver.findElement(By.className("addSourceServerButton")).click();
+		fluentWait(ONE_SEC);
 		webDriver.findElement(By.className("nameTextBox")).clear();
 		webDriver.findElement(By.className("nameTextBox")).sendKeys(name);
 
 		webDriver.findElement(By.className("bindDnTextBox")).clear();
-		webDriver.findElement(By.className("bindDnTextBox")).sendKeys(name);
+		webDriver.findElement(By.className("bindDnTextBox")).sendKeys(bindDn);
 
 		webDriver.findElement(By.className("maxConnectionTextBox")).clear();
-		webDriver.findElement(By.className("maxConnectionTextBox")).sendKeys(name);
-
-		webDriver.findElements(By.className("addItemButton")).get(0).click();
+		webDriver.findElement(By.className("maxConnectionTextBox")).sendKeys(maxCon);
+		
+        WebElement container=webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
+        container.findElements(By.className("addItemButton")).get(0).click();
 		fluentWait(LITTLE);
-
-		WebElement element = webDriver.findElement(By.className("useSSLSelectBox"));
+		webDriver.findElement(By.className("NewPropertyBox")).sendKeys(servers);
+		WebElement main=webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
+		main.findElements(By.className("addItemButton")).get(1).click();
+		fluentWait(ONE_SEC);
+		main.findElements(By.className("NewPropertyBox")).get(1).sendKeys(baseDns);
+		WebElement element = main.findElement(By.className("useSSLSelectBox"));
 		WebElement parent = element.findElement(By.xpath(".."));
 		if (useSSl.equalsIgnoreCase("true") && !parent.getAttribute("class").contains("checked")) {
 			parent.click();
@@ -129,8 +135,6 @@ public class CacheRefreshPage extends AbstractPage {
 		if (useSSl.equalsIgnoreCase("false") && parent.getAttribute("class").contains("checked")) {
 			parent.click();
 		}
-
-		webDriver.findElement(By.className("addSourceServerButton")).click();
-		fluentWait(LARGE);
+		fluentWait(ONE_SEC);
 	}
 }
