@@ -1,4 +1,4 @@
-Feature: Add social strategy 
+Feature: Social strategy 
 @gluuQA
 Scenario: Add social strategy
 	When 	I sign in as administrator 

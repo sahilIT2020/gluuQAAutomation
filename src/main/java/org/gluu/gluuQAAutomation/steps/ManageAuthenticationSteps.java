@@ -145,6 +145,11 @@ public class ManageAuthenticationSteps extends BaseSteps {
 		ldapAuthenticationPage.checkLdapSourceServer(name, bindDn, maxCon, pKey, lPKey, servers, baseDn, useSSl);
 	}
 
+	@Then("^I should not see an ldap source named '(.+)'$")
+	public void checkSourceNonExistence(String name) {
+		ldapAuthenticationPage.assertSourceDontExist(name);
+	}
+
 	@Then("^I add an ldap source named '(.+)' with bindDn '(.+)' with maxConn '(.+)' with primary key '(.+)' with local primary key '(.+)' with servers '(.+)' with basedn '(.+)' and ssl '(.+)'$")
 	public void addSourceLdapServer(String name, String bindDn, String maxCon, String pKey, String lPKey,
 			String servers, String baseDn, String useSSl) {

@@ -18,7 +18,7 @@ public class AttributesExportPage extends AbstractPage {
 
 	public void clickExportButton() {
 		webDriver.findElement(By.className("exportAttributeButton")).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	private void init() {

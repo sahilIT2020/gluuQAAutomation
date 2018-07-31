@@ -35,7 +35,7 @@ public class TrAddPage extends AbstractPage {
 	}
 
 	public void setMetadataType(String mtype) {
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement element = waitElementByID("trustForm:spMetaDataSourceType:outputInputPanel");
 		WebElement box = element.findElement(By.tagName("select"));
 		Select select = new Select(box);
@@ -43,18 +43,18 @@ public class TrAddPage extends AbstractPage {
 	}
 
 	public void setMetadata(String path) {
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement element = webDriver.findElement(By.id("trustForm:fileWrapper:outputInputPanel"));
 		WebElement fileUploader = element.findElement(By.cssSelector("input[type='file']"));
 		fileUploader.sendKeys(path);
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void configureRp(String profile) {
 		WebElement element = webDriver.findElement(By.id("trustForm:configureSpecific:outputInputPanel"));
 		element = element.findElement(By.tagName("input"));
 		element.click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement link = waitElementByID("trustForm:configureSpecific:RelyingPartyConfig");
 		link.click();
 
@@ -76,16 +76,16 @@ public class TrAddPage extends AbstractPage {
 				button.click();
 			}
 		}
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement footer = webDriver.findElement(By.id("relyingPartyUpdate"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void save() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void releaseAttributes(String attributes) {

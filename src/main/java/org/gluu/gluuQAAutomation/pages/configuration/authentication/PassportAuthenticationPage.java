@@ -13,7 +13,7 @@ public class PassportAuthenticationPage extends AbstractPage {
 	public void save() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void setPassportStatus(String status) {
@@ -24,7 +24,7 @@ public class PassportAuthenticationPage extends AbstractPage {
 	public void addStrategy(String name, String id, String secret) {
 		WebElement addStrategyButton = webDriver.findElement(By.className("addStrategyButton"));
 		addStrategyButton.click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 
 		WebElement strategiesArea = webDriver.findElement(By.id("customAuthenticationForm:strategyId"));
 		WebElement strategyArea = strategiesArea.findElement(By.className("NewEmptyStrategy"));
@@ -40,7 +40,7 @@ public class PassportAuthenticationPage extends AbstractPage {
 		WebElement value2 = strategyArea.findElements(By.className("propertyValueTextBox")).get(1);
 		value2.clear();
 		value2.sendKeys(secret);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		save();
 	}
 
@@ -48,12 +48,12 @@ public class PassportAuthenticationPage extends AbstractPage {
 		WebElement strategyBox = webDriver.findElement(By.className(name));
 		WebElement delete = strategyBox.findElement(By.className("deleteStrategy"));
 		delete.click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		String classname = "dialogBoxPanelFor".concat(name);
 		WebElement button = webDriver.findElement(By.className(classname))
-				.findElement(By.className("confirmStrategyDeletion"));
+				.findElement(By.className("confirmDialogButton"));
 		button.click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void assertStrategyIsNotPresent(String name) {

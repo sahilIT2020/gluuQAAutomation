@@ -15,14 +15,14 @@ public class AttributesImportPage extends AbstractPage {
 		WebElement addButton = upLoader.findElement(By.cssSelector("input[type='file']"));
 		String finalPath = getUserDir().concat(File.separator).concat("attributes.ldif");
 		addButton.sendKeys(finalPath);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void validateAndImport() {
 		webDriver.findElement(By.className("validateButton")).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		webDriver.findElement(By.className("importButton")).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 }

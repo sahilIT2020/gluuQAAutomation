@@ -29,13 +29,12 @@ public class SamlSteps extends BaseSteps {
 	@Autowired
 	private TrManagePage trManagePage;
 
-	
 	@Autowired
 	private NameIdConfigurationPage namdIdConfigurationPage;
-	
+
 	@Autowired
 	private NameIdAddPage nameIdAddPage;
-	
+
 	@When("^I go to tr add page$")
 	public void goToTrAddPage() {
 		homePage.goSamlTrAddPage();
@@ -126,45 +125,46 @@ public class SamlSteps extends BaseSteps {
 		trManagePage.goToDetailOf(name);
 		trUpdatePage.delete();
 	}
-	
-	@After
-	public void clear() {
-		homePage.clear();
-	}
-	
+
 	@When("^I go to custom nameId configuration page$")
 	public void goToNameIdConfigPage() {
 		homePage.goNameIdConfigurePage();
 	}
-	
+
+	@And("^I delete the nameID name '(.+)'$")
+	public void deleteConfiguredNamedID(String name) {
+		namdIdConfigurationPage.delete(name);
+		trUpdatePage.save();
+	}
+
 	@And("^I start the process to add new name id configuration$")
 	public void startAddingNewNamedId() {
 		namdIdConfigurationPage.startAddingNewConfiguration();
 	}
-	
-	@And("^I set '(.+)' as source atrribute$")
-	public void setSourceAttribute(String source) {
-		nameIdAddPage.setSourceAttribute(source);
+
+	@And("^I add a namedid with source attrib '(.+)' with name '(.+)' with type '(.+)' and enable '(.+)'$")
+	public void addNewNamedId(String source, String name, String type, String enable) {
+		nameIdAddPage.addNamedId(source, name, type, enable);
 	}
-	
-	@And("^I set '(.+)' as name$")
-	public void setName(String source) {
-		nameIdAddPage.setName(source);
-	}
-	
-	@And("^I set '(.+)' as nameid type$")
-	public void setType(String source) {
-		nameIdAddPage.setType(source);
-	}
-	@And("^I enable it$")
-	public void setEnable() {
-		nameIdAddPage.enable();
-	}
-	
-	@And("^I save the name id$")
+
+	@And("^I save the namedid configuration$")
 	public void saveNameId() {
 		nameIdAddPage.save();
 	}
-	
+
+	@Then("^I should see a named id named '(.+)' in the list$")
+	public void checkNamedIdExist(String name) {
+		nameIdAddPage.assertNamedExist(name);
+	}
+
+	@Then("^I should not see a named id named '(.+)' in the list$")
+	public void checkNamedIdDontExist(String name) {
+		nameIdAddPage.assertNamedDontExist(name);
+	}
+
+	@After
+	public void clear() {
+		homePage.clear();
+	}
 
 }

@@ -8,4 +8,6 @@ Scenario: Add new sector
 	And 	I set 'https://gluuqa/login/redirect' as login redirect
 	And 	I pick 'oxtrust' as client
 	And 	I save the sector
-	Then 	I go to sectors list page
+	When 	I go to sectors list page
+	Then 	I should see that the list is not empty
+	And 	I sign out

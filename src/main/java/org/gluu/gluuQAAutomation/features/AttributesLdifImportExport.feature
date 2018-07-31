@@ -1,5 +1,5 @@
 Feature: Attributes LDIFExport 
-@gluuQA 
+@gluuQA
 Scenario: Attributes LDIF Export 
 	When 	I sign in as administrator 
 	And 	I go to Attributes export page 

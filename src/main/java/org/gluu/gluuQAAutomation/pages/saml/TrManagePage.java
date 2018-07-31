@@ -21,16 +21,16 @@ public class TrManagePage extends AbstractPage {
 		searchField.sendKeys(pattern);
 		WebElement searchButton = webDriver.findElement(By.className("searchButton"));
 		searchButton.click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void goToDetailOf(String name) {
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement form = webDriver.findElement(By.id("trustRelationsshipList:relationshipstable"));
 		WebElement body = form.findElement(By.id("trustRelationsshipList:relationshipstable:tb"));
 		Assert.assertTrue(body.findElement(By.tagName("tr")).getText().contains(name));
 		body.findElement(By.tagName("tr")).findElement(By.tagName("td")).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void assertTrNotExist(String trName) {

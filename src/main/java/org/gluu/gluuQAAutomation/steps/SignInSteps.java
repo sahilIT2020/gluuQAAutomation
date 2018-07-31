@@ -28,6 +28,13 @@ public class SignInSteps extends BaseSteps {
 		signInPage.fillFormAsAdmin();
 		signInPage.submit();
 	}
+	
+	@Then("^I should be able to login as '(.+)' with password '(.+)'$")
+	public void loginAsUserWithPassword(String userName,String pwd) {
+		signInPage.goToLoginPage();
+		signInPage.fillForm(userName, pwd);
+		signInPage.submit();
+	}
 
 	@When("^I sign in with username '(.+)' and password '(.+)'$")
 	public void signInWithUserNameAndPassword(String userName, String password) {

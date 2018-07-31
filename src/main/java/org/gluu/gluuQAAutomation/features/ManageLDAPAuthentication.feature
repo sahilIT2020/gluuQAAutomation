@@ -7,7 +7,7 @@ Scenario: Check Manage LDAP authentication
 	Then 	I should see an ldap source named 'auth_ldap_server' with bindDn 'cn=directory manager,o=gluu' with maxConn '1000' with primary key 'uid' with local primary key 'uid' with servers 'localhost:1636' with basedn 'o=gluu' and ssl 'true'
 	And 	I sign out
 	
-@gluuQAPending
+@gluuQA
 Scenario: Add Ldap Source Server 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
@@ -17,11 +17,12 @@ Scenario: Add Ldap Source Server
 	Then 	I should see an ldap source named 'second_server' with bindDn 'cn=directory manager,o=gluu' with maxConn '1000' with primary key 'uid' with local primary key 'uid' with servers 'localhost:1636' with basedn 'o=gluu' and ssl 'true'
 	And 	I sign out
 	
-@gluuQAPending
+@gluuQA
 Scenario: Delete Ldap Source Server 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to LDAP Authenticiation page
 	And 	I delete the ldap source named 'second_server'
+	Then 	I should not see an ldap source named 'second_server'
 	And 	I sign out		
 	

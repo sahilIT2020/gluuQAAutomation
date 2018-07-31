@@ -14,20 +14,20 @@ public class CacheRefreshPage extends AbstractPage {
 	public void addSourcedestinationAttribute(String source, String destination) {
 		WebElement element = webDriver.findElement(By.className("addNewPropertyButton"));
 		element.click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
 		WebElement lastTable = tables.get(tables.size() - 1);
 		lastTable.findElement(By.className("propertyLabelTextBox")).sendKeys(source);
 		lastTable.findElement(By.className("propertyValueTextBox")).sendKeys(destination);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void deleteAllSourceDestinationAttributes() {
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
 		while (tables.size() >= 1) {
 			tables.get(0).findElement(By.className("removePropertyButton")).click();
-			fluentWait(LITTLE);
+			fluentWait(ONE_SEC);
 			tables = webDriver.findElements(By.className("propertiesList"));
 		}
 	}
@@ -44,66 +44,66 @@ public class CacheRefreshPage extends AbstractPage {
 
 	public void save() {
 		webDriver.findElement(By.className("updateButon")).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void addKeyAttrib(String attrib) {
 		webDriver.findElements(By.className("addItemButton")).get(0).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("KeyAttributeList"));
 		WebElement newAttrib = attribs.get(attribs.size() - 1);
 		newAttrib.findElement(By.tagName("input")).clear();
 		newAttrib.findElement(By.tagName("input")).sendKeys(attrib);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void deleteAllKeyAttributes() {
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("KeyAttributeList"));
 		while (attribs.size() >= 1) {
 			attribs.get(0).findElement(By.className("removeItemButton")).click();
-			fluentWait(LITTLE);
+			fluentWait(ONE_SEC);
 			attribs = webDriver.findElements(By.className("KeyAttributeList"));
 		}
 	}
 	
 	public void deleteAllObject() {
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("ObjectClassList"));
 		while (attribs.size() >= 1) {
 			attribs.get(0).findElement(By.className("removeItemButton")).click();
-			fluentWait(LITTLE);
+			fluentWait(ONE_SEC);
 			attribs = webDriver.findElements(By.className("ObjectClassList"));
 		}
 	}
 
 	public void addObjectClass(String name) {
 		webDriver.findElements(By.className("addItemButton")).get(1).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> classes = webDriver.findElements(By.className("ObjectClassList"));
 		WebElement newClass = classes.get(classes.size() - 1);
 		newClass.findElement(By.tagName("input")).clear();
 		newClass.findElement(By.tagName("input")).sendKeys(name);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 	public void deleteAllSourceAttrib() {
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("SourceAttribeList"));
 		while (attribs.size() >= 1) {
 			attribs.get(0).findElement(By.className("removeItemButton")).click();
-			fluentWait(LITTLE);
+			fluentWait(ONE_SEC);
 			attribs = webDriver.findElements(By.className("SourceAttribeList"));
 		}
 	}
 
 	public void addAttrib(String name) {
 		webDriver.findElements(By.className("addItemButton")).get(2).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("SourceAttribeList"));
 		WebElement newSourceAttrib = attribs.get(attribs.size() - 1);
 		newSourceAttrib.findElement(By.tagName("input")).clear();
 		newSourceAttrib.findElement(By.tagName("input")).sendKeys(name);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void addSourceServer(String name, String bindDn, String maxCon, String servers, String baseDns,
@@ -121,12 +121,14 @@ public class CacheRefreshPage extends AbstractPage {
 		
         WebElement container=webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
         container.findElements(By.className("addItemButton")).get(0).click();
-		fluentWait(LITTLE);
-		webDriver.findElement(By.className("NewPropertyBox")).sendKeys(servers);
+		fluentWait(ONE_SEC);
+		List<WebElement> properties=container.findElements(By.className("NewPropertyBox"));
+		properties.get(properties.size()-1).sendKeys(servers);
 		WebElement main=webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
 		main.findElements(By.className("addItemButton")).get(1).click();
 		fluentWait(ONE_SEC);
-		main.findElements(By.className("NewPropertyBox")).get(1).sendKeys(baseDns);
+		properties=main.findElements(By.className("NewPropertyBox"));
+		properties.get(properties.size()-1).sendKeys(baseDns);
 		WebElement element = main.findElement(By.className("useSSLSelectBox"));
 		WebElement parent = element.findElement(By.xpath(".."));
 		if (useSSl.equalsIgnoreCase("true") && !parent.getAttribute("class").contains("checked")) {

@@ -153,6 +153,7 @@ public class ClientAddPage extends AbstractPage {
 
 	public void grantType(String grantType) {
 		scrollDown();
+		fluentWait(LITTLE);
 		waitElementByClass("box-header");
 		waitElementByID("clientForm:displayName:outputInputPanel");
 		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
@@ -163,6 +164,7 @@ public class ClientAddPage extends AbstractPage {
 
 	public void loginRedirect(String url) {
 		scrollDown();
+		fluentWait(LITTLE);
 		waitElementByClass("box-header");
 		waitElementByID("clientForm:displayName:outputInputPanel");
 		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");

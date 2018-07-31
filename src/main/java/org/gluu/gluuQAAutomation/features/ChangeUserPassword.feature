@@ -17,4 +17,16 @@ Scenario: Change user password
 	Then 	I should see a user named 'QaUserPasswordChanged' 
 	When 	I start to update that user 
 	And 	I set his password to 'QaUserPasswordChanged'
-	Then 	I sign out
+	And 	I sign out
+	Then 	I should be able to login as 'QaUserPasswordChanged' with password 'QaUserPasswordChanged'
+	And 	I sign out
+	Then 	I sign in as administrator
+	When 	I go to users manage page 
+	And 	I search for user with pattern 'QaUserPasswordChanged' 
+	Then 	I should see a user named 'QaUserPasswordChanged' 
+	When 	I start to update that user 
+	And 	I delete the current user
+	When 	I search for user with pattern 'QaUserPasswordChanged' 
+	Then 	I should not see a user named 'QaUserPasswordChanged'
+	And 	I sign out 
+	

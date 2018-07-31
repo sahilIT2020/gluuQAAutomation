@@ -21,7 +21,7 @@ Scenario: Setup cache refresh
 	And 	I add source attribute named 'uid'
 	And 	I add source attribute named 'name'
 	Then 	I select the tab named 'Source Backend LDAP Servers'
-	And 	I add a source server named 'secondSource' with bindDn 'cn=directory manager,o=gluu' with maxCon '1000' with servers 'localhost:1636;localhost:1635' with baseDns 'o=gluu;o=site' using ssl 'true'
+	And 	I add a source server named 'secondSource' with bindDn 'cn=directory manager,o=gluu' with maxCon '1000' with servers 'localhost:1636' with baseDns 'o=gluu;o=site' using ssl 'true'
 	And 	I save the cache refresh configuration
 	Then 	I sign out
 	

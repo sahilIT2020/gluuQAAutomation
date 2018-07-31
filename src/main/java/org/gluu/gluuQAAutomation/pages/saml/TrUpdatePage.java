@@ -13,7 +13,7 @@ public class TrUpdatePage extends TrAddPage {
 	public void update() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void delete() {
@@ -21,10 +21,10 @@ public class TrUpdatePage extends TrAddPage {
 		List<WebElement> buttons = footer.findElements(By.tagName("input"));
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(buttons.get(2)).click().perform();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement dialog = waitElementByID("deleteConfirmation:acceptRemovalModalPanel_content");
 		dialog.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 }

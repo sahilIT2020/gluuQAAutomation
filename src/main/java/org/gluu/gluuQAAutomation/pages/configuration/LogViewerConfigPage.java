@@ -22,22 +22,22 @@ public class LogViewerConfigPage extends AbstractPage {
 	}
 
 	public void addNewLogTemplate(String name, String value) {
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		webDriver.findElement(By.className("addNewPropertyButton")).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		List<WebElement> tables = webDriver.findElements(By.className("propertiesList"));
 		WebElement table = tables.get(tables.size() - 1).findElement(By.tagName("tbody"));
 		WebElement lastElement = table.findElements(By.tagName("tr")).get(0);
 		lastElement.findElement(By.className("propertyLabelTextBox")).clear();
 		lastElement.findElement(By.className("propertyLabelTextBox")).sendKeys(name);
 		lastElement.findElement(By.className("propertyValueTextBox")).sendKeys(value);
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		save();
 	}
 
 	private void save() {
 		webDriver.findElement(By.id("updateButtons")).findElements(By.tagName("input")).get(0).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void checkTemplate(String name, String value) {

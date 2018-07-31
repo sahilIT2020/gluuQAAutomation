@@ -59,6 +59,12 @@ public class LDAPAuthenticationPage extends AbstractPage {
 		}
 
 	}
+	
+	public void assertSourceDontExist(String name) {
+		init();
+		WebElement currentSource = getRightSourceServer(name);
+		Assert.assertNull(currentSource);
+	}
 
 	private WebElement getRightSourceServer(String name) {
 		WebElement found = null;
@@ -86,19 +92,45 @@ public class LDAPAuthenticationPage extends AbstractPage {
 		currentSource.findElement(By.className("maxConnectionTextBox")).sendKeys(maxCon);
 		currentSource.findElement(By.className("primaryKeyTextBox")).sendKeys(pKey);
 		currentSource.findElement(By.className("localPrimaryKeyTextBox")).sendKeys(lPKey);
+
+		currentSource.findElements(By.className("addItemButton")).get(0).click();
+		fluentWait(ONE_SEC);
+		List<WebElement> properties = currentSource.findElements(By.className("NewPropertyBox"));
+		WebElement current = properties.get(properties.size() - 1);
+		current.sendKeys(servers);
+
+		currentSource.findElements(By.className("addItemButton")).get(1).click();
+		fluentWait(ONE_SEC);
+		properties = currentSource.findElements(By.className("NewPropertyBox"));
+		current = properties.get(properties.size() - 1);
+		current.sendKeys(baseDn);
+
+		WebElement useSslBox = currentSource.findElement(By.className("useSSLSelectBox"));
+		WebElement parent = useSslBox.findElement(By.xpath(".."));
+		if (useSSl.equalsIgnoreCase("true") && !parent.getAttribute("class").contains("checked")) {
+			parent.click();
+		}
+		if (useSSl.equalsIgnoreCase("false") && parent.getAttribute("class").contains("checked")) {
+			parent.click();
+		}
 		save();
+		fluentWait(ONE_SEC);
 	}
 
 	public void save() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 	}
 
 	public void deleteSourceServer(String name) {
 		init();
+		scrollDown();
+		fluentWait(LITTLE);
 		WebElement currentSource = getRightSourceServer(name);
 		currentSource.findElement(By.className("deleteSourceServerButton")).click();
+		scrollUp();
+		save();
+		fluentWait(ONE_SEC);
 	}
-
 }
