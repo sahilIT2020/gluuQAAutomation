@@ -21,6 +21,7 @@ public class GroupManagePage extends AbstractPage {
 		Assert.assertTrue(inputs.size() == 2);
 		inputs.get(0).sendKeys(pattern);
 		inputs.get(1).click();
+		fluentWait(ONE_SEC);
 	}
 
 	public boolean groupExistList(String username) {

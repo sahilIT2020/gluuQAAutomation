@@ -1,7 +1,6 @@
 Feature: Update an Attribute
-  @gluuQA
+  @gluuQAPending
   Scenario: Update an Attribute
-
     When I sign in as administrator
     Then I should see gluu home page
     When I go to Attributes page

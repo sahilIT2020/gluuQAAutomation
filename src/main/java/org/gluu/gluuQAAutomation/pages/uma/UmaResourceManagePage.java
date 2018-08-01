@@ -27,7 +27,7 @@ public class UmaResourceManagePage extends AbstractPage {
 
 	private void performSearch() {
 		webDriver.findElement(By.className("searchButtonClass")).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	private boolean assertUmaResourceExistInList(String resName, String umaScope) {

@@ -17,7 +17,7 @@ public class UmaScopeAddPage extends AbstractPage {
 		WebElement buttonBar = webDriver.findElement(By.className("box-footer"));
 		buttonBar.click();
 		buttonBar.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	private void initTableItems() {

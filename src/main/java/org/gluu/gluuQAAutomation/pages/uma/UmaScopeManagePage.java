@@ -13,7 +13,7 @@ public class UmaScopeManagePage extends AbstractPage {
 
 	public void assertUmaScopeExist(String scopeName) {
 		Assert.assertTrue(assertUmaScopeExistInList(scopeName));
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void goToScopeAddPage() {
@@ -29,7 +29,7 @@ public class UmaScopeManagePage extends AbstractPage {
 
 	private void performSearch() {
 		webDriver.findElement(By.className("searchButtonClass")).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	private boolean assertUmaScopeExistInList(String umaScope) {

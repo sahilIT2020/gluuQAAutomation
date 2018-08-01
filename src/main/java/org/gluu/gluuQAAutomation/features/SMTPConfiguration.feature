@@ -1,5 +1,5 @@
 Feature: SMTP config 
-@gluuQA 
+@gluuQA
 Scenario: SMTP config 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
@@ -12,4 +12,5 @@ Scenario: SMTP config
 	And 	I set '456' as smtp port
 	And 	I test the configuration
 	And 	I save the configuration
+	Then 	I sign out
 	

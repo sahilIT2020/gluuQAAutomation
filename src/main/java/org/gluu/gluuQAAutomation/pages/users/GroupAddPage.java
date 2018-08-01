@@ -36,7 +36,7 @@ public class GroupAddPage extends AbstractPage {
 	public void save() {
 		WebElement footer = webDriver.findElement(By.id("updateButtons"));
 		footer.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void cancel() {
@@ -47,7 +47,7 @@ public class GroupAddPage extends AbstractPage {
 	public void pickUser(String user) {
 		WebElement addButton = webDriver.findElement(By.className("AddMember"));
 		addButton.click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement dialogBox = webDriver.findElement(By.id("member:selectMemberModalPanel_container"));
 		WebElement content = dialogBox.findElement(By.id("member:selectMemberModalPanel_content"));
 		content = content.findElement(By.tagName("table"));
@@ -55,7 +55,7 @@ public class GroupAddPage extends AbstractPage {
 		inupts.get(0).clear();
 		inupts.get(0).sendKeys(user);
 		inupts.get(1).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement dialogBox1 = waitElementByID("member:selectMemberModalPanel_container");
 		WebElement main = dialogBox1.findElement(By.id("member:selectMemberModalPanel_content"));
 		WebElement result = main.findElement(By.tagName("table"));
@@ -63,7 +63,7 @@ public class GroupAddPage extends AbstractPage {
 		Assert.assertNotNull(searchResult);
 		WebElement searchResult1 = searchResult.findElement(By.tagName("tbody"));
 		searchResult1.click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement firstRow = searchResult1.findElements(By.tagName("tr")).get(0);
 		Assert.assertNotNull(firstRow);
 		firstRow.findElements(By.tagName("td")).get(0).click();

@@ -68,10 +68,10 @@ public class UserUpdatePage extends AbstractPage {
 		List<WebElement> buttons = footer.findElements(By.tagName("input"));
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(buttons.get(2)).click().perform();
-
+		fluentWait(ONE_SEC); 
 		WebElement dialog = webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"));
 		dialog.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	public void cancel() {

@@ -19,7 +19,7 @@ public class UserImportPage extends AbstractPage {
 		WebElement addButton = upLoarder.findElement(By.cssSelector("input[type='file']"));
 		String finalPath = getUserDir().concat("/src/main/resources/ImportUsers.xls");
 		addButton.sendKeys(finalPath);
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		validate();
 		performImport();
 	}
@@ -27,13 +27,13 @@ public class UserImportPage extends AbstractPage {
 	private void validate() {
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(footer.findElements(By.tagName("input")).get(0)).click().perform();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 	private void performImport() {
 		WebElement panel = webDriver.findElement(By.id("updateButtons"));
 		panel.findElements(By.tagName("input")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 	}
 
 }
