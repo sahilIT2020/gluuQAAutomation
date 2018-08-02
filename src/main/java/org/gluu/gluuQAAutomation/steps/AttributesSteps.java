@@ -59,11 +59,6 @@ public class AttributesSteps extends BaseSteps {
         attributesPage.registerAttribute();
     }
 
-    @And("^I register a name: '(.+)'$")
-    public void attributeName(String nameSet) {
-        attributesPage.registerName(nameSet);
-    }
-
     @And("^I register SAML1 URI: '(.+)'$")
     public void saml1Value(String saml1ValueSet) {
         attributesPage.registerSAML1(saml1ValueSet);
@@ -150,10 +145,6 @@ public class AttributesSteps extends BaseSteps {
     @And("^I choose the inactive status$")
     public void chooseInactiveStatus() {
         attributesPage.status();
-    }
-    @And("^I click on the register button$")
-    public void registerAttributeButton() {
-        attributesPage.registerButton();
     }
     @And("^I click on the cancel button$")
     public void cancelRegistrationButton() {
