@@ -17,7 +17,7 @@ public class AttributesPage extends AbstractPage {
 
     public void showAllAttributes() {
         WebElement allButton = webDriver.findElement(
-                By.id("attributesFormId:j_idt138"));
+                By.className("showAllAttributesButton"));
         allButton.click();
 
     }
@@ -61,23 +61,16 @@ public class AttributesPage extends AbstractPage {
 
     }
 
-    public void registerName(String registerNameValue) {
-        WebElement registerAttributeName = webDriver.findElement(
-                By.id("j_idt135:name:nameId"));
-        registerAttributeName.clear();
-        registerAttributeName.sendKeys(registerNameValue);
-    }
-
     public void registerSAML1(String registerSAML1UriValue) {
         WebElement registerSAML1Uri = webDriver.findElement(
-                By.id("j_idt135:saml1Uri:saml1Id"));
+                By.className("registerSAML1Field"));
         registerSAML1Uri.clear();
         registerSAML1Uri.sendKeys(registerSAML1UriValue);
     }
 
     public void registerSAML2(String registerSAML2Value) {
         WebElement registerSAML2Uri = webDriver.findElement(
-                By.id("j_idt135:saml2Uri:saml2Id"));
+                By.className("registerSAML2Field"));
         registerSAML2Uri.clear();
         registerSAML2Uri.sendKeys(registerSAML2Value);
 
@@ -85,7 +78,7 @@ public class AttributesPage extends AbstractPage {
 
     public void registerDisplayName(String registerDisplayNameValue) {
         WebElement displayName = webDriver.findElement(
-                By.id("j_idt135:displayName:displayNameId"));
+                By.className("registerDisplayNameField"));
         displayName.clear();
         displayName.sendKeys(registerDisplayNameValue);
 
@@ -93,14 +86,14 @@ public class AttributesPage extends AbstractPage {
 
     public void chooseType() {
         Select typeChosen = new Select(webDriver.findElement(
-                By.id("j_idt135:dataType:dataTypeId")));
+                By.className("chooseTypeField")));
         typeChosen.selectByVisibleText("Boolean");
 
     }
 
     public void editType() {
         Select typeEdited = new Select(webDriver.findElement(
-                By.id("j_idt135:editType:editTypeId")));
+                By.className("editTypeField")));
         typeEdited.deselectAll();
         typeEdited.selectByValue("ADMIN");
 
@@ -108,58 +101,58 @@ public class AttributesPage extends AbstractPage {
 
     public void viewType() {
         Select typeViewed = new Select(webDriver.findElement(
-                By.id("j_idt135:viewType:viewTypeId")));
+                By.className("viewTypeField")));
         typeViewed.deselectAll();
         typeViewed.selectByValue("ADMIN");
     }
 
     public void usageType() {
         Select typeUsed = new Select(webDriver.findElement(
-                By.id("j_idt135:usageType:usageTypeId")));
+                By.className("usageTypeField")));
         typeUsed.deselectAll();
         typeUsed.selectByValue("OPENID");
     }
 
     public void multivalued() {
         Select multivaluedValue = new Select(webDriver.findElement(
-                By.id("j_idt135:multivalued:multivaluedId")));
+                By.className("multivaluedField")));
         multivaluedValue.selectByVisibleText("True");
     }
 
     public void claimName(String claimNameValue) {
         WebElement setClaimName = webDriver.findElement(
-                By.id("j_idt135:claimName:claimNameId"));
+                By.className("claimNameField"));
         setClaimName.clear();
         setClaimName.sendKeys(claimNameValue);
     }
 
     public void scimAttribute() {
         Select scimAttributeValue = new Select(webDriver.findElement(
-                By.id("j_idt135:scimattr:scimAttrId")));
+                By.className("scimAttributeField")));
         scimAttributeValue.selectByVisibleText("True");
     }
 
     public void setAttributeDescription(String descriptionValue) {
         WebElement descriptionText = webDriver.findElement(
-                By.id("j_idt135:description:descriptionId"));
+                By.className("setAttributeDescriptionField"));
         descriptionText.clear();
         descriptionText.sendKeys(descriptionValue);
     }
 
     public void enableCustomValidation() {
         if (!webDriver.findElement(
-                By.id("j_idt135:validationToggle:validationToggleId")).isSelected()) {
+                By.className("enableCustomValidationValue")).isSelected()) {
             webDriver.findElement(
-                    By.id("j_idt135:validationToggle:validationToggleId"))
+                    By.className("enableCustomValidationValue"))
                     .findElement(By.xpath("..")).click();
         }
     }
 
     public void setValidationRegExp (String regExpValue) {
         WebDriverWait wait = new WebDriverWait(webDriver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt135:validationRE:validationREId")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("setValidationRegExpField")));
             WebElement regExText = webDriver.findElement(
-                    By.id("j_idt135:validationRE:validationREId"));
+                    By.className("setValidationRegExpField"));
             regExText.clear();
             regExText.sendKeys(regExpValue);
     }
@@ -167,65 +160,60 @@ public class AttributesPage extends AbstractPage {
 
     public void enableTooltip() {
         if (!webDriver.findElement(
-                By.id("j_idt135:tooltipToggle:tooltipToggleId")).isSelected()) {
+                By.className("enableTooltipField")).isSelected()) {
             webDriver.findElement(
-                    By.id("j_idt135:tooltipToggle:tooltipToggleId"))
+                    By.className("enableTooltipField"))
                     .findElement(By.xpath("..")).click();
         }
 
     }
     public void tooltipText(String textValue) {
-        waitElementByID("j_idt135:tooltipText:tooltipTextId");
+        waitElementByClass("tooltipTextField");
         WebElement tooltipField = webDriver.findElement(
-                By.id("j_idt135:tooltipText:tooltipTextId"));
+                By.className("tooltipTextField"));
         tooltipField.sendKeys(textValue);
 
     }
 
     public void minimumLength(String minimumLengthSet) {
         WebElement minimumLengthValue = webDriver.findElement(
-                By.id("j_idt135:minlength:minlengthid"));
+                By.className("minimumLengthField"));
         minimumLengthValue.clear();
         minimumLengthValue.sendKeys(minimumLengthSet);
 
         }
     public void maximumLength(String maximumLengthSet) {
         WebElement maximumLengthValue = webDriver.findElement(
-                By.id("j_idt135:maxlength:maxlengthid"));
+                By.className("maximumLengthField"));
         maximumLengthValue.clear();
         maximumLengthValue.sendKeys(maximumLengthSet);
 
     }
     public void regexPattern (String regexPatternSet) {
         WebElement regexPatternValue = webDriver.findElement(
-                By.id("j_idt135:regex:regexid"));
+                By.className("regexPatternField"));
         regexPatternValue.clear();
         regexPatternValue.sendKeys(regexPatternSet);
 
     }
     public void status() {
         Select statusChosen = new Select(webDriver.findElement(
-                By.id("j_idt135:status:statusId")));
+                By.className("statusValue")));
         statusChosen.selectByVisibleText("INACTIVE");
-
     }
-    public void registerButton() {
-        WebElement regButtonFinal = webDriver.findElement(
-                By.name("j_idt135:j_idt374"));
-        regButtonFinal.click();
 
-    }
     public void cancelButton() {
             WebElement cancelButtonFinal = webDriver.findElement(
-                    By.name("j_idt135:j_idt375"));
+                    By.name("cancelButton"));
             cancelButtonFinal.click();
     }
+
     public void deleteAttribute() {
         WebElement deleteButton = webDriver.findElement(
-                By.id("j_idt135:j_idt375"));
+                By.id("deleteButton"));
         deleteButton.click();
         WebElement confirmDeletion = webDriver.findElement(
-                By.id("deleteConfirmation:j_idt390"));
+                By.id("deleteButton"));
                 confirmDeletion.click();
 
     }
