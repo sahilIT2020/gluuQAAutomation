@@ -45,10 +45,10 @@ public class SectorAddPage extends AbstractPage {
 
 		WebElement searchButton = searchBox.findElements(By.xpath("following-sibling::input")).get(0);
 		searchButton.click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		waitElementByTag("table");
 		List<WebElement> popups = webDriver.findElements(By.tagName("table"));
-		WebElement popupBody = popups.get(3).findElement(By.tagName("tbody"));
+		WebElement popupBody = popups.get(popups.size()-1).findElement(By.tagName("tbody"));
 		WebElement row = popupBody.findElements(By.tagName("tr")).get(0);
 		row.findElements(By.tagName("td")).get(0).findElement(By.tagName("input")).click();
 

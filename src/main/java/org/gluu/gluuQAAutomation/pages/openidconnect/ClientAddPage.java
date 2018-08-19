@@ -93,24 +93,23 @@ public class ClientAddPage extends AbstractPage {
 	}
 
 	public void addScope(String scope) {
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		scrollDown();
 		scrollDown();
-		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
-		WebElement addScopeButton = commandSection.findElement(By.className("addScopeButton"));
+		WebElement addScopeButton = webDriver.findElement(By.className("AddScopeButton"));
 		addScopeButton.click();
 		searchForScope(scope);
 		confirm();
 	}
 
 	private void searchForScope(String value) {
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement main = waitElementByID("scope:selectScopeModalPanel_content");
 		WebElement searchText = main.findElement(By.className("searchParameters"));
 		searchText.clear();
 		searchText.sendKeys(value);
 		main.findElements(By.className("btn-primary")).get(0).click();
-		fluentWait(SMALL);
+		fluentWait(ONE_SEC);
 		WebElement pane = waitElementByID("scope:selectScopeModalPanel_content");
 		WebElement table = pane.findElements(By.tagName("table")).get(0);
 		WebElement body = table.findElement(By.tagName("tbody"));
@@ -142,33 +141,27 @@ public class ClientAddPage extends AbstractPage {
 
 	public void responseType(String type) {
 		scrollDown();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		waitElementByClass("box-header");
-		waitElementByID("clientForm:displayName:outputInputPanel");
-		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
-		WebElement addScopeButton = commandSection.findElement(By.className("addResponseTypeButton"));
+		WebElement addScopeButton = webDriver.findElement(By.className("AddResponseTypeButton"));
 		addScopeButton.click();
 		searchForResponseType("responseType:selectEntityModalPanel_content", type);
 	}
 
 	public void grantType(String grantType) {
 		scrollDown();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		waitElementByClass("box-header");
-		waitElementByID("clientForm:displayName:outputInputPanel");
-		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
-		WebElement addScopeButton = commandSection.findElement(By.className("addGrantTypeButton"));
+		WebElement addScopeButton = webDriver.findElement(By.className("AddGrantTypeButton"));
 		addScopeButton.click();
 		searchForResponseType("grantType:selectEntityModalPanel_content", grantType);
 	}
 
 	public void loginRedirect(String url) {
 		scrollDown();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		waitElementByClass("box-header");
-		waitElementByID("clientForm:displayName:outputInputPanel");
-		WebElement commandSection = waitElementByID("clientForm:command:outputInputPanel");
-		WebElement addScopeButton = commandSection.findElement(By.className("addLoginRedirectButton"));
+		WebElement addScopeButton = webDriver.findElement(By.className("AddRedirectLoginUriButton"));
 		addScopeButton.click();
 		WebElement pane = waitElementByID("loginRedirect:inputText_container");
 		WebElement main = pane.findElement(By.id("loginRedirect:inputText_content"));
@@ -186,7 +179,7 @@ public class ClientAddPage extends AbstractPage {
 
 	public void save() {
 		scrollDown();
-		fluentWait(LITTLE);
+		fluentWait(ONE_SEC);
 		WebElement footer = waitElementByID("updateButtons");
 		footer.findElements(By.tagName("input")).get(0).click();
 	}

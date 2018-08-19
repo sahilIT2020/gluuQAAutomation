@@ -1,5 +1,5 @@
 Feature: Update an Attribute
-  @gluuQAPending
+  @gluuQA
   Scenario: Update an Attribute
     When I sign in as administrator
     Then I should see gluu home page

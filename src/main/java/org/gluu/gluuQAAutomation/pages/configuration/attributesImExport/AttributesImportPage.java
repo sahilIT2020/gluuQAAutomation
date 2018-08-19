@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class AttributesImportPage extends AbstractPage {
 
 	public void importAttributesFromFile(String fileName) {
-		WebElement upLoader = webDriver.findElement(By.className("fileUploader"));
+		WebElement upLoader = webDriver.findElement(By.className("uploadFile"));
 		WebElement addButton = upLoader.findElement(By.cssSelector("input[type='file']"));
 		String finalPath = getUserDir().concat(File.separator).concat("attributes.ldif");
 		addButton.sendKeys(finalPath);
