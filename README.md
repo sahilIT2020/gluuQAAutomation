@@ -1,17 +1,14 @@
 # GluuQAAutomation
 
-The goal of this project is to automate the QA process using Selenium webdriver.
+# How to load test again a running Gluu server
 
-# Prepare a gluu instance for QA
-
-1. Install a Gluu server 3.1.4 or use an existing one
-1. Clone oxtrust project [here](https://github.com/GluuFederation/oxTrust)
-1. Clone branch **gluu_qa** of the oxTrust project
-1. Romove the target directory if exist:**rm -rf server/target/**
-1. Generate a new war: **mvn package -Dmaven.test.skip=true**, the generatee war is present in this folder **server/target/oxtrust_server.war**
-1. Replace the **opt/gluu/jetty/identity/identity.war** file in your gluu instance with the generated one(**server/target/oxtrust_server.war**).
-1. Restart identity service.
-
+  ## Login/Logout load testing
+  
+  The goal here is the instruct the browser to log into a target Gluu Server using the provide credentials, wait few seconds and logout. The browser will do these steps n times where n can be parameterized. 
+  1. Clone the project: `git clone https://github.com/sahiliamsso/gluuQAAutomation.git`
+  1. `cd src/main/java/org/gluu/gluuQAAutomation/configuration/`
+  1. Edit the file `config.properties` to match your settings
+  1. Run the command `mvn test -Dcucumber.options="--tags @gluuLoadTest"`
 
 # How to run QA test cases
  
