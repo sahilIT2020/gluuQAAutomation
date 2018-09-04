@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class LogViewerConfigPage extends AbstractPage {
 
 	public void checkOxTrustExternalLog4jLocation() {
-		String value = webDriver.findElement(By.id("logViewerForm:oxTrustLogConfigLocation")).getAttribute("value");
+		String value = webDriver.findElement(By.className("oxTrustLogConfigLocation")).getAttribute("value");
 		Assert.assertTrue(value.isEmpty());
 	}
 
 	public void checkOxAuthExternalLog4jLocation() {
-		String value = webDriver.findElement(By.id("logViewerForm:oxAuthLogConfigLocation")).getAttribute("value");
+		String value = webDriver.findElement(By.className("oxAuthLogConfigLocation")).getAttribute("value");
 		Assert.assertTrue(value.isEmpty());
 	}
 

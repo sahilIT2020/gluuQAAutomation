@@ -10,16 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class OxTrustSettingPage extends AbstractPage {
 
-	public void buildDateIsNotEmpty() {
-		WebElement builddate = webDriver.findElement(By.id("organizationForm:buildDate:outputInputPanel"));
-		Assert.assertFalse(builddate.getText().isEmpty());
-	}
-
-	public void buildNumberIsNotEmpty() {
-		WebElement builddate = webDriver.findElement(By.id("organizationForm:buildNumber:outputInputPanel"));
-		Assert.assertFalse(builddate.getText().isEmpty());
-	}
-
 	public void checkGroup(String groupName) {
 		WebElement group = webDriver.findElement(By.id("organizationForm:managerGroup:outputInputPanel"));
 		Assert.assertTrue(group.findElement(By.tagName("a")).getText().equalsIgnoreCase(groupName));

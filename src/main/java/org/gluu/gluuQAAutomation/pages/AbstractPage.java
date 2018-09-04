@@ -81,6 +81,20 @@ public class AbstractPage {
 
 		}
 	}
+	public void fluentWaitMinutes(int seconds) {
+		try {
+			Wait<WebDriver> wait = new FluentWait<WebDriver>(webDriver).withTimeout(seconds, TimeUnit.SECONDS)
+					.pollingEvery(5, TimeUnit.MINUTES).ignoring(NoSuchElementException.class);
+
+			wait.until(new Function<WebDriver, WebElement>() {
+				public WebElement apply(WebDriver driver) {
+					return driver.findElement(locator);
+				}
+			});
+		} catch (Exception e) {
+
+		}
+	}
 
 	public void selectTab(String tabText) {
 		WebElement section = webDriver.findElement(By.className("nav-tabs"));

@@ -52,4 +52,8 @@ public class SignInPage extends AbstractPage {
 		link.click();
 		fluentWait(ONE_SEC);
 	}
+
+	public void doSomeWork() {
+		fluentWait(4);
+	}
 }

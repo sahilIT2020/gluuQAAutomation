@@ -28,9 +28,9 @@ public class SignInSteps extends BaseSteps {
 		signInPage.fillFormAsAdmin();
 		signInPage.submit();
 	}
-	
+
 	@Then("^I should be able to login as '(.+)' with password '(.+)'$")
-	public void loginAsUserWithPassword(String userName,String pwd) {
+	public void loginAsUserWithPassword(String userName, String pwd) {
 		signInPage.goToLoginPage();
 		signInPage.fillForm(userName, pwd);
 		signInPage.submit();
@@ -77,10 +77,23 @@ public class SignInSteps extends BaseSteps {
 	public void setEmail(String email) {
 		passwordResetPage.setEmail(email);
 	}
-	
+
 	@Then("^I should see that the mail was send$")
-	public void  checkEmailWasSend() {
+	public void checkEmailWasSend() {
 		passwordResetPage.verifyMailWasSend();
+	}
+
+	@When("^I load test the login logout feature '(.+)' times as user '(.+)' with password '(.+)'$")
+	public void loadTestLogin(String times, String userName, String password) {
+		int count = Integer.valueOf(times);
+		for (int i = 0; i < count; i++) {
+			signInPage.goToLoginPage();
+			signInPage.fillForm(userName, password);
+			signInPage.submit();
+			signInPage.doSomeWork();
+			signInPage.signOut();
+		}
+
 	}
 
 }

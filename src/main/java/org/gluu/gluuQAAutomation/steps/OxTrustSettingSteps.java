@@ -26,19 +26,9 @@ public class OxTrustSettingSteps extends BaseSteps {
 		oxTrustSettingPage.selectTab("OxTrust Settings");
 	}
 
-	@Then("^I should that the build date is not empty$")
-	public void checkBuildDateIsNotEmpty() {
-		oxTrustSettingPage.buildDateIsNotEmpty();
-	}
-
 	@Then("^I should that the org name is not empty$")
 	public void checkOrgNameIsNotEmpty() {
 		oxTrustSettingPage.checkOrgNameIsNotEmpty();
-	}
-
-	@Then("^I should that the build number is not empty$")
-	public void checkBuildNumberIsNotEmpty() {
-		oxTrustSettingPage.buildDateIsNotEmpty();
 	}
 
 	@And("^I should that '(.+)' is the admin group$")
