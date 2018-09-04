@@ -4,7 +4,7 @@ The goal of this project is to automate the QA process using Selenium webdriver.
 
 # Prepare a gluu instance for QA
 
-1. Install a Gluu server 3.1.3 or use an existing one
+1. Install a Gluu server 3.1.4 or use an existing one
 1. Clone oxtrust project [here](https://github.com/GluuFederation/oxTrust)
 1. Clone branch **gluu_qa** of the oxTrust project
 1. Romove the target directory if exist:**rm -rf server/target/**
