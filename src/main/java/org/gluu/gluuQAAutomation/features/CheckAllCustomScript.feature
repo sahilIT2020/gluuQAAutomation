@@ -24,7 +24,7 @@ Scenario: CheckPersonAuthentication custom script
 	When 	I select the 'Application Session' tab
 	Then 	I should see a custom script named 'application_session' in 'Application Session' tab
 	When 	I select the 'UMA RPT Policies' tab
-	Then 	I should see a custom script named 'uma_client_authz_rpt_policy' in 'UMA RPT Policies' tab
+	Then 	I should see a custom script named 'scim_access_policy' in 'UMA RPT Policies' tab
 	And 	I should see a custom script named 'uma_rpt_policy' in 'UMA RPT Policies' tab
 	When 	I select the 'SCIM' tab
 	Then 	I should see a custom script named 'scim_event_handler' in 'SCIM' tab

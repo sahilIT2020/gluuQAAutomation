@@ -71,8 +71,8 @@ public class OpenIdConnectClientManagePage extends AbstractPage {
 	}
 
 	public void delete() {
-		WebElement footer = webDriver.findElement(By.id("updateButtons"));
-		footer.findElements(By.tagName("input")).get(2).click();
+		WebElement delete = webDriver.findElement(By.className("deleteOIDCButton"));
+		delete.click();
 		fluentWait(SMALL);
 		WebElement dialog = webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"));
 		dialog.findElements(By.tagName("input")).get(0).click();

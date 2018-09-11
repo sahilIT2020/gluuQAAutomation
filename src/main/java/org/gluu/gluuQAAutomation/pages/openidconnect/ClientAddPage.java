@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
@@ -14,15 +13,12 @@ public class ClientAddPage extends AbstractPage {
 
 	public void setClientName(String name) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement nameArea = main.findElement(By.id("clientForm:displayName:outputInputPanel"));
-		nameArea.click();
-		List<WebElement> span = nameArea.findElements(By.tagName("span"));
-		List<WebElement> inputs = span.get(1).findElements(By.cssSelector("input"));
-		for (WebElement input : inputs) {
+		WebElement element = main.findElement(By.className("clientNameTextBox"));
+		element.click();
+		for (WebElement input : element.findElements(By.tagName("input"))) {
 			if (input.getAttribute("type").equals("text")) {
 				input.clear();
 				input.sendKeys(name);
-				input.sendKeys(Keys.TAB);
 				break;
 			}
 		}
@@ -30,64 +26,50 @@ public class ClientAddPage extends AbstractPage {
 
 	public void setDescription(String des) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement descriptionArea = main.findElement(By.id("clientForm:description:outputInputPanel"));
-		WebElement description = descriptionArea.findElement(By.tagName("textarea"));
-		description.clear();
-		description.sendKeys(des);
+		WebElement element = main.findElement(By.className("clientDescriptionTextArea"));
+		element.clear();
+		element.sendKeys(des);
 	}
 
 	public void setSecret(String secret) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement nameArea = main.findElement(By.id("clientForm:clientSecret:outputInputPanel"));
-		nameArea.click();
-		List<WebElement> span = nameArea.findElements(By.tagName("span"));
-		List<WebElement> inputs = span.get(1).findElements(By.cssSelector("input"));
-		for (WebElement input : inputs) {
-			if (input.getAttribute("type").equals("text")) {
-				input.clear();
-				input.sendKeys(secret);
-				input.sendKeys(Keys.TAB);
-				break;
-			}
-		}
+		WebElement element = main.findElement(By.className("clientSecretTextBox"));
+		;
+		element.clear();
+		element.sendKeys(secret);
 	}
 
 	public void setType(String type) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement typeArea = main.findElement(By.id("clientForm:applicatonType:outputInputPanel"));
-		WebElement selectBox = typeArea.findElement(By.tagName("select"));
+		WebElement selectBox = main.findElement(By.className("applicationTypeSelectBox"));
 		Select select = new Select(selectBox);
 		select.selectByVisibleText(type);
 	}
 
 	public void setPreAutho(String value) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement typeArea = main.findElement(By.id("clientForm:oxAuthTrustedClientBox:outputInputPanel"));
-		WebElement selectBox = typeArea.findElement(By.tagName("select"));
+		WebElement selectBox = main.findElement(By.className("persistClientAuthorizationSelectBox"));
 		Select select = new Select(selectBox);
 		select.selectByVisibleText(value);
 	}
 
 	public void setPersistAutho(String value) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement typeArea = main.findElement(By.id("clientForm:persistClientAuthorizations:outputInputPanel"));
-		WebElement selectBox = typeArea.findElement(By.tagName("select"));
+		WebElement selectBox = main.findElement(By.className("oxAuthTrustedClientSelectBox"));
 		Select select = new Select(selectBox);
 		select.selectByVisibleText(value);
 	}
 
 	public void setSubjectType(String value) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement typeArea = main.findElement(By.id("clientForm:subjectType:outputInputPanel"));
-		WebElement selectBox = typeArea.findElement(By.tagName("select"));
+		WebElement selectBox = main.findElement(By.className("subjectTypeSelectBox"));
 		Select select = new Select(selectBox);
 		select.selectByVisibleText(value);
 	}
 
 	public void setAuthendMethod(String value) {
 		WebElement main = webDriver.findElement(By.className("box-header"));
-		WebElement typeArea = main.findElement(By.id("clientForm:tokenEndpointAuthMethod:outputInputPanel"));
-		WebElement selectBox = typeArea.findElement(By.tagName("select"));
+		WebElement selectBox = main.findElement(By.className("tokenEndpointAuthMethodSelectBox"));
 		Select select = new Select(selectBox);
 		select.selectByVisibleText(value);
 	}

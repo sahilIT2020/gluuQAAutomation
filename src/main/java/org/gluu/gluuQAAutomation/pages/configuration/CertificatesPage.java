@@ -21,7 +21,7 @@ public class CertificatesPage extends AbstractPage {
 
 	public void assertThereAreCerts(String size) {
 		init();
-		Assert.assertTrue(certs.size() == Integer.valueOf(size));
+		Assert.assertTrue(certs.size() >= Integer.valueOf(size));
 	}
 
 	public void assertCertExist(String certName) {
