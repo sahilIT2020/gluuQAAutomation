@@ -1,5 +1,5 @@
 Feature: Update OpenID connect clients
-@gluuQAPending
+@gluuQA
 Scenario: Update OpenID connect clients
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

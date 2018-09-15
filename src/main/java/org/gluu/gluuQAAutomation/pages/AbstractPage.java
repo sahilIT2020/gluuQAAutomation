@@ -21,12 +21,13 @@ public class AbstractPage {
 
 	public static WebDriver webDriver = ApplicationDriver.getInstance();
 	public static Settings settings;
-	public int ONE_SEC = 1;
-	public int LITTLE = 2;
-	public int SMALL = 4;
-	public int MEDIUM = 6;
-	public int HIGH = 10;
-	public int LARGE = 12;
+	public int ADJUST = 1;
+	public int ONE_SEC = 1 + ADJUST;
+	public int LITTLE = 2 + ADJUST;
+	public int SMALL = 4 + ADJUST;
+	public int MEDIUM = 6 + ADJUST;
+	public int HIGH = 10 + ADJUST;
+	public int LARGE = 12 + ADJUST;
 	private String QAFakeClassName = "QaFakeClassName";
 	private By locator = By.className(QAFakeClassName);
 
@@ -81,6 +82,7 @@ public class AbstractPage {
 
 		}
 	}
+
 	public void fluentWaitMinutes(int seconds) {
 		try {
 			Wait<WebDriver> wait = new FluentWait<WebDriver>(webDriver).withTimeout(seconds, TimeUnit.SECONDS)

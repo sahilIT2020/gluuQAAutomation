@@ -43,12 +43,12 @@ public class SignInPage extends AbstractPage {
 
 	public void checkCurrentPageIsLoginPage() {
 		String currentPageUrl = getCurrentPageUrl();
-		Assert.assertTrue(currentPageUrl.endsWith("oxauth/login")
-				|| currentPageUrl.endsWith("oxauth/auth/passport/passportlogin"));
+		Assert.assertTrue(currentPageUrl.endsWith("oxauth/login.htm")
+				|| currentPageUrl.endsWith("oxauth/auth/passport/passportlogin.htm"));
 	}
-	
+
 	public void clickForgotPasswordLink() {
-		WebElement link=webDriver.findElement(By.className("forgot_link"));
+		WebElement link = webDriver.findElement(By.className("forgot_link"));
 		link.click();
 		fluentWait(ONE_SEC);
 	}
