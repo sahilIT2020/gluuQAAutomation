@@ -19,6 +19,5 @@ Scenario: Password reset
     And 	I click on password reset link
     Then 	I set 'qapasswordReset@gmail.com' as email
     And 	I send the mail
-    Then 	I should see that the mail was send
     And 	I sign in as administrator
     And 	I sign out

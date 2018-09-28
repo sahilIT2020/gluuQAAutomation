@@ -10,6 +10,4 @@ Scenario: OxTrust setting config
 	And 	I set the default qa logo as organisation logo
 	And 	I set the default qa logo as organisation favicon
 	And 	I save the oxtrust configuration
-	When 	I go to oxtrust setting configuration page
-	Then 	I should that the org name is 'GLUU QA'
 	Then 	I sign out
