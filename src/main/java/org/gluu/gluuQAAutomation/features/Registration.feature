@@ -5,5 +5,4 @@ Scenario: Check Manage Registration
 	And 	I go to registration manage page
 	Then 	I should see that the captcha status is 'false' 
 	And  	I should see that the registration status is 'false'
-	And  	I should see that the site key is 'empty'
 	Then 	I sign out
