@@ -42,8 +42,9 @@ public class TrAddPage extends AbstractPage {
 		select.selectByVisibleText(mtype);
 	}
 
-	public void setMetadata(String path) {
+	public void setMetadata() {
 		fluentWait(ONE_SEC);
+		String path = getUserDir().concat("/src/main/resources/qa_meta.xml");
 		WebElement element = webDriver.findElement(By.id("trustForm:fileWrapper:outputInputPanel"));
 		WebElement fileUploader = element.findElement(By.cssSelector("input[type='file']"));
 		fileUploader.sendKeys(path);

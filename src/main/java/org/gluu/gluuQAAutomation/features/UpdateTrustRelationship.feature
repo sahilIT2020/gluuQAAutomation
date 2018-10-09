@@ -8,7 +8,7 @@ Scenario: Update a Trust reletionship
 	And 	I set 'QaTRUpdateDesc' as description 
 	And 	I set 'Single SP' as entity type 
 	And 	I set 'File' as metadata location 
-	And 	I set '/home/gasmyr/gluuQAAutomation/src/main/resources/qa_meta.xml' metadata 
+	And 	I set the metadata 
 	And 	I configure sp with 'SAML2SSO' profile 
 	And 	I release the following attributes 'Username Email' 
 	And 	I save the current tr 

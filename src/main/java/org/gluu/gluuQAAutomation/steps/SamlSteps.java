@@ -75,9 +75,9 @@ public class SamlSteps extends BaseSteps {
 		trAddPage.setMetadataType(type);
 	}
 
-	@Then("^I set '(.+)' metadata$")
-	public void setMetadata(String path) {
-		trAddPage.setMetadata(path);
+	@Then("^I set the metadata$")
+	public void setMetadata() {
+		trAddPage.setMetadata();
 	}
 
 	@Then("^I configure sp with '(.+)' profile$")
