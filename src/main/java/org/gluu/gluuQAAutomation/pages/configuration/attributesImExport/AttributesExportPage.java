@@ -42,7 +42,7 @@ public class AttributesExportPage extends AbstractPage {
 
 	public void export() {
 		scrollDown();
-		String fullPath = getUserDir().concat(File.separator).concat("attributes.ldif");
+		String fullPath = getUserDir().concat("/attributes.ldif");
 		File donwloadFile = new File(fullPath);
 		if(donwloadFile.exists() && !donwloadFile.isDirectory()) {
 			FileUtils.deleteQuietly(donwloadFile);
@@ -52,7 +52,7 @@ public class AttributesExportPage extends AbstractPage {
 	}
 
 	public void verifyFile(String fileName) {
-		String fullPath = getUserDir().concat(File.separator).concat(fileName);
+		String fullPath = getUserDir().concat("/").concat(fileName);
 		System.out.println("FILE PATH:"+fullPath);
 		File donwloadFile = new File(fullPath);
 		Assert.assertTrue(donwloadFile.exists() && !donwloadFile.isDirectory());
