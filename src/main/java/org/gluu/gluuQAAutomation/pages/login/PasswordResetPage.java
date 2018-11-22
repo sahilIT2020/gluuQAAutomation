@@ -14,11 +14,13 @@ public class PasswordResetPage extends AbstractPage {
 		WebElement element = webDriver.findElement(By.id("formArea:username"));
 		element.clear();
 		element.sendKeys(email);
+		fluentWait(ONE_SEC);
 	}
 
 	public void sendMail() {
 		WebElement element = webDriver.findElement(By.id("formArea:submit"));
 		element.click();
+		fluentWait(LITTLE);
 	}
 	
 	public void verifyMailWasSend() {

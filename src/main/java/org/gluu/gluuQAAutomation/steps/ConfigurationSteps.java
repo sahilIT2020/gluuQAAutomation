@@ -29,6 +29,7 @@ public class ConfigurationSteps extends BaseSteps {
     @When("^I go to system organization configuration page$")
     public void gotoSystemOrganizationConfigurationPage() {
         homePage.goToOrganisationConfigurationMenuPage();
+        homePage.selectTab("System Configuration");
     }
 
     @And("^I set the Self-Service Password Reset to '(.+)'$")

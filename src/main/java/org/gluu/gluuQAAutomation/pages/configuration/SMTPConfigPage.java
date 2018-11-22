@@ -3,7 +3,6 @@ package org.gluu.gluuQAAutomation.pages.configuration;
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,14 +27,14 @@ public class SMTPConfigPage extends AbstractPage {
 	}
 
 	public void setSmtpRequireAuthentication(boolean value) {
-
-		WebElement element = webDriver
-				.findElement(By.id("organizationForm:requiresAuthenticationCheckBox:outputInputPanel"));
-		System.out.println("#####################" + element.getAttribute("innerHTML"));
-		element.click();
-		WebElement input = element.findElement(By.tagName("input"));
-		Actions actions = new Actions(webDriver);
-		actions.moveToElement(input).click().perform();
+		WebElement element = webDriver.findElement(By.className("requiresAuthenticationCheckBox"))
+				.findElement(By.xpath(".."));
+		boolean checked = element.getAttribute("class").contains("checked");
+		if (value && !checked) {
+			element.click();
+		} else if (!value && checked) {
+			element.click();
+		}
 	}
 
 	public void setSmtpUserName(String value) {
@@ -51,13 +50,23 @@ public class SMTPConfigPage extends AbstractPage {
 	}
 
 	public void setSmtpRequireSSL(boolean value) {
-		WebElement element = webDriver.findElement(By.className("requiresSSLCheckBox"));
-		element.click();
+		WebElement element = webDriver.findElement(By.className("requiresSSLCheckBox")).findElement(By.xpath(".."));
+		boolean checked = element.getAttribute("class").contains("checked");
+		if (value && !checked) {
+			element.click();
+		} else if (!value && checked) {
+			element.click();
+		}
 	}
 
 	public void setSmtpTrustServer(boolean value) {
-		WebElement element = webDriver.findElement(By.className("trustserverCheckBox"));
-		element.click();
+		WebElement element = webDriver.findElement(By.className("trustserverCheckBox")).findElement(By.xpath(".."));
+		boolean checked = element.getAttribute("class").contains("checked");
+		if (value && !checked) {
+			element.click();
+		} else if (!value && checked) {
+			element.click();
+		}
 	}
 
 	public void setSmtpPort(String value) {

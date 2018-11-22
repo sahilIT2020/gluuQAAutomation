@@ -14,4 +14,5 @@ Scenario: Delete custom script
 	And 	I set the custom script content to 'QACustomScriptContentToBeDeleted'
 	And 	I enable the script
 	And 	I save the custom script
-	When 	I delete the custom script named 'QACustomScriptToBeDeleted' on 'Person Authentication' tab	
+	When 	I delete the custom script named 'QACustomScriptToBeDeleted' on 'Person Authentication' tab
+	And 	I sign out	

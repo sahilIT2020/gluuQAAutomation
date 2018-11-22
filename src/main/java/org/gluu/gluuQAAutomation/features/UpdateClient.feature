@@ -5,6 +5,7 @@ Scenario: Update OpenID connect clients
 	Then 	I should see gluu home page 
 	When 	I go to openid connect clients list page
 	And 	I start the process to add new client
+	And 	I select the OIDC 'StandardTab' tab
 	And 	I set the client name to 'QaClientToBeUpdatedName'
 	And 	I set the client description to 'QaClientToBeUpdatedDescription'
 	And 	I set the client secret to 'secret'

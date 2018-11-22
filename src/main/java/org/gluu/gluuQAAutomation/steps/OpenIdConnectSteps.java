@@ -256,12 +256,12 @@ public class OpenIdConnectSteps extends BaseSteps {
 		sectorAddPage.save();
 	}
 
-	@Then("^I should see that the list is not empty")
+	@Then("^I should see that the list is not empty$")
 	public void checkListIsNotEmpty() {
 		sectorManagePage.assertListIsNotEmpty();
 	}
 
-	@Then("^I should see that the list is empty")
+	@Then("^I should see that the list is empty$")
 	public void checkListIsEmpty() {
 		sectorManagePage.assertListIsEmpty();
 	}
@@ -269,6 +269,11 @@ public class OpenIdConnectSteps extends BaseSteps {
 	@After
 	public void clear() {
 		homePage.clear();
+	}
+
+	@And("^I select the OIDC '(.+)' tab$")
+	public void selectTab(String tabName) {
+		clientAddPage.selectTab(tabName);
 	}
 
 }

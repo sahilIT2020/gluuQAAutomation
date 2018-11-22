@@ -5,6 +5,7 @@ Scenario: Add new client
 	Then 	I should see gluu home page 
 	When 	I go to openid connect clients list page
 	And 	I start the process to add new client
+	And 	I select the OIDC 'StandardTab' tab
 	And 	I set the client name to 'QaClientName'
 	And 	I set the client description to 'QaClientDescription'
 	And 	I set the client secret to 'secret'
@@ -17,6 +18,8 @@ Scenario: Add new client
 	And 	I add the response type named 'code'
 	And 	I add the grant type named 'authorization_code'
 	And 	I add the login redirect named 'https://qalogin/redirect'
+	And 	I select the OIDC 'AdvancedTab' tab
+	And 	I select the OIDC 'EncryptionTab' tab
 	And 	I save the client registration
 	When 	I go to openid connect clients list page
 	And 	I search for openid clients with pattern 'QaClientName'

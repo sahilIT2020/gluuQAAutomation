@@ -1,5 +1,5 @@
 Feature: Check Oxtrust import json configuration 
-@gluuQA 
+@gluuQA
 Scenario: Oxtrust import json configuration 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

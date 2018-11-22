@@ -28,3 +28,4 @@ Scenario: CheckPersonAuthentication custom script
 	And 	I should see a custom script named 'uma_rpt_policy' in 'UMA RPT Policies' tab
 	When 	I select the 'SCIM' tab
 	Then 	I should see a custom script named 'scim_event_handler' in 'SCIM' tab
+	And 	I sign out

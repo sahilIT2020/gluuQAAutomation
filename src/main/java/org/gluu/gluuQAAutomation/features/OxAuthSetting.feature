@@ -1,5 +1,5 @@
 Feature: OxAuth setting config 
-@gluuQA 
+@gluuQA
 Scenario: OxTrust setting config 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
