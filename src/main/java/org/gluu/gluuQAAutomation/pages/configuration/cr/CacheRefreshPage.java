@@ -61,17 +61,17 @@ public class CacheRefreshPage extends AbstractPage {
 		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("KeyAttributeList"));
 		while (attribs.size() >= 1) {
-			attribs.get(0).findElement(By.className("removeItemButton")).click();
+			attribs.get(0).findElement(By.className("removePropertyButton")).click();
 			fluentWait(ONE_SEC);
 			attribs = webDriver.findElements(By.className("KeyAttributeList"));
 		}
 	}
-	
+
 	public void deleteAllObject() {
 		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("ObjectClassList"));
 		while (attribs.size() >= 1) {
-			attribs.get(0).findElement(By.className("removeItemButton")).click();
+			attribs.get(0).findElement(By.className("removePropertyButton")).click();
 			fluentWait(ONE_SEC);
 			attribs = webDriver.findElements(By.className("ObjectClassList"));
 		}
@@ -86,11 +86,12 @@ public class CacheRefreshPage extends AbstractPage {
 		newClass.findElement(By.tagName("input")).sendKeys(name);
 		fluentWait(ONE_SEC);
 	}
+
 	public void deleteAllSourceAttrib() {
 		fluentWait(ONE_SEC);
 		List<WebElement> attribs = webDriver.findElements(By.className("SourceAttribeList"));
 		while (attribs.size() >= 1) {
-			attribs.get(0).findElement(By.className("removeItemButton")).click();
+			attribs.get(0).findElement(By.className("removePropertyButton")).click();
 			fluentWait(ONE_SEC);
 			attribs = webDriver.findElements(By.className("SourceAttribeList"));
 		}
@@ -118,17 +119,17 @@ public class CacheRefreshPage extends AbstractPage {
 
 		webDriver.findElement(By.className("maxConnectionTextBox")).clear();
 		webDriver.findElement(By.className("maxConnectionTextBox")).sendKeys(maxCon);
-		
-        WebElement container=webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
-        container.findElements(By.className("addItemButton")).get(0).click();
+
+		WebElement container = webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
+		container.findElements(By.className("addItemButton")).get(0).click();
 		fluentWait(ONE_SEC);
-		List<WebElement> properties=container.findElements(By.className("NewPropertyBox"));
-		properties.get(properties.size()-1).sendKeys(servers);
-		WebElement main=webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
+		List<WebElement> properties = container.findElements(By.className("NewPropertyBox"));
+		properties.get(properties.size() - 1).sendKeys(servers);
+		WebElement main = webDriver.findElement(By.id("cacheRefreshForm:sourceConfigsId:dgb"));
 		main.findElements(By.className("addItemButton")).get(1).click();
 		fluentWait(ONE_SEC);
-		properties=main.findElements(By.className("NewPropertyBox"));
-		properties.get(properties.size()-1).sendKeys(baseDns);
+		properties = main.findElements(By.className("NewPropertyBox"));
+		properties.get(properties.size() - 1).sendKeys(baseDns);
 		WebElement element = main.findElement(By.className("useSSLSelectBox"));
 		WebElement parent = element.findElement(By.xpath(".."));
 		if (useSSl.equalsIgnoreCase("true") && !parent.getAttribute("class").contains("checked")) {
@@ -137,6 +138,21 @@ public class CacheRefreshPage extends AbstractPage {
 		if (useSSl.equalsIgnoreCase("false") && parent.getAttribute("class").contains("checked")) {
 			parent.click();
 		}
+		fluentWait(ONE_SEC);
+	}
+
+	public void changeBindDnPassword(String password) {
+		WebElement button = webDriver.findElement(By.className("changeBindDnButton"));
+		button.click();
+		fluentWait(ONE_SEC);
+		WebElement main = webDriver.findElement(By.id("bindPasswordDialogId:changePasswordForm:passwordGroupId"));
+		WebElement input1 = main.findElement(By.id("bindPasswordDialogId:changePasswordForm:pass"));
+		input1.clear();
+		input1.sendKeys(password);
+		WebElement input2 = main.findElement(By.id("bindPasswordDialogId:changePasswordForm:conf"));
+		input2.clear();
+		input2.sendKeys(password);
+		webDriver.findElement(By.className("saveBindDNButton")).click();
 		fluentWait(ONE_SEC);
 	}
 }

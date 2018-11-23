@@ -57,6 +57,7 @@ public class HomePage extends AbstractPage {
 		userMenu.click();
 		WebElement subMenu = waitElementByID("subMenuLinkPersonal1");
 		subMenu.click();
+		fluentWait(ONE_SEC);
 	}
 
 	public void goToUmaMenu() {

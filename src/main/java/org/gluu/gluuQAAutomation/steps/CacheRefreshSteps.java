@@ -26,6 +26,7 @@ public class CacheRefreshSteps extends BaseSteps {
 	public void selectTab(String name) {
 		cacheRefreshPage.selectTab(name);
 	}
+
 	@And("^I delete all source to destination attribute$")
 	public void deleteSourceDestinationAttributes() {
 		cacheRefreshPage.deleteAllSourceDestinationAttributes();
@@ -45,16 +46,17 @@ public class CacheRefreshSteps extends BaseSteps {
 	public void enableCacheRefresh() {
 		cacheRefreshPage.enableCacheRefresh();
 	}
-	
+
 	@And("^I delete all key attributes$")
 	public void deleteAllKeyAttribute() {
 		cacheRefreshPage.deleteAllKeyAttributes();
 	}
-	
+
 	@And("^I delete all objects$")
 	public void deleteAllObject() {
 		cacheRefreshPage.deleteAllObject();
 	}
+
 	@And("^I delete source all attributes$")
 	public void deleteAllSourceAttrib() {
 		cacheRefreshPage.deleteAllSourceAttrib();
@@ -79,6 +81,11 @@ public class CacheRefreshSteps extends BaseSteps {
 	public void addSourceServer(String name, String bindDn, String maxCon, String servers, String baseDns,
 			String useSSl) {
 		cacheRefreshPage.addSourceServer(name, bindDn, maxCon, servers, baseDns, useSSl);
+	}
+
+	@And("^I change the bind dn password to '(.+)'$")
+	public void changeBinDnPassword(String password) {
+		cacheRefreshPage.changeBindDnPassword(password);
 	}
 
 	@And("^I save the cache refresh configuration$")
