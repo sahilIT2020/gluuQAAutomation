@@ -28,6 +28,7 @@ public class AbstractPage {
 	public int MEDIUM = 6 + ADJUST;
 	public int HIGH = 10 + ADJUST;
 	public int LARGE = 12 + ADJUST;
+	public int MINUTE = 60 + ADJUST;
 	private String QAFakeClassName = "QaFakeClassName";
 	private By locator = By.className(QAFakeClassName);
 
@@ -124,6 +125,7 @@ public class AbstractPage {
 	}
 
 	public void signOut() {
+		fluentWait(2);
 		WebElement element = webDriver.findElement(By.className("user-menu"));
 		Actions actions = new Actions(webDriver);
 		actions.moveToElement(element).click().perform();

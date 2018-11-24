@@ -3,6 +3,7 @@ package org.gluu.gluuQAAutomation.pages.openidconnect;
 import java.util.List;
 
 import org.gluu.gluuQAAutomation.pages.AbstractPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -154,6 +155,19 @@ public class ClientAddPage extends AbstractPage {
 		Actions action = new Actions(webDriver);
 		action.click(tab);
 		action.build().perform();
+	}
+
+	public void changePassword(String pwd) {
+		webDriver.findElement(By.className("changeClientSecretButton")).click();
+		WebElement newField = webDriver.findElement(By.id("clientPassword:changePasswordForm:pass"));
+		newField.sendKeys(pwd);
+		WebElement confirm = webDriver.findElement(By.id("clientPassword:changePasswordForm:conf"));
+		confirm.sendKeys(pwd);
+		WebElement main = webDriver.findElement(By.id("clientPassword:changePasswordModalPanel_content"));
+		Assert.assertNotNull(main);
+		WebElement button = main.findElement(By.className("savePasswordButton"));
+		button.click();
+		fluentWait(ONE_SEC);
 	}
 
 }

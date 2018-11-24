@@ -44,6 +44,11 @@ public class SamlSteps extends BaseSteps {
 	public void goToTrListPage() {
 		homePage.goSamlTrListPage();
 	}
+	
+	@And("^I wait for tr validation$")
+	public void waitForTrValidation() {
+		trAddPage.waitForTrValidation();
+	}
 
 	@Then("^I set '(.+)' as display name$")
 	public void setTrDisplayName(String dn) {
@@ -74,10 +79,19 @@ public class SamlSteps extends BaseSteps {
 	public void setMetadataType(String type) {
 		trAddPage.setMetadataType(type);
 	}
+	@And("^I select '(.+)' as federation tr$")
+	public void selectFederation(String federation) {
+		trAddPage.selectFederation(federation);
+	}
 
 	@Then("^I set the metadata$")
 	public void setMetadata() {
 		trAddPage.setMetadata();
+	}
+	
+	@And("^I set the federation metadata$")
+	public void setFederationMetadata() {
+		trAddPage.setFederationMetatData();
 	}
 
 	@Then("^I configure sp with '(.+)' profile$")
@@ -160,6 +174,11 @@ public class SamlSteps extends BaseSteps {
 	@Then("^I should not see a named id named '(.+)' in the list$")
 	public void checkNamedIdDontExist(String name) {
 		nameIdAddPage.assertNamedDontExist(name);
+	}
+	
+	@And("^I select '(.+)' as entity id$")
+	public void selectEntityId(String value) {
+		trAddPage.selectId(value);
 	}
 
 	@After

@@ -25,6 +25,7 @@ Scenario: Update OpenID connect clients
 	When 	I start the process to edit the client named 'QaClientToBeUpdatedName' 
 	And 	I set the client name to 'QaClientUpdatedName'
 	And 	I set the client description to 'QaClientUpdatedDescription'
+	And 	I change the client password to 'newSecret'
 	And 	I save the client edition
 	When 	I go to openid connect clients list page
 	And 	I search for openid clients with pattern 'QaClientUpdatedName'

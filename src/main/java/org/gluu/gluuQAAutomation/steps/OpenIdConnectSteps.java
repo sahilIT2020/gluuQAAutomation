@@ -186,6 +186,11 @@ public class OpenIdConnectSteps extends BaseSteps {
 		clientAddPage.setSecret(secret);
 	}
 
+	@And("^I change the client password to '(.+)'$")
+	public void changeClientPassword(String pwd) {
+        clientAddPage.changePassword(pwd);
+	}
+
 	@And("^I edit the client secret to '(.+)'$")
 	public void editClientSecret(String secret) {
 		clientAddPage.setSecret(secret);
