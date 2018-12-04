@@ -21,7 +21,7 @@ Scenario: Add trust reletionship
 	Then 	I should not see a tr with display name 'QaTRAddDN' in the list 
 	And 	I sign out
 	
-@gluuQAPending
+@gluuQAPending1
 Scenario: Add federation trust reletionship
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 

@@ -137,6 +137,20 @@ public class JsonConfigurationSteps extends BaseSteps {
 		oxAuthConfigurationPage.assertOidcConfigEndPointIsCorrect();
 	}
 
+	@And("^I set the metricReporterEnabled to '(.+)'$")
+	public void switchMetricReported(String value) {
+		oxAuthConfigurationPage.changeMetricReportedValue(value);
+	}
+	@And("^I set the metricReporterInterval to '(.+)'$")
+	public void setMetricReporterInterval(String value) {
+		oxAuthConfigurationPage.setMetricReportedInterval(value);
+	}
+	
+	@And("^I wait to configuration to be apply$")
+	public void waitConfig(){
+		oxAuthConfigurationPage.waitConfig();
+	}
+
 	// cache provider steps
 
 	@When("^I go to cache provider Json configuration page$")
@@ -171,6 +185,11 @@ public class JsonConfigurationSteps extends BaseSteps {
 	@Then("^I should see that the there are six items present in the list$")
 	public void veryfyMappingEntries() {
 		oxTrustImportConfigurationPage.veryMappingEntries();
+	}
+
+	@And("^I save the json configuration$")
+	public void saveConfiguration() {
+		oxAuthConfigurationPage.save();
 	}
 
 	@After

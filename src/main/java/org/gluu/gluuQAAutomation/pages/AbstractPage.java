@@ -29,6 +29,7 @@ public class AbstractPage {
 	public int HIGH = 10 + ADJUST;
 	public int LARGE = 12 + ADJUST;
 	public int MINUTE = 60 + ADJUST;
+	public int TWO_MINUTE = 120 + ADJUST;
 	private String QAFakeClassName = "QaFakeClassName";
 	private By locator = By.className(QAFakeClassName);
 
@@ -118,6 +119,12 @@ public class AbstractPage {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		jse.executeScript("window.scrollBy(0,250)");
 	}
+	
+	public void scrollDownUntil(WebElement element) {
+		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+		jse.executeScript("arguments[0].scrollIntoView();", element);
+	}
+
 
 	public void scrollUp() {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
