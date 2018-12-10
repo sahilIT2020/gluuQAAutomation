@@ -1,7 +1,6 @@
 Feature: Update System Configuration
   @gluuQA
   Scenario: Configure system as an admin
-
     When 	I sign in as administrator
     Then 	I should see gluu home page
     When 	I go to system organization configuration page

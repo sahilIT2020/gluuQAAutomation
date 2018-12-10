@@ -1,6 +1,6 @@
 Feature: OxAuth setting config 
 @gluuQA
-Scenario: OxTrust setting config 
+Scenario: OxAuth setting config 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to oxauth setting configuration page 

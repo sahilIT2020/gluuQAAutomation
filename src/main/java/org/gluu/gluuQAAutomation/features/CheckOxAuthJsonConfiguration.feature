@@ -1,6 +1,6 @@
-Feature: Oxtrust json configuration 
+Feature: oxAuth json configuration 
 @gluuQA
-Scenario: Oxtrust json configuration 
+Scenario: oxAuth json configuration 
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to oxauth Json configuration page 
