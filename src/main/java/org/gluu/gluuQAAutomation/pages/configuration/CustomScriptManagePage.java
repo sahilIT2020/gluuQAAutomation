@@ -184,6 +184,22 @@ public class CustomScriptManagePage extends AbstractPage {
 		save();
 	}
 
+	public void enableScript(String scriptName, String tabName) {
+		WebElement me = null;
+		WebElement element = webDriver.findElement(By.className("allScriptForPerson"));
+		List<WebElement> scripts = element.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("SIZE: " + scripts.size());
+		for (WebElement script : scripts) {
+			if (script.getText().contains(scriptName)) {
+				me = script;
+				break;
+			}
+		}
+		me.click();
+
+	}
+
 	public void assertScriptExist(String scriptName, String tabName) {
 		currentTabText = tabName;
 		String className = "allScriptFor".concat(currentTabText.split("\\s+")[0]);

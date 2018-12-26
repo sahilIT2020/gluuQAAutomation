@@ -12,12 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class OxAuthConfigurationPage extends AbstractPage {
 
-	public void assertLoginPageIsCorrect() {
-		fluentWait(ONE_SEC);
-		WebElement element = webDriver.findElement(By.name("root[loginPage]"));
-		Assert.assertNotNull(element);
-	}
-
 	public void assertAuthorizationPageIsCorrect() {
 		WebElement element = webDriver.findElement(By.name("root[authorizationPage]"));
 		Assert.assertNotNull(element);

@@ -68,6 +68,11 @@ public class CustomScriptSteps extends BaseSteps {
 		customScriptManagePage.deleteScript(scriptName, tabName);
 	}
 	
+	@And("^I enable the custom script named '(.+)' on '(.+)' tab$")
+	public void enableScript(String scriptName, String tabName) {
+		customScriptManagePage.enableScript(scriptName, tabName);
+	}
+	
 	@And("^I add new property named '(.+)' with value '(.+)'$")
 	public void addProperty(String label, String value) {
 		customScriptManagePage.addNewproperty(label,value);
