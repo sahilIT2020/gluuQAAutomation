@@ -18,14 +18,8 @@ public class ClientAddPage extends AbstractPage {
 	public void setClientName(String name) {
 		WebElement main = webDriver.findElement(By.className(BOX_HEADER));
 		WebElement element = main.findElement(By.className("clientNameTextBox"));
-		element.click();
-		for (WebElement input : element.findElements(By.tagName("input"))) {
-			if (input.getAttribute("type").equals("text")) {
-				input.clear();
-				input.sendKeys(name);
-				break;
-			}
-		}
+		element.clear();
+		element.sendKeys(name);
 	}
 
 	public void setDescription(String des) {

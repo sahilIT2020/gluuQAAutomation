@@ -1,5 +1,5 @@
 Feature: Disable oxauth metrics
-@gluuQA
+@gluuQAPending1
 Scenario: Disable oxauth metrics
 	When 	I sign in as administrator
 	And 	I go to oxauth Json configuration page
@@ -12,7 +12,7 @@ Scenario: Disable oxauth metrics
 	Then 	I should see that there 'is not' data in the dashboard
 	And 	I sign out
 	
-@gluuQA
+@gluuQAPending1
 Scenario: Enable oxauth metrics
 	When 	I sign in as administrator
 	And 	I go to oxauth Json configuration page
