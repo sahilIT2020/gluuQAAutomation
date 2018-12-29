@@ -12,11 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class OxAuthConfigurationPage extends AbstractPage {
 
-	public void assertAuthorizationPageIsCorrect() {
-		WebElement element = webDriver.findElement(By.name("root[authorizationPage]"));
-		Assert.assertNotNull(element);
-	}
-
 	public void assertAuthorizationEndPointIsCorrect() {
 		WebElement element = webDriver.findElement(By.name("root[authorizationEndpoint]"));
 		Assert.assertNotNull(element);

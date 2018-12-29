@@ -87,10 +87,6 @@ public class JsonConfigurationSteps extends BaseSteps {
 		homePage.selectTab("oxAuth Configuration");
 	}
 
-	@And("^I should see that the authorization page is correct$")
-	public void checkAuthorizationPageIscorrect() {
-		oxAuthConfigurationPage.assertAuthorizationPageIsCorrect();
-	}
 
 	@And("^I should see that the authorization endpoint is correct$")
 	public void checkAuthorizationEndPointIscorrect() {
