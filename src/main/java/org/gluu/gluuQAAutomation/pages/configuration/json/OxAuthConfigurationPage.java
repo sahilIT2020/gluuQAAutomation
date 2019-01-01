@@ -79,4 +79,8 @@ public class OxAuthConfigurationPage extends AbstractPage {
 		fluentWait(TWO_MINUTE);
 	}
 
+	public void saveOxtrust() {
+		webDriver.findElement(By.id("save_oxTrustConfig")).click();		
+	}
+
 }

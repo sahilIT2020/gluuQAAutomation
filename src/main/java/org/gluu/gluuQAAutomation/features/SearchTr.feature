@@ -1,6 +1,6 @@
-Feature: Search a Trust reletionship 
+Feature: Search a Trust relationship 
 @gluuQA
-Scenario: Search a Trust reletionship
+Scenario: Search a Trust relationship
 	When 	I sign in as administrator 
 	Then 	I should see gluu home page 
 	When 	I go to tr add page

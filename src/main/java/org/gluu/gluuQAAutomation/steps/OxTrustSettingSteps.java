@@ -55,6 +55,11 @@ public class OxTrustSettingSteps extends BaseSteps {
 	public void checkOrgName(String orgName) {
 		oxTrustSettingPage.checkOrgName(orgName);
 	}
+	
+	@And("^I set the oxtrust logging level to '(.+)'$")
+	public void setOxTrustLogLevel(String level) {
+		oxTrustSettingPage.setLogLevel(level);
+	}
 
 	@And("^I save the oxtrust configuration$")
 	public void saveOxtrustConfig() {

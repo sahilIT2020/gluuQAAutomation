@@ -182,6 +182,11 @@ public class JsonConfigurationSteps extends BaseSteps {
 	public void saveConfiguration() {
 		oxAuthConfigurationPage.save();
 	}
+	
+	@And("^I save the oxtrust json configuration$")
+	public void saveOxtrustConfiguration() {
+		oxAuthConfigurationPage.saveOxtrust();
+	}
 
 	@After
 	public void clear() {

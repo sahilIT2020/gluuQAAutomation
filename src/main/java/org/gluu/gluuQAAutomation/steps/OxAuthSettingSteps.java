@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -28,6 +29,11 @@ public class OxAuthSettingSteps extends BaseSteps {
 	@Then("^I should that the server ip is empty$")
 	public void checkIpIsEmpty() {
 		oxAuthSettingPage.checkServerIpIsEmpty();
+	}
+	
+	@And("^I set the oxauth logging level to '(.+)'$")
+	public void setOxAuthLogLevel(String level) {
+		oxAuthSettingPage.setLogLevel(level);
 	}
 	
 	@After

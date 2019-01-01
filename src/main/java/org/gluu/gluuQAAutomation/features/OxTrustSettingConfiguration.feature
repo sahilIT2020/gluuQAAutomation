@@ -2,7 +2,6 @@ Feature: OxTrust setting config
 @gluuQA
 Scenario: OxTrust setting config 
 	When 	I sign in as administrator 
-	Then 	I should see gluu home page 
 	When 	I go to oxtrust setting configuration page
 	And 	I should that the org name is not empty
 	And 	I set the new org name to 'GLUU QA'

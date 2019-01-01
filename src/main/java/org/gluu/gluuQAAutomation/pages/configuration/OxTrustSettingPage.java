@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -87,6 +88,12 @@ public class OxTrustSettingPage extends AbstractPage {
 		WebElement orgNameTextZone = webDriver.findElement(By.id("organizationForm:displayName:outputInputPanel"));
 		WebElement orgNameTextInput = orgNameTextZone.findElement(By.tagName("input"));
 		Assert.assertTrue(orgNameTextInput.getAttribute("value").equalsIgnoreCase(orgName));
+	}
+
+	public void setLogLevel(String level) {
+		WebElement element=webDriver.findElements(By.name("root[loggingLevel]")).get(0);
+		Select select=new Select(element);
+		select.selectByVisibleText(level);
 	}
 
 }
