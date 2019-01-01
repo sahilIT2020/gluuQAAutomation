@@ -20,6 +20,7 @@ Scenario: Add new client
 	And 	I add the login redirect named 'https://qalogin/redirect'
 	And 	I select the OIDC 'AdvancedTab' tab
 	And 	I select the OIDC 'EncryptionTab' tab
+	And 	I select the OIDC 'StandardTab' tab
 	And 	I save the client registration
 	When 	I go to openid connect clients list page
 	And 	I search for openid clients with pattern 'QaClientName'

@@ -2,7 +2,6 @@ Feature: Change user password
 @gluuQA
 Scenario: Change user password 
 	When 	I sign in as administrator 
-	Then 	I should see gluu home page 
 	When 	I go to user add page 
 	And 	I add a user named 'QaUserPasswordChanged' 
 	And 	With first name 'QaUserPasswordChangedFN' 

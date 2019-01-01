@@ -10,4 +10,6 @@ Scenario: Add new sector
 	And 	I save the sector
 	When 	I go to sectors list page
 	Then 	I should see that the list is not empty
+	When 	I delete that sector
+	Then 	I should see that the list is empty
 	And 	I sign out

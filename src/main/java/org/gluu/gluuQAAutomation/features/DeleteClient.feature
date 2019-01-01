@@ -4,6 +4,7 @@ Scenario: Delete OpenID connect clients
 	When 	I sign in as administrator 
 	When 	I go to openid connect clients list page
 	And 	I start the process to add new client
+	And 	I select the OIDC 'StandardTab' tab
 	And 	I set the client name to 'QaClientToBeDeletedName'
 	And 	I set the client description to 'QaClientToBeDeletedDescription'
 	And 	I set the client secret to 'secret'

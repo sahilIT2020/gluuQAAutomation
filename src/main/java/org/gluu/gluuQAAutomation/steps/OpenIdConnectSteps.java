@@ -265,6 +265,11 @@ public class OpenIdConnectSteps extends BaseSteps {
 	public void checkListIsNotEmpty() {
 		sectorManagePage.assertListIsNotEmpty();
 	}
+	
+	@When("^I delete that sector$")
+	public void deleteSector() {
+		sectorManagePage.deleteFirstSector();
+	}
 
 	@Then("^I should see that the list is empty$")
 	public void checkListIsEmpty() {

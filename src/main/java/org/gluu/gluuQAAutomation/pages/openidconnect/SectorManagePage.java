@@ -32,13 +32,27 @@ public class SectorManagePage extends AbstractPage {
 			Assert.assertNotNull(table);
 			WebElement body = table.findElement(By.tagName("tbody"));
 			Assert.assertNotNull(body);
-			List<WebElement> trs = table.findElements(By.tagName("tr"));
+			List<WebElement> trs = body.findElements(By.tagName("tr"));
 			Assert.assertNotNull(trs);
 			Assert.assertNotNull(trs.get(0));
 		} catch (Exception e) {
 			isEmpty = true;
 		}
 		return isEmpty;
+	}
+
+	public void deleteFirstSector() {
+		WebElement form = webDriver.findElement(By.id("sectorIdentifiersFormId"));
+		WebElement table = form.findElement(By.id("sectorIdentifiersFormId:sectorIdentifierListId"));
+		WebElement body = table.findElement(By.id("sectorIdentifiersFormId:sectorIdentifierListId:tb"));
+		WebElement tr = body.findElements(By.tagName("tr")).get(0);
+		tr.findElement(By.tagName("a")).click();
+		fluentWait(ADJUST);
+		webDriver.findElement(By.id("updateButtons")).findElements(By.tagName("input")).get(1).click();
+		fluentWait(ADJUST);
+		webDriver.findElement(By.id("deleteConfirmation:acceptRemovalModalPanel_content"))
+				.findElement(By.className("confirmDialogButton")).click();
+		fluentWait(ADJUST);
 	}
 
 }
