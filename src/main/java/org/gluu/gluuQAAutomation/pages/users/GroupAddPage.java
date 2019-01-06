@@ -71,5 +71,6 @@ public class GroupAddPage extends AbstractPage {
 		List<WebElement> trs = result.findElements(By.tagName("tr"));
 		WebElement buttonZone = trs.get(trs.size() - 1);
 		buttonZone.findElements(By.tagName("input")).get(0).click();
+		fluentWait(ADJUST);
 	}
 }

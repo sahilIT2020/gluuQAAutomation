@@ -14,8 +14,10 @@ public class ServerStatusPage extends AbstractPage {
 	private List<WebElement> rows;
 
 	private void init() {
-		WebElement table = webDriver.findElement(By.id("statusTable")).findElement(By.tagName("tbody"));
-		rows = table.findElements(By.tagName("tr"));
+		WebElement table1 = webDriver.findElement(By.id("statusTable1")).findElement(By.tagName("tbody"));
+		WebElement table2 = webDriver.findElement(By.id("statusTable2")).findElement(By.tagName("tbody"));
+		rows = table1.findElements(By.tagName("tr"));
+		rows.addAll(table2.findElements(By.tagName("tr")));
 	}
 
 	public void assertSizeIs(String size) {
